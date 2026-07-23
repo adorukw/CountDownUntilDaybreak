@@ -525,9 +525,10 @@ static void RenderObjectGroup(
             /* Tiled 贴图对象的 y 是底部边缘 → 转为顶部 */
             double objY =
                 (tileset->columns > 0) ? obj->y : (obj->y - obj->height);
-            SDL_Rect dst = { (int)(obj->x - cameraX + offsetX),
-                             (int)(objY - cameraY + offsetY), (int)obj->width,
-                             (int)obj->height };
+            SDL_Rect dst = { (int)round(obj->x - cameraX + offsetX),
+                             (int)round(objY - cameraY + offsetY),
+                             (int)round(obj->width),
+                             (int)round(obj->height) };
 
             /* 翻转（cute_tiled 的 gid 已为纯 GID，从对象拿不到翻转标志）
              * 但对象自身的 rotation 字段可用 */
@@ -575,8 +576,8 @@ static void RenderObjectGroup(
 
                 SDL_Rect src = { 0, 0, tw, th };
                 /* 目标尺寸用对象尺寸（保持 Tiled 中的缩放） */
-                dst.w = (int)obj->width;
-                dst.h = (int)obj->height;
+                dst.w = (int)round(obj->width);
+                dst.h = (int)round(obj->height);
                 SDL_RenderCopyEx(renderer, tex, &src, &dst, angle, NULL, flip);
             }
         }
