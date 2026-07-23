@@ -281,25 +281,49 @@
                  "id":1,
                  "image":"..\/images\/props\/platform2.png",
                  "imageheight":21,
-                 "imagewidth":48
+                 "imagewidth":48,
+                 "properties":[
+                        {
+                         "name":"collision",
+                         "type":"bool",
+                         "value":true
+                        }]
                 }, 
                 {
                  "id":6,
                  "image":"..\/images\/props\/pillar1.png",
                  "imageheight":112,
-                 "imagewidth":64
+                 "imagewidth":64,
+                 "properties":[
+                        {
+                         "name":"collision",
+                         "type":"bool",
+                         "value":true
+                        }]
                 }, 
                 {
                  "id":7,
                  "image":"..\/images\/props\/platform3.png",
                  "imageheight":11,
-                 "imagewidth":44
+                 "imagewidth":44,
+                 "properties":[
+                        {
+                         "name":"collision",
+                         "type":"bool",
+                         "value":true
+                        }]
                 }, 
                 {
                  "id":8,
                  "image":"..\/images\/props\/platform1.png",
                  "imageheight":13,
-                 "imagewidth":46
+                 "imagewidth":46,
+                 "properties":[
+                        {
+                         "name":"collision",
+                         "type":"bool",
+                         "value":true
+                        }]
                 }, 
                 {
                  "id":3,
@@ -340,13 +364,31 @@
          "tileheight":16,
          "tiles":[
                 {
-                 "id":0
+                 "id":0,
+                 "properties":[
+                        {
+                         "name":"collision",
+                         "type":"bool",
+                         "value":true
+                        }]
                 }, 
                 {
-                 "id":1
+                 "id":1,
+                 "properties":[
+                        {
+                         "name":"collision",
+                         "type":"bool",
+                         "value":true
+                        }]
                 }, 
                 {
-                 "id":2
+                 "id":2,
+                 "properties":[
+                        {
+                         "name":"collision",
+                         "type":"bool",
+                         "value":true
+                        }]
                 }, 
                 {
                  "id":3
@@ -361,7 +403,13 @@
                  "id":6
                 }, 
                 {
-                 "id":7
+                 "id":7,
+                 "properties":[
+                        {
+                         "name":"collision",
+                         "type":"bool",
+                         "value":true
+                        }]
                 }, 
                 {
                  "id":8,
@@ -372,7 +420,13 @@
                  "probability":0.25
                 }, 
                 {
-                 "id":9
+                 "id":9,
+                 "properties":[
+                        {
+                         "name":"collision",
+                         "type":"bool",
+                         "value":true
+                        }]
                 }, 
                 {
                  "id":10
@@ -384,7 +438,13 @@
                  "id":13
                 }, 
                 {
-                 "id":14
+                 "id":14,
+                 "properties":[
+                        {
+                         "name":"collision",
+                         "type":"bool",
+                         "value":true
+                        }]
                 }, 
                 {
                  "id":15,
@@ -395,7 +455,13 @@
                  "probability":0.25
                 }, 
                 {
-                 "id":16
+                 "id":16,
+                 "properties":[
+                        {
+                         "name":"collision",
+                         "type":"bool",
+                         "value":true
+                        }]
                 }, 
                 {
                  "id":17

@@ -1,24 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.10" tiledversion="1.12.2" name="tiles" tilewidth="16" tileheight="16" tilecount="84" columns="7">
  <image source="../images/tiles/tiles.png" width="112" height="192"/>
- <tile id="0"/>
- <tile id="1"/>
- <tile id="2"/>
+ <tile id="0">
+  <properties>
+   <property name="collision" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="1">
+  <properties>
+   <property name="collision" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="2">
+  <properties>
+   <property name="collision" type="bool" value="true"/>
+  </properties>
+ </tile>
  <tile id="3"/>
  <tile id="4"/>
  <tile id="5"/>
  <tile id="6"/>
- <tile id="7"/>
+ <tile id="7">
+  <properties>
+   <property name="collision" type="bool" value="true"/>
+  </properties>
+ </tile>
  <tile id="8" probability="0.5"/>
  <tile id="12" probability="0.25"/>
- <tile id="9"/>
+ <tile id="9">
+  <properties>
+   <property name="collision" type="bool" value="true"/>
+  </properties>
+ </tile>
  <tile id="10"/>
  <tile id="11"/>
  <tile id="13"/>
- <tile id="14"/>
+ <tile id="14">
+  <properties>
+   <property name="collision" type="bool" value="true"/>
+  </properties>
+ </tile>
  <tile id="15" probability="0.5"/>
  <tile id="19" probability="0.25"/>
- <tile id="16"/>
+ <tile id="16">
+  <properties>
+   <property name="collision" type="bool" value="true"/>
+  </properties>
+ </tile>
  <tile id="17"/>
  <tile id="18"/>
  <tile id="20"/>

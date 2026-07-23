@@ -1,5 +1,5 @@
 {
-    "activeFile": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmj",
+    "activeFile": "start.tmx",
     "automapping.whileDrawing": false,
     "expandedProjectPaths": [
     ],
@@ -57,14 +57,14 @@
             "scale": 4,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 147.875,
-                "y": 150
+                "x": 147,
+                "y": 153.5
             }
         },
         "tiles.tsx": {
             "dynamicWrapping": false,
             "scaleInDock": 5.5,
-            "scaleInEditor": 5.5
+            "scaleInEditor": 8
         },
         "twilight-tiles.tsj": {
             "dynamicWrapping": false,
@@ -85,15 +85,16 @@
     "openFiles": [
         "tiles.tsx",
         "props.tsx",
-        "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmj"
+        "start.tmx"
     ],
     "project": "CDUD.tiled-project",
+    "property.type": "bool",
     "recentFiles": [
-        "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmx",
         "tiles.tsx",
         "props.tsx",
-        "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmj",
         "start.tmx",
+        "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmx",
+        "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmj",
         "start",
         "twilight-tiles.tsx",
         "twilight-tiles.tsj"

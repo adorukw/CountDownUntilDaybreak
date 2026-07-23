@@ -4,6 +4,7 @@
 #include "utils.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <stdbool.h>
 
 int main(int argc, char *argv[]) {
     (void)argc, (void)argv;
@@ -52,10 +53,10 @@ int main(int argc, char *argv[]) {
     CameraSetBounds(&camera, mapData.pixelWidth, mapData.pixelHeight);
 
     /* ── 全屏状态 ── */
-    SDL_bool fullscreen = SDL_TRUE;
+    bool fullscreen = SDL_TRUE;
 
     /* ── 主循环 ── */
-    SDL_bool running = SDL_TRUE;
+    bool running = SDL_TRUE;
     SDL_Event event;
 
     /* 获取键盘状态数组（SDL 管理生命周期，不需要 free） */
