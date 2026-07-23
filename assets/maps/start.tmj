@@ -19,24 +19,12 @@
          "y":0
         }, 
         {
-         "id":2,
-         "image":"..\/images\/example\/working-title1.png",
-         "imageheight":475,
-         "imagewidth":800,
-         "name":"example1",
-         "opacity":0.7,
-         "type":"imagelayer",
-         "visible":false,
-         "x":0,
-         "y":0
-        }, 
-        {
          "id":4,
          "image":"..\/images\/backgrounds\/moon.png",
          "imageheight":249,
          "imagewidth":35,
          "name":"moon",
-         "offsetx":0,
+         "offsetx":256,
          "offsety":32,
          "opacity":1,
          "parallaxx":0.1,
@@ -254,8 +242,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":7,
- "nextobjectid":27,
+ "nextlayerid":8,
+ "nextobjectid":40,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.12.2",

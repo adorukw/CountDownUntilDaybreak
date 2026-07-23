@@ -2,10 +2,12 @@ file(REMOVE_RECURSE
   "CMakeFiles/CDUD.dir/link.d"
   "CDUD"
   "CDUD.pdb"
-  "CMakeFiles/CDUD.dir/src/cJSON.c.o"
-  "CMakeFiles/CDUD.dir/src/cJSON.c.o.d"
+  "CMakeFiles/CDUD.dir/src/cute_tiled.c.o"
+  "CMakeFiles/CDUD.dir/src/cute_tiled.c.o.d"
   "CMakeFiles/CDUD.dir/src/main.c.o"
   "CMakeFiles/CDUD.dir/src/main.c.o.d"
+  "CMakeFiles/CDUD.dir/src/map.c.o"
+  "CMakeFiles/CDUD.dir/src/map.c.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,5 +1,5 @@
 {
-    "activeFile": "start.tmx",
+    "activeFile": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmj",
     "automapping.whileDrawing": false,
     "expandedProjectPaths": [
     ],
@@ -8,14 +8,42 @@
         "": {
             "scaleInDock": 1
         },
+        "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmj": {
+            "scale": 2,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 378.5,
+                "y": 149
+            }
+        },
+        "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmj#props": {
+            "scaleInDock": 1
+        },
+        "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmj#tiles": {
+            "scaleInDock": 1
+        },
+        "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmx": {
+            "scale": 2,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 816,
+                "y": 163.5
+            }
+        },
+        "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmx#props": {
+            "scaleInDock": 1
+        },
+        "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmx#tiles": {
+            "scaleInDock": 1
+        },
         ":/automap-tiles.tsx": {
             "dynamicWrapping": false,
             "scaleInDock": 1
         },
         "props.tsx": {
             "dynamicWrapping": true,
-            "scaleInDock": 1.5,
-            "scaleInEditor": 4
+            "scaleInDock": 2,
+            "scaleInEditor": 2
         },
         "start": {
             "scale": 3,
@@ -48,19 +76,23 @@
             "scaleInEditor": 4
         }
     },
+    "last.exportedFilePath": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps",
     "last.imagePath": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/images/props",
-    "map.lastUsedFormat": "json",
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
     "openFiles": [
         "tiles.tsx",
         "props.tsx",
-        "start.tmx"
+        "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmj"
     ],
     "project": "CDUD.tiled-project",
     "recentFiles": [
+        "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmx",
         "tiles.tsx",
         "props.tsx",
+        "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmj",
         "start.tmx",
         "start",
         "twilight-tiles.tsx",

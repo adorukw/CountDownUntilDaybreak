@@ -5,12 +5,6 @@
  </editorsettings>
  <tileset firstgid="1" source="props.tsx"/>
  <tileset firstgid="12" source="tiles.tsx"/>
- <imagelayer id="3" name="mount_lake" offsetx="0" offsety="-12" parallaxx="0.8" repeatx="1">
-  <image source="../images/backgrounds/mount_lake.png" width="256" height="300"/>
- </imagelayer>
- <imagelayer id="4" name="moon" offsetx="256" offsety="32" parallaxx="0.1">
-  <image source="../images/backgrounds/moon.png" width="35" height="249"/>
- </imagelayer>
  <objectgroup id="6" name="props">
   <object id="1" gid="7" x="176" y="288" width="64" height="112"/>
   <object id="2" gid="7" x="240" y="288" width="64" height="112"/>
@@ -26,6 +20,15 @@
   <object id="24" gid="7" x="752" y="176" width="64" height="112"/>
   <object id="25" gid="7" x="896" y="176" width="64" height="112"/>
  </objectgroup>
+ <imagelayer id="3" name="mount_lake" offsetx="0" offsety="-12" parallaxx="0.8" repeatx="1">
+  <image source="../images/backgrounds/mount_lake.png" width="256" height="300"/>
+ </imagelayer>
+ <imagelayer id="2" name="example1" visible="0" opacity="0.7">
+  <image source="../images/example/working-title1.png" width="800" height="475"/>
+ </imagelayer>
+ <imagelayer id="4" name="moon" offsetx="0" offsety="32" parallaxx="0.1">
+  <image source="../images/backgrounds/moon.png" width="35" height="249"/>
+ </imagelayer>
  <layer id="1" name="main" width="60" height="18">
   <data encoding="csv">
 19,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,21,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,19,20,20,20,20,20,20,20,20,20,20,20,20,

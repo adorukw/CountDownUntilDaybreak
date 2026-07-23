@@ -143,29 +143,29 @@ copy_compile_db/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/copy_compile_db.dir/build.make CMakeFiles/copy_compile_db.dir/build
 .PHONY : copy_compile_db/fast
 
-src/cJSON.o: src/cJSON.c.o
-.PHONY : src/cJSON.o
+src/cute_tiled.o: src/cute_tiled.c.o
+.PHONY : src/cute_tiled.o
 
 # target to build an object file
-src/cJSON.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/cJSON.c.o
-.PHONY : src/cJSON.c.o
+src/cute_tiled.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/cute_tiled.c.o
+.PHONY : src/cute_tiled.c.o
 
-src/cJSON.i: src/cJSON.c.i
-.PHONY : src/cJSON.i
+src/cute_tiled.i: src/cute_tiled.c.i
+.PHONY : src/cute_tiled.i
 
 # target to preprocess a source file
-src/cJSON.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/cJSON.c.i
-.PHONY : src/cJSON.c.i
+src/cute_tiled.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/cute_tiled.c.i
+.PHONY : src/cute_tiled.c.i
 
-src/cJSON.s: src/cJSON.c.s
-.PHONY : src/cJSON.s
+src/cute_tiled.s: src/cute_tiled.c.s
+.PHONY : src/cute_tiled.s
 
 # target to generate assembly for a file
-src/cJSON.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/cJSON.c.s
-.PHONY : src/cJSON.c.s
+src/cute_tiled.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/cute_tiled.c.s
+.PHONY : src/cute_tiled.c.s
 
 src/main.o: src/main.c.o
 .PHONY : src/main.o
@@ -191,6 +191,30 @@ src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/main.c.s
 .PHONY : src/main.c.s
 
+src/map.o: src/map.c.o
+.PHONY : src/map.o
+
+# target to build an object file
+src/map.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/map.c.o
+.PHONY : src/map.c.o
+
+src/map.i: src/map.c.i
+.PHONY : src/map.i
+
+# target to preprocess a source file
+src/map.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/map.c.i
+.PHONY : src/map.c.i
+
+src/map.s: src/map.c.s
+.PHONY : src/map.s
+
+# target to generate assembly for a file
+src/map.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/map.c.s
+.PHONY : src/map.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -201,12 +225,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... copy_compile_db"
 	@echo "... CDUD"
-	@echo "... src/cJSON.o"
-	@echo "... src/cJSON.i"
-	@echo "... src/cJSON.s"
+	@echo "... src/cute_tiled.o"
+	@echo "... src/cute_tiled.i"
+	@echo "... src/cute_tiled.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/map.o"
+	@echo "... src/map.i"
+	@echo "... src/map.s"
 .PHONY : help
 
 
