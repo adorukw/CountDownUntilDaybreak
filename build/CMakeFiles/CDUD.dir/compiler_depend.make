@@ -12,6 +12,10 @@ CDUD: /lib/x86_64-linux-gnu/libc.so.6 \
   /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o \
   /usr/lib/gcc/x86_64-linux-gnu/14/libgcc.a \
   /usr/lib/gcc/x86_64-linux-gnu/14/libgcc_s.so \
+  /usr/lib/x86_64-linux-gnu/libSDL2.so \
+  /usr/lib/x86_64-linux-gnu/libSDL2_image.so \
+  /usr/lib/x86_64-linux-gnu/libSDL2_mixer.so \
+  /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so \
   /usr/lib/x86_64-linux-gnu/libc_nonshared.a \
   CMakeFiles/CDUD.dir/src/main.c.o
 
@@ -49,31 +53,31 @@ CMakeFiles/CDUD.dir/src/main.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDay
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
-/usr/include/x86_64-linux-gnu/bits/typesizes.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
-
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o:
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o:
+/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h:
-
-CMakeFiles/CDUD.dir/src/main.c.o:
+/usr/lib/x86_64-linux-gnu/libSDL2.so:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
+/usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o:
+
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/libgcc.a:
+
+/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
+
+/lib/x86_64-linux-gnu/libc.so.6:
 
 /usr/lib/x86_64-linux-gnu/libgcc_s.so.1:
 
@@ -81,11 +85,29 @@ CMakeFiles/CDUD.dir/src/main.c.o:
 
 /usr/lib/x86_64-linux-gnu/libc.so:
 
+/usr/include/x86_64-linux-gnu/bits/timesize.h:
+
+/usr/lib/x86_64-linux-gnu/libc_nonshared.a:
+
+/usr/lib/x86_64-linux-gnu/crtn.o:
+
+/usr/lib/x86_64-linux-gnu/libSDL2_image.so:
+
 /usr/include/x86_64-linux-gnu/bits/floatn.h:
 
 /lib64/ld-linux-x86-64.so.2:
 
+/usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o:
+
+/usr/lib/x86_64-linux-gnu/libSDL2_mixer.so:
+
 /usr/lib/x86_64-linux-gnu/Scrt1.o:
+
+/usr/lib/x86_64-linux-gnu/libSDL2_ttf.so:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h:
+
+CMakeFiles/CDUD.dir/src/main.c.o:
 
 /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c:
 
@@ -93,11 +115,9 @@ CMakeFiles/CDUD.dir/src/main.c.o:
 
 /usr/include/features-time64.h:
 
-/usr/lib/x86_64-linux-gnu/libc_nonshared.a:
+/usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
-/usr/lib/x86_64-linux-gnu/crtn.o:
-
-/usr/include/x86_64-linux-gnu/bits/timesize.h:
+/usr/include/features.h:
 
 /usr/lib/x86_64-linux-gnu/crti.o:
 
@@ -118,11 +138,3 @@ CMakeFiles/CDUD.dir/src/main.c.o:
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
-
-/usr/include/features.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/FILE.h:
-
-/lib/x86_64-linux-gnu/libc.so.6:
-
-/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:

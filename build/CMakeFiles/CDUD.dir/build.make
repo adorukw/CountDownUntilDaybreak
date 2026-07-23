@@ -96,6 +96,10 @@ CDUD_EXTERNAL_OBJECTS =
 CDUD: CMakeFiles/CDUD.dir/src/main.c.o
 CDUD: CMakeFiles/CDUD.dir/build.make
 CDUD: CMakeFiles/CDUD.dir/compiler_depend.ts
+CDUD: /usr/lib/x86_64-linux-gnu/libSDL2.so
+CDUD: /usr/lib/x86_64-linux-gnu/libSDL2_image.so
+CDUD: /usr/lib/x86_64-linux-gnu/libSDL2_mixer.so
+CDUD: /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so
 CDUD: CMakeFiles/CDUD.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable CDUD"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CDUD.dir/link.txt --verbose=$(VERBOSE)

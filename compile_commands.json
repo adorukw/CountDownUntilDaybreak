@@ -1,7 +1,7 @@
 [
 {
   "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
-  "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -O3 -DNDEBUG -std=gnu99 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/main.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c",
+  "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=gnu99 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/main.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c",
   "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c",
   "output": "CMakeFiles/CDUD.dir/src/main.c.o"
 }

@@ -3,6 +3,10 @@ CDUD: \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o \
   /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o \
   CMakeFiles/CDUD.dir/src/main.c.o \
+  /usr/lib/x86_64-linux-gnu/libSDL2.so \
+  /usr/lib/x86_64-linux-gnu/libSDL2_image.so \
+  /usr/lib/x86_64-linux-gnu/libSDL2_mixer.so \
+  /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so \
   /usr/lib/gcc/x86_64-linux-gnu/14/libgcc.a \
   /usr/lib/gcc/x86_64-linux-gnu/14/libgcc_s.so \
   /usr/lib/gcc/x86_64-linux-gnu/14/libgcc_s.so \
@@ -32,6 +36,14 @@ CDUD: \
 /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o:
 
 CMakeFiles/CDUD.dir/src/main.c.o:
+
+/usr/lib/x86_64-linux-gnu/libSDL2.so:
+
+/usr/lib/x86_64-linux-gnu/libSDL2_image.so:
+
+/usr/lib/x86_64-linux-gnu/libSDL2_mixer.so:
+
+/usr/lib/x86_64-linux-gnu/libSDL2_ttf.so:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/libgcc.a:
 
