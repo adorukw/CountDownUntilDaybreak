@@ -143,6 +143,30 @@ copy_compile_db/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/copy_compile_db.dir/build.make CMakeFiles/copy_compile_db.dir/build
 .PHONY : copy_compile_db/fast
 
+src/camera.o: src/camera.c.o
+.PHONY : src/camera.o
+
+# target to build an object file
+src/camera.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/camera.c.o
+.PHONY : src/camera.c.o
+
+src/camera.i: src/camera.c.i
+.PHONY : src/camera.i
+
+# target to preprocess a source file
+src/camera.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/camera.c.i
+.PHONY : src/camera.c.i
+
+src/camera.s: src/camera.c.s
+.PHONY : src/camera.s
+
+# target to generate assembly for a file
+src/camera.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/camera.c.s
+.PHONY : src/camera.c.s
+
 src/cute_tiled.o: src/cute_tiled.c.o
 .PHONY : src/cute_tiled.o
 
@@ -215,6 +239,30 @@ src/map.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/map.c.s
 .PHONY : src/map.c.s
 
+src/utils.o: src/utils.c.o
+.PHONY : src/utils.o
+
+# target to build an object file
+src/utils.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/utils.c.o
+.PHONY : src/utils.c.o
+
+src/utils.i: src/utils.c.i
+.PHONY : src/utils.i
+
+# target to preprocess a source file
+src/utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/utils.c.i
+.PHONY : src/utils.c.i
+
+src/utils.s: src/utils.c.s
+.PHONY : src/utils.s
+
+# target to generate assembly for a file
+src/utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/utils.c.s
+.PHONY : src/utils.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -225,6 +273,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... copy_compile_db"
 	@echo "... CDUD"
+	@echo "... src/camera.o"
+	@echo "... src/camera.i"
+	@echo "... src/camera.s"
 	@echo "... src/cute_tiled.o"
 	@echo "... src/cute_tiled.i"
 	@echo "... src/cute_tiled.s"
@@ -234,6 +285,9 @@ help:
 	@echo "... src/map.o"
 	@echo "... src/map.i"
 	@echo "... src/map.s"
+	@echo "... src/utils.o"
+	@echo "... src/utils.i"
+	@echo "... src/utils.s"
 .PHONY : help
 
 

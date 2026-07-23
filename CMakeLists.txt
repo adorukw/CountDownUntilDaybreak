@@ -27,6 +27,7 @@ target_link_libraries(${PROJECT_NAME}
   SDL2_image::SDL2_image
   SDL2_mixer::SDL2_mixer
   SDL2_ttf::SDL2_ttf
+  m
 )
 
 add_custom_target(copy_compile_db ALL

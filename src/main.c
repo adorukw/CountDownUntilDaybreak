@@ -1,5 +1,7 @@
+#include "camera.h"
 #include "config.h"
 #include "map.h"
+#include "utils.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
@@ -45,17 +47,9 @@ int main(int argc, char *argv[]) {
         return -1;
     }
 
-    /* ── 相机 ── */
-    double cameraX = 0;
-    double cameraY = 1;
-    double camXMax = (double)mapData.pixelWidth - (double)WINDOW_WIDTH;
-    if (camXMax < 0) {
-        camXMax = 0;
-    }
-    double camYMax = (double)mapData.pixelHeight - (double)WINDOW_HEIGHT;
-    if (camYMax < 0) {
-        camYMax = 0;
-    }
+    Camera camera;
+    CameraInit(&camera, WINDOW_WIDTH, WINDOW_HEIGHT);
+    CameraSetBounds(&camera, mapData.pixelWidth, mapData.pixelHeight);
 
     /* ── 全屏状态 ── */
     SDL_bool fullscreen = SDL_TRUE;
@@ -107,25 +101,21 @@ int main(int argc, char *argv[]) {
 
         /* ── 相机移动（基于键盘状态，帧率无关） ── */
         if (keys[SDL_SCANCODE_LEFT] || keys[SDL_SCANCODE_A]) {
-            cameraX -= CAMERA_SPEED * frameTime;
+            CameraMove(&camera, (Vec2){ -CAMERA_SPEED * frameTime, 0 });
         }
         if (keys[SDL_SCANCODE_RIGHT] || keys[SDL_SCANCODE_D]) {
-            cameraX += CAMERA_SPEED * frameTime;
+            CameraMove(&camera, (Vec2){ CAMERA_SPEED * frameTime, 0 });
+        }
+        /* 原来没有上下移动，这里顺手补上 */
+        if (keys[SDL_SCANCODE_UP] || keys[SDL_SCANCODE_W]) {
+            CameraMove(&camera, (Vec2){ 0, -CAMERA_SPEED * frameTime });
+        }
+        if (keys[SDL_SCANCODE_DOWN] || keys[SDL_SCANCODE_S]) {
+            CameraMove(&camera, (Vec2){ 0, CAMERA_SPEED * frameTime });
         }
 
-        /* 钳制相机范围 */
-        if (cameraX < 0) {
-            cameraX = 0;
-        }
-        if (cameraX > camXMax) {
-            cameraX = camXMax;
-        }
-        if (cameraY < 0) {
-            cameraY = 0;
-        }
-        if (cameraY > camYMax) {
-            cameraY = camYMax;
-        }
+        /* ── 相机更新：clamp + 震动（每帧调用一次） ── */
+        CameraUpdate(&camera, frameTime);
 
         /* ── 固定步长更新 ── */
         accumulator += frameTime;
@@ -138,8 +128,11 @@ int main(int argc, char *argv[]) {
         SDL_SetRenderDrawColor(renderer, 10, 10, 38, 255);
         SDL_RenderClear(renderer);
 
+        Vec2 camPos = CameraGetPos(&camera);
         MapRenderAll(
-            &mapData, renderer, cameraX, cameraY, WINDOW_WIDTH, WINDOW_HEIGHT);
+            &mapData, renderer, camPos.x, camPos.y, WINDOW_WIDTH,
+            WINDOW_HEIGHT);
+        // RenderDebugGrid(renderer, camPos.x, camPos.y);
 
         SDL_RenderPresent(renderer);
     }

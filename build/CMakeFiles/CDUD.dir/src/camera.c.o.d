@@ -1,5 +1,5 @@
-CMakeFiles/CDUD.dir/src/main.c.o: \
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c \
+CMakeFiles/CDUD.dir/src/camera.c.o: \
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/camera.c \
  /usr/include/stdc-predef.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/camera.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/types.h \
@@ -179,8 +179,4 @@ CMakeFiles/CDUD.dir/src/main.c.o: \
  /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
  /usr/include/SDL2/SDL_misc.h \
- /usr/lib/gcc/x86_64-linux-gnu/14/include/stdbool.h \
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/config.h \
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/map.h \
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/utils.h \
- /usr/include/SDL2/SDL_image.h /usr/include/SDL2/SDL.h
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/stdbool.h

@@ -2,13 +2,20 @@ CDUD: \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o \
   /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o \
+  CMakeFiles/CDUD.dir/src/camera.c.o \
   CMakeFiles/CDUD.dir/src/cute_tiled.c.o \
   CMakeFiles/CDUD.dir/src/main.c.o \
   CMakeFiles/CDUD.dir/src/map.c.o \
+  CMakeFiles/CDUD.dir/src/utils.c.o \
   /usr/lib/x86_64-linux-gnu/libSDL2.so \
   /usr/lib/x86_64-linux-gnu/libSDL2_image.so \
   /usr/lib/x86_64-linux-gnu/libSDL2_mixer.so \
   /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/libm.so \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/libm.so \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/libm.so \
+  /lib/x86_64-linux-gnu/libm.so.6 \
+  /lib/x86_64-linux-gnu/libmvec.so.1 \
   /usr/lib/gcc/x86_64-linux-gnu/14/libgcc.a \
   /usr/lib/gcc/x86_64-linux-gnu/14/libgcc_s.so \
   /usr/lib/gcc/x86_64-linux-gnu/14/libgcc_s.so \
@@ -30,7 +37,6 @@ CDUD: \
   /usr/lib/gcc/x86_64-linux-gnu/14/crtendS.o \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o \
   /lib/x86_64-linux-gnu/libasound.so.2 \
-  /lib/x86_64-linux-gnu/libm.so.6 \
   /lib/x86_64-linux-gnu/libpulse.so.0 \
   /lib/x86_64-linux-gnu/libsamplerate.so.0 \
   /lib/x86_64-linux-gnu/libX11.so.6 \
@@ -89,11 +95,15 @@ CDUD: \
 
 /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o:
 
+CMakeFiles/CDUD.dir/src/camera.c.o:
+
 CMakeFiles/CDUD.dir/src/cute_tiled.c.o:
 
 CMakeFiles/CDUD.dir/src/main.c.o:
 
 CMakeFiles/CDUD.dir/src/map.c.o:
+
+CMakeFiles/CDUD.dir/src/utils.c.o:
 
 /usr/lib/x86_64-linux-gnu/libSDL2.so:
 
@@ -102,6 +112,16 @@ CMakeFiles/CDUD.dir/src/map.c.o:
 /usr/lib/x86_64-linux-gnu/libSDL2_mixer.so:
 
 /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/libm.so:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/libm.so:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/libm.so:
+
+/lib/x86_64-linux-gnu/libm.so.6:
+
+/lib/x86_64-linux-gnu/libmvec.so.1:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/libgcc.a:
 
@@ -144,8 +164,6 @@ CMakeFiles/CDUD.dir/src/map.c.o:
 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o:
 
 /lib/x86_64-linux-gnu/libasound.so.2:
-
-/lib/x86_64-linux-gnu/libm.so.6:
 
 /lib/x86_64-linux-gnu/libpulse.so.0:
 

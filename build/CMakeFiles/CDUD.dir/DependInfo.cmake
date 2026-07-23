@@ -8,9 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/camera.c" "CMakeFiles/CDUD.dir/src/camera.c.o" "gcc" "CMakeFiles/CDUD.dir/src/camera.c.o.d"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c" "CMakeFiles/CDUD.dir/src/cute_tiled.c.o" "gcc" "CMakeFiles/CDUD.dir/src/cute_tiled.c.o.d"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c" "CMakeFiles/CDUD.dir/src/main.c.o" "gcc" "CMakeFiles/CDUD.dir/src/main.c.o.d"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/map.c" "CMakeFiles/CDUD.dir/src/map.c.o" "gcc" "CMakeFiles/CDUD.dir/src/map.c.o.d"
+  "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/utils.c" "CMakeFiles/CDUD.dir/src/utils.c.o" "gcc" "CMakeFiles/CDUD.dir/src/utils.c.o.d"
   "" "CDUD" "gcc" "CMakeFiles/CDUD.dir/link.d"
   )
 

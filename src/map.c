@@ -332,10 +332,25 @@ static void RenderTilelayer(
             CuteTiledTileset *cts = NULL;
             int localId = -1;
             for (cts = mapData->cuteTiledMap->tilesets; cts; cts = cts->next) {
-                if (gid >= cts->firstgid &&
-                    gid < cts->firstgid + cts->tilecount) {
-                    localId = gid - cts->firstgid;
-                    break;
+                if (cts->columns > 0) {
+                    /* 精灵表：ID 连续，用 tilecount 范围判断 */
+                    if (gid >= cts->firstgid &&
+                        gid < cts->firstgid + cts->tilecount) {
+                        localId = gid - cts->firstgid;
+                        break;
+                    }
+                } else {
+                    /* 集合贴图：tile.id 不连续，遍历匹配 */
+                    CuteTiledTileDescriptor *cttd = cts->tiles;
+                    while (cttd) {
+                        if (gid == cts->firstgid + cttd->tile_index) {
+                            localId = cttd->tile_index;
+                            break;
+                        }
+                        cttd = cttd->next;
+                    }
+                    if (cttd)
+                        break;
                 }
             }
             if (!cts || localId < 0) {
@@ -369,8 +384,9 @@ static void RenderTilelayer(
                     mapData->baseDir, cts->image.ptr, imgPath, sizeof(imgPath));
                 SDL_Texture *tex =
                     TextureCacheGet(mapData, renderer, imgPath, NULL, NULL);
-                if (!tex)
+                if (!tex) {
                     continue;
+                }
 
                 int sx, sy, sw, sh;
                 SpriteSheetSrcRect(cts, localId, &sx, &sy, &sw, &sh);
@@ -384,8 +400,9 @@ static void RenderTilelayer(
             } else {
                 /* === 集合贴图模式 === */
                 CuteTiledTileDescriptor *td = FindTileDescriptor(cts, localId);
-                if (!td || !td->image.ptr)
+                if (!td || !td->image.ptr) {
                     continue;
+                }
 
                 char imgPath[512];
                 ResolvePathInDir(
@@ -393,8 +410,9 @@ static void RenderTilelayer(
                 int tw, th;
                 SDL_Texture *texture =
                     TextureCacheGet(mapData, renderer, imgPath, &tw, &th);
-                if (!texture)
+                if (!texture) {
                     continue;
+                }
 
                 dstRec.w = tw;
                 dstRec.h = th;
@@ -468,14 +486,35 @@ static void RenderObjectGroup(
 
         if (obj->gid) {
             /* === 贴图对象（带 GID） === */
+            unsigned int rawGid = obj->gid; // ← 新增：保留原始值
+            unsigned int cleanGid =
+                cute_tiled_unset_flags(rawGid); // ← 新增：清掉翻转标志
+            int hFlip, vFlip, dFlip; // ← 新增：读取翻转标志（后面用）
+            cute_tiled_get_flags(rawGid, &hFlip, &vFlip, &dFlip); // ← 新增
+
             CuteTiledTileset *tileset = NULL;
             int local_id = -1;
             for (tileset = mapData->cuteTiledMap->tilesets; tileset;
                  tileset = tileset->next) {
-                if (obj->gid >= tileset->firstgid &&
-                    obj->gid < tileset->firstgid + tileset->tilecount) {
-                    local_id = obj->gid - tileset->firstgid;
-                    break;
+                /* 这里把原来的 obj->gid 全部换成 cleanGid */
+                if (tileset->columns > 0) {
+                    if (cleanGid >= (unsigned int)tileset->firstgid &&
+                        cleanGid < (unsigned int)(tileset->firstgid +
+                                                  tileset->tilecount)) {
+                        local_id = cleanGid - tileset->firstgid;
+                        break;
+                    }
+                } else {
+                    CuteTiledTileDescriptor *cttd = tileset->tiles;
+                    while (cttd) {
+                        if (obj->gid == tileset->firstgid + cttd->tile_index) {
+                            local_id = cttd->tile_index;
+                            break;
+                        }
+                        cttd = cttd->next;
+                    }
+                    if (cttd)
+                        break; /* 匹配到了，跳出 tileset 循环 */
                 }
             }
             if (!tileset || local_id < 0) {
@@ -484,9 +523,11 @@ static void RenderObjectGroup(
             }
 
             /* Tiled 贴图对象的 y 是底部边缘 → 转为顶部 */
+            double objY =
+                (tileset->columns > 0) ? obj->y : (obj->y - obj->height);
             SDL_Rect dst = { (int)(obj->x - cameraX + offsetX),
-                             (int)(obj->y - obj->height - cameraY + offsetY),
-                             (int)obj->width, (int)obj->height };
+                             (int)(objY - cameraY + offsetY), (int)obj->width,
+                             (int)obj->height };
 
             /* 翻转（cute_tiled 的 gid 已为纯 GID，从对象拿不到翻转标志）
              * 但对象自身的 rotation 字段可用 */
@@ -575,10 +616,6 @@ static void RenderLayer(
         }
     }
 }
-
-/* ================================================================
- *  一键渲染全部
- * ================================================================ */
 
 void MapRenderAll(
     MapData *mapData, SDL_Renderer *renderer, double cameraX, double cameraY,
