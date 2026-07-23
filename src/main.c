@@ -36,8 +36,8 @@ int main(int argc, char *argv[]) {
     SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
 
     /* ── 加载地图 ── */
-    MapData map;
-    if (!map_load(&map, renderer, "assets/maps/start.tmj")) {
+    MapData mapData;
+    if (!MapLoad(&mapData, renderer, "assets/maps/start.tmj")) {
         SDL_Log("地图加载失败，退出");
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
@@ -46,12 +46,16 @@ int main(int argc, char *argv[]) {
     }
 
     /* ── 相机 ── */
-    double camera_x = 0.0;
-    double camera_y = 1.0;
-    double cam_x_max = (double)map.pixel_width - (double)WINDOW_WIDTH;
-    if (cam_x_max < 0.0) cam_x_max = 0.0;
-    double cam_y_max = (double)map.pixel_height - (double)WINDOW_HEIGHT;
-    if (cam_y_max < 0.0) cam_y_max = 0.0;
+    double cameraX = 0;
+    double cameraY = 1;
+    double camXMax = (double)mapData.pixelWidth - (double)WINDOW_WIDTH;
+    if (camXMax < 0) {
+        camXMax = 0;
+    }
+    double camYMax = (double)mapData.pixelHeight - (double)WINDOW_HEIGHT;
+    if (camYMax < 0) {
+        camYMax = 0;
+    }
 
     /* ── 全屏状态 ── */
     SDL_bool fullscreen = SDL_TRUE;
@@ -70,7 +74,8 @@ int main(int argc, char *argv[]) {
         Uint32 currTicks = SDL_GetTicks();
         double frameTime = (currTicks - prevTicks) / 1000.0;
         prevTicks = currTicks;
-        if (frameTime > 0.1) frameTime = 0.1;
+        if (frameTime > 0.1)
+            frameTime = 0.1;
 
         /* ── 事件处理 ── */
         while (SDL_PollEvent(&event)) {
@@ -102,17 +107,25 @@ int main(int argc, char *argv[]) {
 
         /* ── 相机移动（基于键盘状态，帧率无关） ── */
         if (keys[SDL_SCANCODE_LEFT] || keys[SDL_SCANCODE_A]) {
-            camera_x -= CAMERA_SPEED * frameTime;
+            cameraX -= CAMERA_SPEED * frameTime;
         }
         if (keys[SDL_SCANCODE_RIGHT] || keys[SDL_SCANCODE_D]) {
-            camera_x += CAMERA_SPEED * frameTime;
+            cameraX += CAMERA_SPEED * frameTime;
         }
 
         /* 钳制相机范围 */
-        if (camera_x < 0.0) camera_x = 0.0;
-        if (camera_x > cam_x_max) camera_x = cam_x_max;
-        if (camera_y < 0.0) camera_y = 0.0;
-        if (camera_y > cam_y_max) camera_y = cam_y_max;
+        if (cameraX < 0) {
+            cameraX = 0;
+        }
+        if (cameraX > camXMax) {
+            cameraX = camXMax;
+        }
+        if (cameraY < 0) {
+            cameraY = 0;
+        }
+        if (cameraY > camYMax) {
+            cameraY = camYMax;
+        }
 
         /* ── 固定步长更新 ── */
         accumulator += frameTime;
@@ -125,14 +138,14 @@ int main(int argc, char *argv[]) {
         SDL_SetRenderDrawColor(renderer, 10, 10, 38, 255);
         SDL_RenderClear(renderer);
 
-        map_render_all(renderer, &map, camera_x, camera_y,
-                       WINDOW_WIDTH, WINDOW_HEIGHT);
+        MapRenderAll(
+            &mapData, renderer, cameraX, cameraY, WINDOW_WIDTH, WINDOW_HEIGHT);
 
         SDL_RenderPresent(renderer);
     }
 
     /* ── 清理 ── */
-    map_destroy(&map);
+    MapDestroy(&mapData);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();

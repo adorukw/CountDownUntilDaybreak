@@ -74,9 +74,7 @@ CDUD: /lib/x86_64-linux-gnu/libFLAC.so.14 \
 
 CMakeFiles/CDUD.dir/src/cute_tiled.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/cute_tiled.h \
-  /usr/include/alloca.h \
   /usr/include/assert.h \
-  /usr/include/endian.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
   /usr/include/stdc-predef.h \
@@ -85,17 +83,10 @@ CMakeFiles/CDUD.dir/src/cute_tiled.c.o: /home/adorukw/AAAPAN/Project/CountDownUn
   /usr/include/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
-  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
-  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
-  /usr/include/x86_64-linux-gnu/bits/endian.h \
-  /usr/include/x86_64-linux-gnu/bits/endianness.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
   /usr/include/x86_64-linux-gnu/bits/long-double.h \
-  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
-  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
-  /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
@@ -103,9 +94,6 @@ CMakeFiles/CDUD.dir/src/cute_tiled.c.o: /home/adorukw/AAAPAN/Project/CountDownUn
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
-  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
-  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/time64.h \
   /usr/include/x86_64-linux-gnu/bits/timesize.h \
   /usr/include/x86_64-linux-gnu/bits/types.h \
@@ -113,30 +101,14 @@ CMakeFiles/CDUD.dir/src/cute_tiled.c.o: /home/adorukw/AAAPAN/Project/CountDownUn
   /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
-  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
-  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
-  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
-  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
-  /usr/include/x86_64-linux-gnu/sys/select.h \
-  /usr/include/x86_64-linux-gnu/sys/types.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/stdint.h
@@ -210,8 +182,6 @@ CMakeFiles/CDUD.dir/src/main.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDay
   /usr/include/strings.h \
   /usr/include/wchar.h \
   /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
-  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
-  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
   /usr/include/x86_64-linux-gnu/bits/endian.h \
   /usr/include/x86_64-linux-gnu/bits/endianness.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
@@ -226,9 +196,6 @@ CMakeFiles/CDUD.dir/src/main.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDay
   /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
   /usr/include/x86_64-linux-gnu/bits/mathcalls-macros.h \
   /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
-  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
-  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
-  /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
@@ -236,9 +203,6 @@ CMakeFiles/CDUD.dir/src/main.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDay
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
-  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
-  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/time64.h \
   /usr/include/x86_64-linux-gnu/bits/timesize.h \
   /usr/include/x86_64-linux-gnu/bits/types.h \
@@ -246,31 +210,19 @@ CMakeFiles/CDUD.dir/src/main.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDay
   /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
   /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
-  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
-  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
-  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
-  /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/adxintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/amxbf16intrin.h \
@@ -447,8 +399,6 @@ CMakeFiles/CDUD.dir/src/map.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDayb
   /usr/include/strings.h \
   /usr/include/wchar.h \
   /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
-  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
-  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
   /usr/include/x86_64-linux-gnu/bits/endian.h \
   /usr/include/x86_64-linux-gnu/bits/endianness.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
@@ -463,9 +413,6 @@ CMakeFiles/CDUD.dir/src/map.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDayb
   /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
   /usr/include/x86_64-linux-gnu/bits/mathcalls-macros.h \
   /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
-  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
-  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
-  /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
@@ -473,9 +420,6 @@ CMakeFiles/CDUD.dir/src/map.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDayb
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
-  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
-  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/time64.h \
   /usr/include/x86_64-linux-gnu/bits/timesize.h \
   /usr/include/x86_64-linux-gnu/bits/types.h \
@@ -483,31 +427,19 @@ CMakeFiles/CDUD.dir/src/map.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDayb
   /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
   /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
-  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
-  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
-  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
-  /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/adxintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/amxbf16intrin.h \
@@ -638,6 +570,8 @@ CMakeFiles/CDUD.dir/src/map.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDayb
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/tsxldtrkintrin.h:
 
+/usr/lib/gcc/x86_64-linux-gnu/14/include/stdbool.h:
+
 /usr/lib/gcc/x86_64-linux-gnu/14/include/smmintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/sm4intrin.h:
@@ -654,47 +588,47 @@ CMakeFiles/CDUD.dir/src/map.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDayb
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/pmmintrin.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/pkuintrin.h:
+/usr/include/SDL2/SDL_config.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/mwaitxintrin.h:
+/usr/lib/x86_64-linux-gnu/libSDL2.so:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/mmintrin.h:
+/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/mm_malloc.h:
+/lib/x86_64-linux-gnu/libLerc.so.4:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/lwpintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/keylockerintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/immintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/hresetintrin.h:
+/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/gfniintrin.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/float.h:
+/usr/include/SDL2/SDL_audio.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/f16cintrin.h:
+/usr/include/SDL2/SDL_atomic.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/emmintrin.h:
+/usr/include/SDL2/SDL_assert.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/xsavesintrin.h:
+/usr/include/stdlib.h:
 
-/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
+/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/map.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vbmiintrin.h:
+/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/config.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
+/lib/x86_64-linux-gnu/libcap.so.2:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h:
+
+/usr/lib/x86_64-linux-gnu/libSDL2_ttf.so:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/SDL2/SDL_clipboard.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/xsaveintrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/stdbool.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
 /usr/include/SDL2/SDL_touch.h:
 
@@ -704,53 +638,21 @@ CMakeFiles/CDUD.dir/src/map.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDayb
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/adxintrin.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vbmivlintrin.h:
-
-/usr/include/strings.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/enqcmdintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
-
-/usr/include/x86_64-linux-gnu/sys/select.h:
+/usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-least.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
-/usr/include/x86_64-linux-gnu/bits/select.h:
-
-/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c:
-
-/usr/include/x86_64-linux-gnu/bits/endianness.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/pconfigintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
-
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vpopcntdqintrin.h:
 
-/usr/include/x86_64-linux-gnu/bits/byteswap.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/libgcc.a:
-
-/usr/include/stdlib.h:
-
-/usr/include/SDL2/SDL_assert.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
-
 /usr/include/stdio.h:
 
+/usr/lib/gcc/x86_64-linux-gnu/14/include/ia32intrin.h:
+
 /lib/x86_64-linux-gnu/libXext.so.6:
-
-/usr/include/alloca.h:
-
-/usr/include/SDL2/SDL_image.h:
 
 /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/cute_tiled.h:
 
@@ -764,9 +666,7 @@ CMakeFiles/CDUD.dir/src/map.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDayb
 
 /usr/include/string.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/mwaitintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vlintrin.h:
+/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c:
 
 /usr/include/features.h:
 
@@ -788,7 +688,11 @@ CMakeFiles/CDUD.dir/src/main.c.o:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vbmi2intrin.h:
 
+/usr/lib/gcc/x86_64-linux-gnu/14/include/immintrin.h:
+
 /usr/lib/gcc/x86_64-linux-gnu/14/libgcc_s.so:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/libgcc.a:
 
 /usr/include/x86_64-linux-gnu/bits/floatn.h:
 
@@ -796,15 +700,31 @@ CMakeFiles/CDUD.dir/src/main.c.o:
 
 /usr/include/SDL2/SDL_video.h:
 
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
+/lib/x86_64-linux-gnu/libgbm.so.1:
+
 /lib/x86_64-linux-gnu/liblzma.so.5:
 
 /usr/include/x86_64-linux-gnu/bits/fp-fast.h:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
+/usr/lib/gcc/x86_64-linux-gnu/14/include/tmmintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/sgxintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vnniintrin.h:
+
+CMakeFiles/CDUD.dir/src/cute_tiled.c.o:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/avx512fintrin.h:
+
 /lib/x86_64-linux-gnu/libffi.so.8:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/cldemoteintrin.h:
+
+/lib/x86_64-linux-gnu/libsystemd.so.0:
 
 /usr/include/features-time64.h:
 
@@ -816,25 +736,7 @@ CMakeFiles/CDUD.dir/src/main.c.o:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/avxifmaintrin.h:
 
-/usr/include/SDL2/SDL_platform.h:
-
-/usr/include/stdint.h:
-
-/usr/include/endian.h:
-
-/lib/x86_64-linux-gnu/libsystemd.so.0:
-
-/lib/x86_64-linux-gnu/libcap.so.2:
-
-/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/config.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
-
-/usr/lib/x86_64-linux-gnu/libSDL2_ttf.so:
-
-/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h:
 
 /lib/x86_64-linux-gnu/libsndfile.so.1:
 
@@ -850,99 +752,39 @@ CMakeFiles/CDUD.dir/src/main.c.o:
 
 /lib/x86_64-linux-gnu/libasyncns.so.0:
 
-/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
-
-/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
-
-/lib/x86_64-linux-gnu/libLerc.so.4:
-
-/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/14/include/serializeintrin.h:
 
 /lib/x86_64-linux-gnu/libFLAC.so.14:
 
-/usr/include/SDL2/SDL_haptic.h:
+/usr/lib/x86_64-linux-gnu/crtn.o:
 
 /lib/x86_64-linux-gnu/libwayland-egl.so.1:
 
 /lib/x86_64-linux-gnu/libjpeg.so.62:
 
+/usr/lib/gcc/x86_64-linux-gnu/14/include/stdint.h:
+
+/lib/x86_64-linux-gnu/libmp3lame.so.0:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/x86_64-linux-gnu/bits/endian.h:
+
 /lib/x86_64-linux-gnu/libX11.so.6:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/tbmintrin.h:
+/usr/include/SDL2/SDL_cpuinfo.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/time_t.h:
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
-/lib64/ld-linux-x86-64.so.2:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vlbwintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
-
-/usr/include/SDL2/SDL_sensor.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/fxsrintrin.h:
-
-/lib/x86_64-linux-gnu/libm.so.6:
+/usr/include/SDL2/SDL.h:
 
 /usr/include/SDL2/SDL_blendmode.h:
 
 /lib/x86_64-linux-gnu/libdecor-0.so.0:
 
-/lib/x86_64-linux-gnu/libxkbcommon.so.0:
+/usr/lib/gcc/x86_64-linux-gnu/14/include/rtmintrin.h:
 
-/lib/x86_64-linux-gnu/libjbig.so.0:
-
-/lib/x86_64-linux-gnu/libXrandr.so.2:
-
-/usr/include/SDL2/SDL_metal.h:
-
-/usr/lib/x86_64-linux-gnu/crtn.o:
-
-/usr/include/x86_64-linux-gnu/bits/waitflags.h:
-
-/lib/x86_64-linux-gnu/libXdmcp.so.6:
-
-/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
-
-/usr/include/SDL2/SDL_hidapi.h:
-
-/usr/lib/x86_64-linux-gnu/libSDL2.so:
-
-/usr/include/SDL2/SDL_config.h:
-
-/usr/include/SDL2/SDL_error.h:
-
-/lib/x86_64-linux-gnu/libXrender.so.1:
-
-/usr/lib/x86_64-linux-gnu/Scrt1.o:
-
-/usr/include/SDL2/SDL_keyboard.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/shaintrin.h:
-
-/lib/x86_64-linux-gnu/libasound.so.2:
-
-/usr/lib/x86_64-linux-gnu/libSDL2_image.so:
-
-/usr/include/inttypes.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
-
-/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
-
-/usr/include/SDL2/SDL_guid.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/xsaveoptintrin.h:
-
-/lib/x86_64-linux-gnu/libwayland-cursor.so.0:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
-
-/lib/x86_64-linux-gnu/libXss.so.1:
+/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o:
 
@@ -952,9 +794,59 @@ CMakeFiles/CDUD.dir/src/main.c.o:
 
 /lib/x86_64-linux-gnu/libvorbisenc.so.2:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/rtmintrin.h:
+/lib/x86_64-linux-gnu/libxkbcommon.so.0:
 
-/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c:
+/lib/x86_64-linux-gnu/libjbig.so.0:
+
+/lib/x86_64-linux-gnu/libXrandr.so.2:
+
+/usr/include/SDL2/SDL_metal.h:
+
+/lib/x86_64-linux-gnu/libXdmcp.so.6:
+
+/usr/include/SDL2/SDL_error.h:
+
+/lib/x86_64-linux-gnu/libXrender.so.1:
+
+/usr/lib/x86_64-linux-gnu/Scrt1.o:
+
+/usr/include/SDL2/SDL_keyboard.h:
+
+/usr/include/SDL2/SDL_events.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/sha512intrin.h:
+
+/usr/lib/x86_64-linux-gnu/crti.o:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
+
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/hresetintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/shaintrin.h:
+
+/lib/x86_64-linux-gnu/libasound.so.2:
+
+/usr/lib/x86_64-linux-gnu/libSDL2_image.so:
+
+/usr/include/inttypes.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/xsavesintrin.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vbmiintrin.h:
+
+/usr/include/SDL2/SDL_guid.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/xsaveoptintrin.h:
+
+/lib/x86_64-linux-gnu/libwayland-cursor.so.0:
+
+/lib/x86_64-linux-gnu/libXss.so.1:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/emmintrin.h:
 
 /lib/x86_64-linux-gnu/libXcursor.so.1:
 
@@ -964,15 +856,21 @@ CMakeFiles/CDUD.dir/src/main.c.o:
 
 /lib/x86_64-linux-gnu/libXau.so.6:
 
+/usr/include/strings.h:
+
 /lib/x86_64-linux-gnu/libpng16.so.16:
+
+/usr/include/SDL2/SDL_endian.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/mm_malloc.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/mwaitxintrin.h:
 
 /lib/x86_64-linux-gnu/libsharpyuv.so.0:
 
 /lib/x86_64-linux-gnu/libpulse.so.0:
 
 /lib/x86_64-linux-gnu/libsamplerate.so.0:
-
-/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 
 /lib/x86_64-linux-gnu/libXfixes.so.3:
 
@@ -984,8 +882,6 @@ CMakeFiles/CDUD.dir/src/main.c.o:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/amxtileintrin.h:
 
-/usr/include/x86_64-linux-gnu/sys/cdefs.h:
-
 /usr/include/SDL2/SDL_pixels.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vp2intersectvlintrin.h:
@@ -994,53 +890,13 @@ CMakeFiles/CDUD.dir/src/main.c.o:
 
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/fmaintrin.h:
+/lib64/ld-linux-x86-64.so.2:
 
-/usr/include/SDL2/begin_code.h:
+/usr/lib/gcc/x86_64-linux-gnu/14/include/tbmintrin.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/avx512bitalgvlintrin.h:
+/usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 
-/usr/include/SDL2/SDL_version.h:
-
-/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
-
-/usr/include/SDL2/SDL.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/ia32intrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
-
-/lib/x86_64-linux-gnu/libgbm.so.1:
-
-/usr/include/x86_64-linux-gnu/bits/wchar.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/tmmintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/sgxintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vnniintrin.h:
-
-CMakeFiles/CDUD.dir/src/cute_tiled.c.o:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/avx512fintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/sha512intrin.h:
-
-/usr/lib/x86_64-linux-gnu/crti.o:
-
-/usr/include/SDL2/SDL_events.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
-
-/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
-
-/usr/include/x86_64-linux-gnu/bits/endian.h:
-
-/lib/x86_64-linux-gnu/libmp3lame.so.0:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/stdint.h:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+/usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vlbwintrin.h:
 
 /usr/lib/x86_64-linux-gnu/libgcc_s.so.1:
 
@@ -1048,35 +904,21 @@ CMakeFiles/CDUD.dir/src/cute_tiled.c.o:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vnnivlintrin.h:
 
-/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+/usr/include/SDL2/SDL_haptic.h:
 
-/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
 
-/usr/include/x86_64-linux-gnu/sys/types.h:
+/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
 
-/usr/include/SDL2/SDL_main.h:
+/usr/include/SDL2/SDL_hidapi.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h:
+/usr/include/SDL2/SDL_image.h:
 
-/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/map.h:
-
-/usr/include/SDL2/SDL_atomic.h:
-
-/usr/include/SDL2/SDL_audio.h:
-
-/usr/include/SDL2/SDL_clipboard.h:
-
-/usr/include/SDL2/SDL_cpuinfo.h:
-
-/usr/include/SDL2/SDL_endian.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
-
-/usr/include/SDL2/SDL_gamecontroller.h:
-
-/lib/x86_64-linux-gnu/libdeflate.so.0:
+/usr/include/alloca.h:
 
 /usr/include/assert.h:
+
+/lib/x86_64-linux-gnu/libdeflate.so.0:
 
 /usr/include/SDL2/SDL_joystick.h:
 
@@ -1090,6 +932,10 @@ CMakeFiles/CDUD.dir/src/cute_tiled.c.o:
 
 /usr/include/SDL2/SDL_log.h:
 
+/usr/include/SDL2/SDL_main.h:
+
+/usr/include/x86_64-linux-gnu/sys/types.h:
+
 /usr/include/SDL2/SDL_messagebox.h:
 
 /usr/include/SDL2/SDL_misc.h:
@@ -1100,6 +946,12 @@ CMakeFiles/CDUD.dir/src/cute_tiled.c.o:
 
 /usr/include/x86_64-linux-gnu/bits/math-vector.h:
 
+/usr/include/SDL2/SDL_platform.h:
+
+/usr/include/SDL2/SDL_gamecontroller.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
+
 /lib/x86_64-linux-gnu/libdbus-1.so.3:
 
 /usr/include/SDL2/SDL_render.h:
@@ -1107,6 +959,8 @@ CMakeFiles/CDUD.dir/src/cute_tiled.c.o:
 /usr/include/SDL2/SDL_rwops.h:
 
 /usr/include/SDL2/SDL_scancode.h:
+
+/usr/include/SDL2/SDL_sensor.h:
 
 /usr/include/SDL2/SDL_stdinc.h:
 
@@ -1116,25 +970,29 @@ CMakeFiles/CDUD.dir/src/cute_tiled.c.o:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/lzcntintrin.h:
-
-/lib/x86_64-linux-gnu/libXi.so.6:
-
-/usr/include/SDL2/SDL_system.h:
-
 /usr/include/SDL2/SDL_thread.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls.h:
 
-/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
-
 /usr/include/SDL2/SDL_timer.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/avx512bitalgvlintrin.h:
+
+/usr/include/SDL2/SDL_version.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/fmaintrin.h:
+
+/usr/include/SDL2/begin_code.h:
 
 /usr/include/SDL2/close_code.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/avx512fp16vlintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/avxintrin.h:
+
+/usr/include/stdint.h:
+
+/usr/include/endian.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
 
@@ -1146,9 +1004,7 @@ CMakeFiles/CDUD.dir/src/cute_tiled.c.o:
 
 /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/14/include/movdirintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+/usr/include/x86_64-linux-gnu/bits/endianness.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-macros.h:
 
@@ -1166,9 +1022,13 @@ CMakeFiles/CDUD.dir/src/cute_tiled.c.o:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/amxint8intrin.h:
 
-/usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/14/include/avx5124fmapsintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/float.h:
+
+/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/movdirintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/avx5124vnniwintrin.h:
 
@@ -1190,15 +1050,19 @@ CMakeFiles/CDUD.dir/src/cute_tiled.c.o:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/avx512erintrin.h:
 
-/usr/include/SDL2/SDL_quit.h:
+/usr/lib/gcc/x86_64-linux-gnu/14/include/f16cintrin.h:
 
 /lib/x86_64-linux-gnu/libstdc++.so.6:
+
+/usr/include/SDL2/SDL_quit.h:
 
 /usr/include/SDL2/SDL_shape.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/avx512pfintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vbmi2vlintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vbmivlintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vp2intersectintrin.h:
 
@@ -1235,3 +1099,31 @@ CMakeFiles/CDUD.dir/src/cute_tiled.c.o:
 /usr/lib/gcc/x86_64-linux-gnu/14/include/clzerointrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/cmpccxaddintrin.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/enqcmdintrin.h:
+
+/lib/x86_64-linux-gnu/libm.so.6:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/fxsrintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/keylockerintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/lwpintrin.h:
+
+/lib/x86_64-linux-gnu/libXi.so.6:
+
+/usr/include/SDL2/SDL_system.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/lzcntintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/mmintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vlintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/mwaitintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/pconfigintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/pkuintrin.h:
