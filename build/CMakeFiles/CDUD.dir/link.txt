@@ -1,0 +1,1 @@
+/usr/bin/cc -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/CDUD.dir/link.d CMakeFiles/CDUD.dir/src/main.c.o -o CDUD

@@ -1,0 +1,9 @@
+[
+  {
+    "label": "CMake构建并运行",
+    "command": "cd \"$ZED_WORKTREE_ROOT\" && cmake -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j && ./build/CDUD",
+    "reveal": "always",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+  },
+]
