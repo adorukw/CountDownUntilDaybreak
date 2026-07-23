@@ -527,8 +527,7 @@ static void RenderObjectGroup(
                 (tileset->columns > 0) ? obj->y : (obj->y - obj->height);
             SDL_Rect dst = { (int)round(obj->x - cameraX + offsetX),
                              (int)round(objY - cameraY + offsetY),
-                             (int)round(obj->width),
-                             (int)round(obj->height) };
+                             (int)round(obj->width), (int)round(obj->height) };
 
             /* 翻转（cute_tiled 的 gid 已为纯 GID，从对象拿不到翻转标志）
              * 但对象自身的 rotation 字段可用 */
