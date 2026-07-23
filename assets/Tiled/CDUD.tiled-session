@@ -1,9 +1,17 @@
 {
     "activeFile": "start.tmx",
+    "automapping.whileDrawing": false,
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "全部文件 (*)",
     "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        ":/automap-tiles.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
         "props.tsx": {
             "dynamicWrapping": true,
             "scaleInDock": 1.5,

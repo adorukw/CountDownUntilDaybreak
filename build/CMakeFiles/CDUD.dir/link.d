@@ -2,6 +2,7 @@ CDUD: \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o \
   /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o \
+  CMakeFiles/CDUD.dir/src/cJSON.c.o \
   CMakeFiles/CDUD.dir/src/main.c.o \
   /usr/lib/x86_64-linux-gnu/libSDL2.so \
   /usr/lib/x86_64-linux-gnu/libSDL2_image.so \
@@ -72,6 +73,8 @@ CDUD: \
 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o:
+
+CMakeFiles/CDUD.dir/src/cJSON.c.o:
 
 CMakeFiles/CDUD.dir/src/main.c.o:
 

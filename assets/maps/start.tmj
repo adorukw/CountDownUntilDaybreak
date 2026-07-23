@@ -17,7 +17,7 @@
          "visible":true,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "id":2,
          "image":"..\/images\/example\/working-title1.png",
@@ -29,7 +29,7 @@
          "visible":false,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "id":4,
          "image":"..\/images\/backgrounds\/moon.png",
@@ -44,7 +44,7 @@
          "visible":true,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "draworder":"topdown",
          "id":6,
@@ -62,7 +62,7 @@
                  "width":64,
                  "x":176,
                  "y":288
-                },
+                }, 
                 {
                  "gid":7,
                  "height":112,
@@ -75,7 +75,7 @@
                  "width":64,
                  "x":240,
                  "y":288
-                },
+                }, 
                 {
                  "gid":10,
                  "height":146.743,
@@ -88,7 +88,7 @@
                  "width":16,
                  "x":256,
                  "y":176
-                },
+                }, 
                 {
                  "gid":10,
                  "height":146.743,
@@ -101,7 +101,7 @@
                  "width":16,
                  "x":288,
                  "y":176
-                },
+                }, 
                 {
                  "gid":10,
                  "height":146.743,
@@ -114,7 +114,7 @@
                  "width":16,
                  "x":224,
                  "y":176
-                },
+                }, 
                 {
                  "gid":9,
                  "height":13,
@@ -127,7 +127,7 @@
                  "width":46,
                  "x":336,
                  "y":160
-                },
+                }, 
                 {
                  "gid":9,
                  "height":13,
@@ -140,7 +140,7 @@
                  "width":46,
                  "x":416,
                  "y":160
-                },
+                }, 
                 {
                  "gid":9,
                  "height":13,
@@ -153,7 +153,7 @@
                  "width":46,
                  "x":496,
                  "y":144
-                },
+                }, 
                 {
                  "gid":7,
                  "height":112,
@@ -166,7 +166,7 @@
                  "width":64,
                  "x":592,
                  "y":288
-                },
+                }, 
                 {
                  "gid":7,
                  "height":112,
@@ -179,7 +179,7 @@
                  "width":64,
                  "x":704,
                  "y":288
-                },
+                }, 
                 {
                  "gid":7,
                  "height":112,
@@ -192,7 +192,7 @@
                  "width":64,
                  "x":768,
                  "y":288
-                },
+                }, 
                 {
                  "gid":7,
                  "height":112,
@@ -205,7 +205,7 @@
                  "width":64,
                  "x":752,
                  "y":176
-                },
+                }, 
                 {
                  "gid":7,
                  "height":112,
@@ -224,7 +224,7 @@
          "visible":true,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "data":[19, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
             19, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
@@ -262,12 +262,348 @@
  "tileheight":16,
  "tilesets":[
         {
+         "columns":0,
          "firstgid":1,
-         "source":"..\/Tiled\/props.tsx"
-        },
+         "grid":
+            {
+             "height":1,
+             "orientation":"orthogonal",
+             "width":1
+            },
+         "margin":0,
+         "name":"props",
+         "spacing":0,
+         "tilecount":8,
+         "tileheight":321,
+         "tiles":[
+                {
+                 "id":1,
+                 "image":"..\/images\/props\/platform2.png",
+                 "imageheight":21,
+                 "imagewidth":48
+                }, 
+                {
+                 "id":6,
+                 "image":"..\/images\/props\/pillar1.png",
+                 "imageheight":112,
+                 "imagewidth":64
+                }, 
+                {
+                 "id":7,
+                 "image":"..\/images\/props\/platform3.png",
+                 "imageheight":11,
+                 "imagewidth":44
+                }, 
+                {
+                 "id":8,
+                 "image":"..\/images\/props\/platform1.png",
+                 "imageheight":13,
+                 "imagewidth":46
+                }, 
+                {
+                 "id":3,
+                 "image":"..\/images\/props\/pillar2.png",
+                 "imageheight":164,
+                 "imagewidth":76
+                }, 
+                {
+                 "id":5,
+                 "image":"..\/images\/props\/glow.png",
+                 "imageheight":61,
+                 "imagewidth":60
+                }, 
+                {
+                 "id":9,
+                 "image":"..\/images\/props\/pillar3.png",
+                 "imageheight":321,
+                 "imagewidth":35
+                }, 
+                {
+                 "id":10,
+                 "image":"..\/images\/props\/hang_light.png",
+                 "imageheight":228,
+                 "imagewidth":60
+                }],
+         "tilewidth":76
+        }, 
         {
+         "columns":7,
          "firstgid":12,
-         "source":"..\/Tiled\/tiles.tsx"
+         "image":"..\/images\/tiles\/tiles.png",
+         "imageheight":192,
+         "imagewidth":112,
+         "margin":0,
+         "name":"tiles",
+         "spacing":0,
+         "tilecount":84,
+         "tileheight":16,
+         "tiles":[
+                {
+                 "id":0
+                }, 
+                {
+                 "id":1
+                }, 
+                {
+                 "id":2
+                }, 
+                {
+                 "id":3
+                }, 
+                {
+                 "id":4
+                }, 
+                {
+                 "id":5
+                }, 
+                {
+                 "id":6
+                }, 
+                {
+                 "id":7
+                }, 
+                {
+                 "id":8,
+                 "probability":0.5
+                }, 
+                {
+                 "id":12,
+                 "probability":0.25
+                }, 
+                {
+                 "id":9
+                }, 
+                {
+                 "id":10
+                }, 
+                {
+                 "id":11
+                }, 
+                {
+                 "id":13
+                }, 
+                {
+                 "id":14
+                }, 
+                {
+                 "id":15,
+                 "probability":0.5
+                }, 
+                {
+                 "id":19,
+                 "probability":0.25
+                }, 
+                {
+                 "id":16
+                }, 
+                {
+                 "id":17
+                }, 
+                {
+                 "id":18
+                }, 
+                {
+                 "id":20
+                }, 
+                {
+                 "id":21
+                }, 
+                {
+                 "id":22
+                }, 
+                {
+                 "id":23
+                }, 
+                {
+                 "id":24
+                }, 
+                {
+                 "id":25
+                }, 
+                {
+                 "id":26
+                }, 
+                {
+                 "id":27
+                }, 
+                {
+                 "id":30
+                }, 
+                {
+                 "id":31
+                }, 
+                {
+                 "id":40,
+                 "probability":0.125
+                }, 
+                {
+                 "id":32,
+                 "probability":0.125
+                }, 
+                {
+                 "id":33,
+                 "probability":0.125
+                }, 
+                {
+                 "id":29,
+                 "probability":0.125
+                }, 
+                {
+                 "id":34
+                }, 
+                {
+                 "id":37
+                }, 
+                {
+                 "id":38
+                }, 
+                {
+                 "id":35,
+                 "probability":0.125
+                }, 
+                {
+                 "id":36,
+                 "probability":0.125
+                }, 
+                {
+                 "id":39,
+                 "probability":0.125
+                }, 
+                {
+                 "id":28,
+                 "probability":0.125
+                }, 
+                {
+                 "id":41
+                }, 
+                {
+                 "id":42
+                }, 
+                {
+                 "id":43
+                }, 
+                {
+                 "id":44
+                }, 
+                {
+                 "id":45
+                }, 
+                {
+                 "id":46
+                }, 
+                {
+                 "id":47
+                }, 
+                {
+                 "id":48
+                }, 
+                {
+                 "id":49
+                }, 
+                {
+                 "id":50
+                }, 
+                {
+                 "id":51
+                }, 
+                {
+                 "id":52
+                }, 
+                {
+                 "id":53
+                }, 
+                {
+                 "id":54
+                }, 
+                {
+                 "id":55
+                }, 
+                {
+                 "id":56
+                }, 
+                {
+                 "id":57
+                }, 
+                {
+                 "id":58
+                }, 
+                {
+                 "id":59
+                },
+            
+                {
+                 "id":60
+                }, 
+                {
+                 "id":61
+                }, 
+                {
+                 "id":62
+                }, 
+                {
+                 "id":63
+                }, 
+                {
+                 "id":64
+                }, 
+                {
+                 "id":65
+                }, 
+                {
+                 "id":66
+                }, 
+                {
+                 "id":67
+                }, 
+                {
+                 "id":68
+                }, 
+                {
+                 "id":69
+                }, 
+                {
+                 "id":70
+                }, 
+                {
+                 "id":71
+                }, 
+                {
+                 "id":72
+                }, 
+                {
+                 "id":73
+                }, 
+                {
+                 "id":74
+                }, 
+                {
+                 "id":75
+                }, 
+                {
+                 "id":76
+                }, 
+                {
+                 "id":77
+                }, 
+                {
+                 "id":78
+                }, 
+                {
+                 "id":79
+                }, 
+                {
+                 "id":80
+                }, 
+                {
+                 "id":81
+                }, 
+                {
+                 "id":82
+                }, 
+                {
+                 "id":83
+                }],
+         "tilewidth":16
         }],
  "tilewidth":16,
  "type":"map",

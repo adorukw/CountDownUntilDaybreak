@@ -143,6 +143,30 @@ copy_compile_db/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/copy_compile_db.dir/build.make CMakeFiles/copy_compile_db.dir/build
 .PHONY : copy_compile_db/fast
 
+src/cJSON.o: src/cJSON.c.o
+.PHONY : src/cJSON.o
+
+# target to build an object file
+src/cJSON.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/cJSON.c.o
+.PHONY : src/cJSON.c.o
+
+src/cJSON.i: src/cJSON.c.i
+.PHONY : src/cJSON.i
+
+# target to preprocess a source file
+src/cJSON.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/cJSON.c.i
+.PHONY : src/cJSON.c.i
+
+src/cJSON.s: src/cJSON.c.s
+.PHONY : src/cJSON.s
+
+# target to generate assembly for a file
+src/cJSON.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/cJSON.c.s
+.PHONY : src/cJSON.c.s
+
 src/main.o: src/main.c.o
 .PHONY : src/main.o
 
@@ -177,6 +201,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... copy_compile_db"
 	@echo "... CDUD"
+	@echo "... src/cJSON.o"
+	@echo "... src/cJSON.i"
+	@echo "... src/cJSON.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

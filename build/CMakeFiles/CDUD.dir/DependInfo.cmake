@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cJSON.c" "CMakeFiles/CDUD.dir/src/cJSON.c.o" "gcc" "CMakeFiles/CDUD.dir/src/cJSON.c.o.d"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c" "CMakeFiles/CDUD.dir/src/main.c.o" "gcc" "CMakeFiles/CDUD.dir/src/main.c.o.d"
   "" "CDUD" "gcc" "CMakeFiles/CDUD.dir/link.d"
   )

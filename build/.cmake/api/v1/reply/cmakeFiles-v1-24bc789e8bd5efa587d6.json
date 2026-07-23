@@ -5,6 +5,7 @@
 			"expression" : "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/*.c",
 			"paths" : 
 			[
+				"/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cJSON.c",
 				"/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c"
 			],
 			"recurse" : true

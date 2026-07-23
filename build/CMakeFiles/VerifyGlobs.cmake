@@ -5,6 +5,7 @@ cmake_policy(SET CMP0009 NEW)
 # SRC at CMakeLists.txt:16 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/*.c")
 set(OLD_GLOB
+  "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cJSON.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

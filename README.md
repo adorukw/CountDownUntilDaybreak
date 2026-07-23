@@ -7,6 +7,13 @@
 ### 1. 解析tmj文件
 
 #### 1.1 安装cJSON库
-```bash
 
+```bash
+# 进项目根目录
+cd .../CountDownUntilDaybreak
+
+curl -L https://raw.githubusercontent.com/DaveGamble/cJSON/master/cJSON.h -o include/cJSON.h
+curl -L https://raw.githubusercontent.com/DaveGamble/cJSON/master/cJSON.c -o src/cJSON.c
 ```
+
+#### 1.2
