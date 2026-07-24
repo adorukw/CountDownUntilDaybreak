@@ -1,12 +1,24 @@
 #include "player.h"
 #include "config.h"
-#include "frame_config.h"
 #include "map.h"
 #include "player_anim.h"
 #include <SDL_render.h>
 
+static CollisionBox GetStateCollisionBox(PlayerState state) {
+    static const CollisionBox STATE_BOXES[] = {
+        [PLAYER_IDLE] = { -14, -42, 22, 38 },
+        [PLAYER_RUN] = { -6, -40, 18, 36 },
+        [PLAYER_JUMP] = { -11, -51, 22, 44 },
+        [PLAYER_FALL] = { -8, -52, 13, 42 },
+        [PLAYER_SLIDE] = { -10, -30, 17, 26 },
+    };
+
+    if (state < 0 || state >= sizeof(STATE_BOXES) / sizeof(STATE_BOXES[0]))
+        return STATE_BOXES[PLAYER_IDLE];
+    return STATE_BOXES[state];
+}
+
 void PlayerInit(Player *player) {
-    /* 出生在地面上（y=160 脚底平贴行 11 的地板砖） */
     player->position = (Vec2){ 91.0, 180.0 };
     player->velocity = (Vec2){ 0.0, 0.0 };
     player->state = PLAYER_IDLE;
@@ -19,11 +31,13 @@ void PlayerInit(Player *player) {
     player->runSpeed = 120.0;     // 水平移动速度
     player->maxFallSpeed = 600.0; // 最大下落速度
 
-    player->collisionWidth = playerIdleConfig[0].collisionWidth;
-    player->collisionHeight = playerIdleConfig[0].collisionHeight;
+    CollisionBox box = GetStateCollisionBox(player->state);
+    player->collisionOffX = box.x;
+    player->collisionOffY = box.y;
+    player->collisionWidth = box.w;
+    player->collisionHeight = box.h;
 
-    player->collisionOffX = playerIdleConfig[0].collisionOffX;
-    player->collisionOffY = playerIdleConfig[0].collisionOffY;
+    player->facingRight = true;
 }
 
 static void
@@ -45,12 +59,10 @@ PlayerHandleInput(Player *player, const PlayerInput *input, double deltaTime) {
 
     if (input->slidePressed && player->onGround) {
         player->state = PLAYER_SLIDE;
-        player->collisionHeight = 8;
     }
     /* 松开滑铲键 → 退出滑铲（离地退出在碰撞后处理） */
     if (player->state == PLAYER_SLIDE && !input->slideHeld) {
         player->state = PLAYER_RUN;
-        player->collisionHeight = 16;
     }
 }
 
@@ -148,23 +160,46 @@ void PlayerUpdate(
         player->velocity.y = player->maxFallSpeed;
     }
 
-    /* ── 状态更新 ── */
+    /* ── 状态更新（预物理：检测下落） ── */
     if (player->velocity.y > 0 && !player->onGround) {
         player->state = PLAYER_FALL;
     }
 
-    /* ── 水平移动 + 碰撞（仅 X 轴） ── */
+    /* ════════════════════════════════════════════
+       ★ 变动①：动画推进 + 碰撞箱提取 移到移动前 ★
+       ════════════════════════════════════════════ */
+    switch (player->state) {
+    case PLAYER_IDLE:
+        AnimatorPlay(&player->animator, &playerIdleAnimation);
+        break;
+    case PLAYER_JUMP:
+        AnimatorPlay(&player->animator, &playerJumpAnimation);
+        break;
+    case PLAYER_FALL:
+        AnimatorPlay(&player->animator, &playerFallAnimation);
+        break;
+    case PLAYER_RUN:
+        AnimatorPlay(&player->animator, &playerRunAnimation);
+        break;
+    case PLAYER_SLIDE:
+        AnimatorPlay(&player->animator, &playerSlideAnimation);
+        break;
+    default:
+        break;
+    }
+    AnimationUpdate(&player->animator, deltaTime);
+
+    /* ── 水平移动 + 碰撞（仅 X 轴）── */
     player->position.x += player->velocity.x * deltaTime;
     CollideWithTilesX(player, mapData);
 
-    /* ── 垂直移动 + 碰撞（仅 Y 轴） ── */
+    /* ── 垂直移动 + 碰撞（仅 Y 轴）── */
     player->position.y += player->velocity.y * deltaTime;
     CollideWithTilesY(player, mapData);
 
     /* ── 落地后理顺状态 / 滑铲离地退出 ── */
     if (player->state == PLAYER_SLIDE && !player->onGround) {
         player->state = PLAYER_FALL;
-        player->collisionHeight = 16;
     } else if (player->onGround && player->state != PLAYER_SLIDE) {
         if (input->moveLeft || input->moveRight) {
             player->state = PLAYER_RUN;
@@ -173,7 +208,7 @@ void PlayerUpdate(
         }
     }
 
-    /* ── 跳跃缓冲：落地后短窗口内按过跳跃键则自动起跳（Coyote Time） ── */
+    /* ── 跳跃缓冲：Coyote Time ── */
     if (player->onGround && input->jumpPressed &&
         player->state != PLAYER_SLIDE) {
         player->velocity.y = player->jumpSpeed;
@@ -182,16 +217,13 @@ void PlayerUpdate(
         player->jumpHoldTimer = 0;
     }
 
-    switch (player->state) {
-    case PLAYER_IDLE:
-        AnimatorPlay(&player->animator, &playerIdleAnimation);
-        break;
-    default:
-        break;
-    }
-    AnimationUpdate(&player->animator, deltaTime);
+    // 在 PlayerUpdate 尾部，所有状态 switch 之后
+    CollisionBox box = GetStateCollisionBox(player->state);
+    player->collisionOffX = box.x;
+    player->collisionOffY = box.y;
+    player->collisionWidth = box.w;
+    player->collisionHeight = box.h;
 }
-
 void PlayerRender(Player *player, SDL_Renderer *renderer, Vec2 cameraPos) {
     const AnimationFrame *frame = AnimatorGetCurrFrame(&player->animator);
     if (!frame || !frame->texture) {
@@ -199,28 +231,19 @@ void PlayerRender(Player *player, SDL_Renderer *renderer, Vec2 cameraPos) {
     }
 
     int screenX = (int)(player->position.x - cameraPos.x);
-    int screenY = (int)(player->position.y - cameraPos.y);
+    int screenY = (int)(player->position.y - cameraPos.y) - frame->pivotY;
 
     if (player->facingRight) {
         screenX -= frame->pivotX;
     } else {
         screenX -= (frame->textureWidth - frame->pivotX);
     }
+
     SDL_Rect dst = { screenX, screenY, frame->textureWidth,
                      frame->textureHeight };
     SDL_RendererFlip flip =
         player->facingRight ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
     SDL_RenderCopyEx(renderer, frame->texture, NULL, &dst, 0, NULL, flip);
-
-    // ── 可选：调试时画出碰撞框 ──
-    // CollisionBox colBox = {
-    //     (int)(player->position.x - cameraPos.x) + player->colOffsetX,
-    //     (int)(player->position.y - cameraPos.y) + player->colOffsetY,
-    //     player->colWidth,
-    //     player->colHeight
-    // };
-    // SDL_SetRenderDrawColor(renderer, 0, 255, 0, 128);
-    // SDL_RenderDrawRect(renderer, (SDL_Rect*)&colBox);
 }
 
 PlayerInput PlayerPollInput(const Uint8 *keys) {

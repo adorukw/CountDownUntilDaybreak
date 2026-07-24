@@ -1001,7 +1001,6 @@ CMakeFiles/CDUD.dir/src/map.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDayb
 CMakeFiles/CDUD.dir/src/player.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player.c \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/animation.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/config.h \
-  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/frame_config.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/map.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/player.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/player_anim.h \
