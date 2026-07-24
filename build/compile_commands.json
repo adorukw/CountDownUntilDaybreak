@@ -7,6 +7,12 @@
 },
 {
   "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
+  "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/config.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/config.c",
+  "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/config.c",
+  "output": "CMakeFiles/CDUD.dir/src/config.c.o"
+},
+{
+  "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
   "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/cute_tiled.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c",
   "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c",
   "output": "CMakeFiles/CDUD.dir/src/cute_tiled.c.o"

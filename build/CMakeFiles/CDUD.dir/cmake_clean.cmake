@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CDUD.pdb"
   "CMakeFiles/CDUD.dir/src/camera.c.o"
   "CMakeFiles/CDUD.dir/src/camera.c.o.d"
+  "CMakeFiles/CDUD.dir/src/config.c.o"
+  "CMakeFiles/CDUD.dir/src/config.c.o.d"
   "CMakeFiles/CDUD.dir/src/cute_tiled.c.o"
   "CMakeFiles/CDUD.dir/src/cute_tiled.c.o.d"
   "CMakeFiles/CDUD.dir/src/main.c.o"

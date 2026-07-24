@@ -72,6 +72,7 @@ CDUD
  /usr/lib/x86_64-linux-gnu/libc_nonshared.a
  /usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-17.0.so
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles/CDUD.dir/src/camera.c.o
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles/CDUD.dir/src/config.c.o
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles/CDUD.dir/src/cute_tiled.c.o
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles/CDUD.dir/src/main.c.o
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles/CDUD.dir/src/map.c.o
@@ -295,6 +296,11 @@ CMakeFiles/CDUD.dir/src/camera.c.o
  /usr/lib/gcc/x86_64-linux-gnu/14/include/xsaveoptintrin.h
  /usr/lib/gcc/x86_64-linux-gnu/14/include/xsavesintrin.h
  /usr/lib/gcc/x86_64-linux-gnu/14/include/xtestintrin.h
+
+CMakeFiles/CDUD.dir/src/config.c.o
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/config.c
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/config.h
+ /usr/include/stdc-predef.h
 
 CMakeFiles/CDUD.dir/src/cute_tiled.c.o
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c

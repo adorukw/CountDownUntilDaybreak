@@ -163,7 +163,8 @@ void PlayerUpdate(
     }
 
     /* ── 跳跃缓冲：落地后短窗口内按过跳跃键则自动起跳（Coyote Time） ── */
-    if (player->onGround && input->jumpPressed && player->state != PLAYER_SLIDE) {
+    if (player->onGround && input->jumpPressed &&
+        player->state != PLAYER_SLIDE) {
         player->velocity.y = player->jumpSpeed;
         player->onGround = false;
         player->state = PLAYER_JUMP;
@@ -210,7 +211,7 @@ PlayerInput PlayerPollInput(const Uint8 *keys) {
         .jumpHeld = jumpNow,
         .slidePressed = slideNow && !prevSlide,
         .slideHeld = slideNow,
-        .moveLeft  = keys[SDL_SCANCODE_A],
+        .moveLeft = keys[SDL_SCANCODE_A],
         .moveRight = keys[SDL_SCANCODE_D],
     };
 

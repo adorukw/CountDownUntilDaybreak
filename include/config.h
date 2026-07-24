@@ -1,7 +1,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-static const char *WINDOW_TITLE = "Count Down: Until Daybreak";
+extern const char *WINDOW_TITLE;
 static const int WINDOW_WIDTH = 512;
 static const int WINDOW_HEIGHT = 288;
 

@@ -6,6 +6,7 @@ cmake_policy(SET CMP0009 NEW)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/*.c")
 set(OLD_GLOB
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/camera.c"
+  "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/config.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/map.c"

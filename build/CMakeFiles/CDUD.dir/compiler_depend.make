@@ -71,6 +71,7 @@ CDUD: /lib/x86_64-linux-gnu/libFLAC.so.14 \
   /usr/lib/x86_64-linux-gnu/libc_nonshared.a \
   /usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-17.0.so \
   CMakeFiles/CDUD.dir/src/camera.c.o \
+  CMakeFiles/CDUD.dir/src/config.c.o \
   CMakeFiles/CDUD.dir/src/cute_tiled.c.o \
   CMakeFiles/CDUD.dir/src/main.c.o \
   CMakeFiles/CDUD.dir/src/map.c.o \
@@ -293,6 +294,10 @@ CMakeFiles/CDUD.dir/src/camera.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilD
   /usr/lib/gcc/x86_64-linux-gnu/14/include/xsaveoptintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/xsavesintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/xtestintrin.h
+
+CMakeFiles/CDUD.dir/src/config.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/config.c \
+  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/config.h \
+  /usr/include/stdc-predef.h
 
 CMakeFiles/CDUD.dir/src/cute_tiled.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/cute_tiled.h \
@@ -1261,6 +1266,8 @@ CMakeFiles/CDUD.dir/src/utils.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDa
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/popcntintrin.h:
 
+/usr/lib/gcc/x86_64-linux-gnu/14/include/pmmintrin.h:
+
 /usr/include/SDL2/SDL_sensor.h:
 
 /usr/include/SDL2/SDL_power.h:
@@ -1325,6 +1332,12 @@ CMakeFiles/CDUD.dir/src/map.c.o:
 
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
+CMakeFiles/CDUD.dir/src/config.c.o:
+
+/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/config.c:
+
+/usr/include/SDL2/SDL_hidapi.h:
+
 CMakeFiles/CDUD.dir/src/camera.c.o:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/bmi2intrin.h:
@@ -1345,8 +1358,6 @@ CMakeFiles/CDUD.dir/src/main.c.o:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/libgcc.a:
 
-/usr/include/SDL2/SDL_hidapi.h:
-
 /lib/x86_64-linux-gnu/liblzma.so.5:
 
 /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player.c:
@@ -1356,12 +1367,6 @@ CMakeFiles/CDUD.dir/src/main.c.o:
 /lib/x86_64-linux-gnu/libffi.so.8:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/cldemoteintrin.h:
-
-/usr/include/SDL2/SDL_video.h:
-
-/usr/include/SDL2/SDL_rect.h:
-
-/usr/include/x86_64-linux-gnu/bits/floatn.h:
 
 /usr/lib/x86_64-linux-gnu/libSDL2_mixer.so:
 
@@ -1460,6 +1465,12 @@ CMakeFiles/CDUD.dir/src/utils.c.o:
 /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so:
 
 /usr/lib/x86_64-linux-gnu/libm.so:
+
+/usr/include/SDL2/SDL_rect.h:
+
+/usr/include/SDL2/SDL_video.h:
+
+/usr/include/x86_64-linux-gnu/bits/floatn.h:
 
 /usr/include/SDL2/SDL_locale.h:
 
@@ -1680,8 +1691,6 @@ CMakeFiles/CDUD.dir/src/cute_tiled.c.o:
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/pmmintrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
 

@@ -1,5 +1,5 @@
 {
-    "activeFile": "start.tmx",
+    "activeFile": "props.tsx",
     "automapping.whileDrawing": false,
     "expandedProjectPaths": [
     ],
@@ -55,10 +55,10 @@
         },
         "start.tmx": {
             "scale": 4,
-            "selectedLayer": 3,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 147,
-                "y": 153.5
+                "x": 377.125,
+                "y": 121.125
             }
         },
         "tiles.tsx": {
@@ -76,8 +76,9 @@
             "scaleInEditor": 4
         }
     },
+    "frame.defaultDuration": 250,
     "last.exportedFilePath": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps",
-    "last.imagePath": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/images/props",
+    "last.imagePath": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/images/sprites/player",
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
@@ -91,8 +92,8 @@
     "property.type": "bool",
     "recentFiles": [
         "tiles.tsx",
-        "props.tsx",
         "start.tmx",
+        "props.tsx",
         "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmx",
         "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmj",
         "start",
