@@ -1,6 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "animation.h"
 #include "map.h"
 #include "types.h"
 #include <SDL2/SDL.h>
@@ -28,16 +29,19 @@ typedef struct {
     bool onGround;
     double jumpHoldTimer;
 
-    int colWidth, colHeight;
+    int collisionWidth, collisionHeight;
+    int collisionOffsetX, collisionOffsetY;
+
+    Animator animator;
 } Player;
 
 typedef struct {
     bool jumpPressed;  // 这一帧刚按下
     bool jumpHeld;     // 当前按住
-    bool slidePressed;  // 这一帧刚按下
-    bool slideHeld;     // 当前按住
-    bool moveLeft;      // A 按住
-    bool moveRight;     // D 按住
+    bool slidePressed; // 这一帧刚按下
+    bool slideHeld;    // 当前按住
+    bool moveLeft;     // A 按住
+    bool moveRight;    // D 按住
 } PlayerInput;
 
 void PlayerInit(Player *player);
