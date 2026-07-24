@@ -64,7 +64,7 @@ static void CollideWithTilesX(Player *player, MapData *mapData) {
 
     for (int ty = tileTop; ty <= tileBottom; ty++) {
         for (int tx = tileLeft; tx <= tileRight; tx++) {
-            if (MapIsCollisionByAttribute(mapData, tx, ty)) {
+            if (MapIsTileSolid(mapData, tx, ty)) {
                 if (player->velocity.x > 0) {
                     player->position.x =
                         (double)(tx * tileSize) - (double)player->colWidth;
@@ -96,11 +96,11 @@ static void CollideWithTilesY(Player *player, MapData *mapData) {
     player->onGround = false;
     for (int ty = tileTop; ty <= yTileBottom; ty++) {
         for (int tx = tileLeft; tx <= tileRight; tx++) {
-            if (MapIsCollisionByAttribute(mapData, tx, ty)) {
+            double surfaceTop;
+            if (MapIsCollisionByAttribute(mapData, tx, ty, &surfaceTop)) {
                 if (player->velocity.y > 0) {
-                    /* 落地 */
-                    player->position.y =
-                        (double)(ty * tileSize) - (double)player->colHeight;
+                    /* 落地（使用精确碰撞面，而非 tile 网格） */
+                    player->position.y = surfaceTop - (double)player->colHeight;
                     player->velocity.y = 0;
                     player->onGround = true;
                     if (player->state == PLAYER_JUMP) {

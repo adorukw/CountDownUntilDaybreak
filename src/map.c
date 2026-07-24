@@ -646,16 +646,86 @@ void MapRenderAll(
     }
 }
 
-/* ── 统一的碰撞检测：查所有图层的 collision 属性 ── */
-bool MapIsCollisionByAttribute(MapData *mapData, int tileX, int tileY) {
+/* ── 仅 tile 层的碰撞检测（不查对象层），用于水平碰撞 ── */
+bool MapIsTileSolid(MapData *mapData, int tileX, int tileY) {
     if (tileX < 0 || tileX >= mapData->mapWidth || tileY < 0 ||
         tileY >= mapData->mapHeight) {
+        return true;
+    }
+
+    CuteTiledLayer *layer = mapData->cuteTiledMap->layers;
+    while (layer) {
+        if (!layer->visible) {
+            layer = layer->next;
+            continue;
+        }
+
+        if (layer->type.ptr && strcmp(layer->type.ptr, "tilelayer") == 0 &&
+            layer->data) {
+            int rawGid = layer->data[tileY * layer->width + tileX];
+            if (rawGid == 0) {
+                layer = layer->next;
+                continue;
+            }
+
+            int gid = cute_tiled_unset_flags(rawGid);
+            CuteTiledTileset *ts = NULL;
+            int localId = MapResolveGid(mapData, (unsigned int)gid, &ts);
+            if (localId < 0 || !ts) {
+                layer = layer->next;
+                continue;
+            }
+
+            CuteTiledTileDescriptor *td = ts->tiles;
+            while (td && td->tile_index != localId) {
+                td = td->next;
+            }
+            if (!td) {
+                layer = layer->next;
+                continue;
+            }
+
+            for (int i = 0; i < td->property_count; i++) {
+                CuteTiledProperty *prop = &td->properties[i];
+                if (prop->name.ptr &&
+                    strcmp(prop->name.ptr, "collision") == 0 &&
+                    prop->data.boolean) {
+                    return true;
+                }
+            }
+        }
+
+        layer = layer->next;
+    }
+
+    return false;
+}
+
+/* ── 统一的碰撞检测：查所有图层的 collision 属性（含对象层），用于垂直碰撞 ──
+ * 返回 true/false 表示该 tile 是否有碰撞。
+ * 如果 outSurfaceTop != NULL，同时写入该 tile 范围内最高的碰撞面 Y 坐标（用于精确落地修正）。
+ */
+bool MapIsCollisionByAttribute(MapData *mapData, int tileX, int tileY, double *outSurfaceTop) {
+    if (tileX < 0 || tileX >= mapData->mapWidth || tileY < 0 ||
+        tileY >= mapData->mapHeight) {
+        if (outSurfaceTop) *outSurfaceTop = (double)(tileY * TILE_SIZE);
         return true;
     }
 
     /* 要检测的 tile 的世界坐标矩形 */
     SDL_Rect tileBox = { tileX * TILE_SIZE, tileY * TILE_SIZE, TILE_SIZE,
                          TILE_SIZE };
+
+    bool collision = false;
+    double bestTop = 0.0;
+    bool bestTopSet = false;
+
+#define UPDATE_BEST_TOP(top) do { \
+    if (!bestTopSet || (top) < bestTop) { \
+        bestTop = (top); \
+        bestTopSet = true; \
+    } \
+} while(0)
 
     CuteTiledLayer *layer = mapData->cuteTiledMap->layers;
     while (layer) {
@@ -695,7 +765,9 @@ bool MapIsCollisionByAttribute(MapData *mapData, int tileX, int tileY) {
                 if (prop->name.ptr &&
                     strcmp(prop->name.ptr, "collision") == 0 &&
                     prop->data.boolean) {
-                    return true;
+                    collision = true;
+                    UPDATE_BEST_TOP((double)(tileY * TILE_SIZE));
+                    break;
                 }
             }
         }
@@ -759,7 +831,8 @@ bool MapIsCollisionByAttribute(MapData *mapData, int tileX, int tileY) {
                 }
 
                 if (hasCollision && SDL_HasIntersection(&tileBox, &objBox)) {
-                    return true;
+                    collision = true;
+                    UPDATE_BEST_TOP((double)(obj->y - obj->height));
                 }
 
                 obj = obj->next;
@@ -769,5 +842,10 @@ bool MapIsCollisionByAttribute(MapData *mapData, int tileX, int tileY) {
         layer = layer->next;
     }
 
-    return false;
+#undef UPDATE_BEST_TOP
+
+    if (collision && outSurfaceTop) {
+        *outSurfaceTop = bestTop;
+    }
+    return collision;
 }

@@ -46,5 +46,6 @@ void MapRenderAll(
     MapData *map, SDL_Renderer *renderer, double cameraX, double cameraY,
     int viewWidth, int viewHeight);
 
-bool MapIsCollisionByAttribute(MapData *mapData, int tileX, int tileY);
+bool MapIsTileSolid(MapData *mapData, int tileX, int tileY);
+bool MapIsCollisionByAttribute(MapData *mapData, int tileX, int tileY, double *outSurfaceTop);
 #endif

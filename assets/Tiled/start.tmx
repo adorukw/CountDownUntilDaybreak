@@ -24,9 +24,9 @@
     <property name="collision" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="21" gid="7" x="592" y="288" width="64" height="112" visible="0">
+  <object id="21" gid="7" x="592" y="288" width="64" height="112">
    <properties>
-    <property name="collision" type="bool" value="false"/>
+    <property name="collision" type="bool" value="true"/>
    </properties>
   </object>
   <object id="22" gid="7" x="704" y="288" width="64" height="112"/>
