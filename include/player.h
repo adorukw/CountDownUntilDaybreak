@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include "animation.h"
+#include "collision.h"
 #include "map.h"
 #include "types.h"
 #include <SDL2/SDL.h>
@@ -29,8 +30,8 @@ typedef struct {
     bool onGround;
     double jumpHoldTimer;
 
-    int collisionWidth, collisionHeight;
-    int collisionOffX, collisionOffY;
+    double collisionWidth, collisionHeight;
+    double collisionOffX, collisionOffY;
 
     Animator animator;
 

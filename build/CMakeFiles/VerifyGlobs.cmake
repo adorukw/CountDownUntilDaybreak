@@ -7,6 +7,7 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adorukw/AAAPAN/Project/
 set(OLD_GLOB
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/animation.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/camera.c"
+  "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/collision.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/config.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c"

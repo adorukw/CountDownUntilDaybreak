@@ -179,6 +179,5 @@ CMakeFiles/CDUD.dir/src/map.c.o: \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
  /usr/include/SDL2/SDL_misc.h \
  /usr/lib/gcc/x86_64-linux-gnu/14/include/stdbool.h \
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/config.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/cute_tiled.h \
  /usr/include/SDL2/SDL_image.h /usr/include/SDL2/SDL.h

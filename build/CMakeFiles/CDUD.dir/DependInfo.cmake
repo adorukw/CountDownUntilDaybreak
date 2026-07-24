@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/animation.c" "CMakeFiles/CDUD.dir/src/animation.c.o" "gcc" "CMakeFiles/CDUD.dir/src/animation.c.o.d"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/camera.c" "CMakeFiles/CDUD.dir/src/camera.c.o" "gcc" "CMakeFiles/CDUD.dir/src/camera.c.o.d"
+  "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/collision.c" "CMakeFiles/CDUD.dir/src/collision.c.o" "gcc" "CMakeFiles/CDUD.dir/src/collision.c.o.d"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/config.c" "CMakeFiles/CDUD.dir/src/config.c.o" "gcc" "CMakeFiles/CDUD.dir/src/config.c.o.d"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c" "CMakeFiles/CDUD.dir/src/cute_tiled.c.o" "gcc" "CMakeFiles/CDUD.dir/src/cute_tiled.c.o.d"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c" "CMakeFiles/CDUD.dir/src/main.c.o" "gcc" "CMakeFiles/CDUD.dir/src/main.c.o.d"

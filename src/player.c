@@ -1,6 +1,5 @@
 #include "player.h"
-#include "config.h"
-#include "map.h"
+#include "collision.h"
 #include "player_anim.h"
 #include <SDL_render.h>
 
@@ -66,80 +65,12 @@ PlayerHandleInput(Player *player, const PlayerInput *input, double deltaTime) {
     }
 }
 
-/* ── 仅水平方向碰撞 ── */
-static void CollideWithTilesX(Player *player, MapData *mapData) {
-    int left = (int)(player->position.x + player->collisionOffX);
-    int top = (int)(player->position.y + player->collisionOffY);
-    int right = left + player->collisionWidth;
-    int bottom = top + player->collisionHeight;
-
-    int tileSize = TILE_SIZE;
-    int tileLeft = left / tileSize;
-    int tileRight = (right - 1) / tileSize;
-    int tileTop = top / tileSize;
-    int tileBottom = (bottom - 1) / tileSize;
-
-    for (int ty = tileTop; ty <= tileBottom; ty++) {
-        for (int tx = tileLeft; tx <= tileRight; tx++) {
-            if (MapIsTileSolid(mapData, tx, ty)) {
-                if (player->velocity.x > 0) {
-                    player->position.x = (double)(tx * tileSize) -
-                                         player->collisionOffX -
-                                         player->collisionWidth;
-                    player->velocity.x = 0;
-                } else if (player->velocity.x < 0) {
-                    player->position.x =
-                        (double)((tx + 1) * tileSize) - player->collisionOffX;
-                    player->velocity.x = 0;
-                }
-            }
-        }
-    }
-}
-
-/* ── 仅垂直方向碰撞（落地 / 撞头） ── */
-static void CollideWithTilesY(Player *player, MapData *mapData) {
-    int left = (int)(player->position.x + player->collisionOffX);
-    int top = (int)(player->position.y + player->collisionOffY);
-    int right = left + player->collisionWidth;
-    int bottom = top + player->collisionHeight;
-
-    int tileSize = TILE_SIZE;
-
-    int tileLeft = left / tileSize;
-    int tileRight = (right - 1) / tileSize;
-    int tileTop = top / tileSize;
-
-    /* 用 bottom / tileSize（含底边）防止地板弹跳 */
-    int yTileBottom = bottom / tileSize;
-    player->onGround = false;
-    for (int ty = tileTop; ty <= yTileBottom; ty++) {
-        for (int tx = tileLeft; tx <= tileRight; tx++) {
-            double surfaceTop;
-            if (MapIsCollisionByAttribute(mapData, tx, ty, &surfaceTop)) {
-                if (player->velocity.y > 0) {
-                    /* 落地（使用精确碰撞面，而非 tile 网格） */
-                    player->position.y = surfaceTop - player->collisionOffY -
-                                         player->collisionHeight;
-                    player->velocity.y = 0;
-                    player->onGround = true;
-                    if (player->state == PLAYER_JUMP) {
-                        player->state = PLAYER_RUN;
-                    }
-                } else if (player->velocity.y < 0) {
-                    /* 撞头 */
-                    player->position.y =
-                        (double)((ty + 1) * tileSize) - player->collisionOffY;
-                    player->velocity.y = 0;
-                }
-            }
-        }
-    }
-}
 
 void PlayerUpdate(
     Player *player, MapData *mapData, const PlayerInput *input,
     double deltaTime) {
+    AnimationUpdate(&player->animator, deltaTime);
+
     /* ── 输入 ── */
     PlayerHandleInput(player, input, deltaTime);
 
@@ -187,15 +118,28 @@ void PlayerUpdate(
     default:
         break;
     }
-    AnimationUpdate(&player->animator, deltaTime);
 
-    /* ── 水平移动 + 碰撞（仅 X 轴）── */
-    player->position.x += player->velocity.x * deltaTime;
-    CollideWithTilesX(player, mapData);
 
-    /* ── 垂直移动 + 碰撞（仅 Y 轴）── */
-    player->position.y += player->velocity.y * deltaTime;
-    CollideWithTilesY(player, mapData);
+    CollisionBox box = GetStateCollisionBox(player->state);
+    player->collisionOffX = box.x;
+    player->collisionOffY = box.y;
+    player->collisionWidth = box.w;
+    player->collisionHeight = box.h;
+
+    Body body = {
+        .position = player->position,
+        .velocity = player->velocity,
+        .offX = player->collisionOffX,
+        .offY = player->collisionOffY,
+        .width = player->collisionWidth,
+        .height = player->collisionHeight,
+    };
+    CollisionMoveX(&body, mapData, player->velocity.x * deltaTime);
+    CollisionResult ry =
+        CollisionMoveY(&body, mapData, player->velocity.y * deltaTime);
+    player->position = body.position;
+    player->velocity = body.velocity;
+    player->onGround = ry.onGround;
 
     /* ── 落地后理顺状态 / 滑铲离地退出 ── */
     if (player->state == PLAYER_SLIDE && !player->onGround) {
@@ -216,13 +160,6 @@ void PlayerUpdate(
         player->state = PLAYER_JUMP;
         player->jumpHoldTimer = 0;
     }
-
-    // 在 PlayerUpdate 尾部，所有状态 switch 之后
-    CollisionBox box = GetStateCollisionBox(player->state);
-    player->collisionOffX = box.x;
-    player->collisionOffY = box.y;
-    player->collisionWidth = box.w;
-    player->collisionHeight = box.h;
 }
 void PlayerRender(Player *player, SDL_Renderer *renderer, Vec2 cameraPos) {
     const AnimationFrame *frame = AnimatorGetCurrFrame(&player->animator);

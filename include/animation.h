@@ -5,11 +5,6 @@
 #include <stdbool.h>
 
 typedef struct {
-    int x, y;
-    int w, h;
-} CollisionBox;
-
-typedef struct {
     SDL_Texture *texture;
     int textureWidth, textureHeight;
 

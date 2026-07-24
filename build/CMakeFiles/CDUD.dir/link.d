@@ -4,6 +4,7 @@ CDUD: \
   /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o \
   CMakeFiles/CDUD.dir/src/animation.c.o \
   CMakeFiles/CDUD.dir/src/camera.c.o \
+  CMakeFiles/CDUD.dir/src/collision.c.o \
   CMakeFiles/CDUD.dir/src/config.c.o \
   CMakeFiles/CDUD.dir/src/cute_tiled.c.o \
   CMakeFiles/CDUD.dir/src/main.c.o \
@@ -102,6 +103,8 @@ CDUD: \
 CMakeFiles/CDUD.dir/src/animation.c.o:
 
 CMakeFiles/CDUD.dir/src/camera.c.o:
+
+CMakeFiles/CDUD.dir/src/collision.c.o:
 
 CMakeFiles/CDUD.dir/src/config.c.o:
 
