@@ -39,7 +39,7 @@ static const FrameConfig playerSlideConfig[] = {
     { DIR "slide_2.png", 27, 54, -16, -33, 29, 30, 0.2 },
 };
 
-static const FrameConfig playerAttackConfig[]={
+static const FrameConfig playerAttackConfig[] = {
     { DIR "attack_1.png", 44, 62, -14, -37, 24, 33, 0.1 },
     { DIR "attack_2.png", 44, 62, -14, -37, 24, 33, 0.1 },
     { DIR "attack_3.png", 44, 62, -14, -37, 24, 33, 0.1 },

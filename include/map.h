@@ -34,6 +34,8 @@ typedef struct {
 
     int textureCount;
     CachedTexture textureCache[MAP_TEX_CACHE_MAX];
+
+    Uint32 animStartTime; /* 动画图块的全局时间基准（SDL_GetTicks） */
 } MapData;
 
 bool MapLoad(MapData *mapData, SDL_Renderer *renderer, const char *tmjPath);

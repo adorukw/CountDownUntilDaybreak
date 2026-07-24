@@ -37,6 +37,12 @@ typedef struct {
     Animator animator;
 
     bool facingRight;
+
+    int hp;                  // 当前生命值
+    int maxHp;               // 最大生命值
+    double invincibleTimer;  // 无敌剩余时间（秒，>0 时不可受击）
+    double blinkTimer;       // 闪烁相位计时器（秒，仅用于渲染）
+    bool dead;               // 是否死亡
 } Player;
 
 typedef struct {
@@ -58,4 +64,14 @@ void PlayerRender(Player *player, SDL_Renderer *renderer, Vec2 cameraPos);
 void PlayerRenderDebug(Player *player, SDL_Renderer *renderer, Vec2 cameraPos);
 
 PlayerInput PlayerPollInput(const Uint8 *keys);
+
+/* 受击：成功扣血返回 true（无敌期/已死亡返回 false）。
+ * damage 为扣血量。扣到 0 自动置 dead=true。 */
+bool PlayerTakeDamage(Player *player, int damage);
+
+/* 渲染 HUD（左上角红心），不受相机影响 */
+void PlayerRenderHUD(const Player *player, SDL_Renderer *renderer);
+
+/* 重置玩家到初始状态（R 键重开用） */
+void PlayerReset(Player *player);
 #endif

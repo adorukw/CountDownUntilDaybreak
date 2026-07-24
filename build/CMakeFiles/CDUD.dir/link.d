@@ -7,6 +7,7 @@ CDUD: \
   CMakeFiles/CDUD.dir/src/collision.c.o \
   CMakeFiles/CDUD.dir/src/config.c.o \
   CMakeFiles/CDUD.dir/src/cute_tiled.c.o \
+  CMakeFiles/CDUD.dir/src/damage.c.o \
   CMakeFiles/CDUD.dir/src/main.c.o \
   CMakeFiles/CDUD.dir/src/map.c.o \
   CMakeFiles/CDUD.dir/src/player.c.o \
@@ -63,6 +64,8 @@ CDUD: \
   /lib/x86_64-linux-gnu/libtiff.so.6 \
   /lib/x86_64-linux-gnu/libwebpdemux.so.2 \
   /lib/x86_64-linux-gnu/libwebp.so.7 \
+  /lib/x86_64-linux-gnu/libfreetype.so.6 \
+  /lib/x86_64-linux-gnu/libharfbuzz.so.0 \
   /lib64/ld-linux-x86-64.so.2 \
   /usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-17.0.so \
   /lib/x86_64-linux-gnu/libdbus-1.so.3 \
@@ -77,6 +80,10 @@ CDUD: \
   /lib/x86_64-linux-gnu/libjbig.so.0 \
   /lib/x86_64-linux-gnu/libdeflate.so.0 \
   /lib/x86_64-linux-gnu/libsharpyuv.so.0 \
+  /lib/x86_64-linux-gnu/libbz2.so.1.0 \
+  /lib/x86_64-linux-gnu/libbrotlidec.so.1 \
+  /lib/x86_64-linux-gnu/libglib-2.0.so.0 \
+  /lib/x86_64-linux-gnu/libgraphite2.so.3 \
   /lib/x86_64-linux-gnu/libsndfile.so.1 \
   /lib/x86_64-linux-gnu/libX11-xcb.so.1 \
   /lib/x86_64-linux-gnu/libsystemd.so.0 \
@@ -85,6 +92,9 @@ CDUD: \
   /lib/x86_64-linux-gnu/libXdmcp.so.6 \
   /lib/x86_64-linux-gnu/libstdc++.so.6 \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/libgcc_s.so.1 \
+  /lib/x86_64-linux-gnu/libbrotlicommon.so.1 \
+  /lib/x86_64-linux-gnu/libatomic.so.1 \
+  /lib/x86_64-linux-gnu/libpcre2-8.so.0 \
   /lib/x86_64-linux-gnu/libFLAC.so.14 \
   /lib/x86_64-linux-gnu/libvorbis.so.0 \
   /lib/x86_64-linux-gnu/libvorbisenc.so.2 \
@@ -109,6 +119,8 @@ CMakeFiles/CDUD.dir/src/collision.c.o:
 CMakeFiles/CDUD.dir/src/config.c.o:
 
 CMakeFiles/CDUD.dir/src/cute_tiled.c.o:
+
+CMakeFiles/CDUD.dir/src/damage.c.o:
 
 CMakeFiles/CDUD.dir/src/main.c.o:
 
@@ -222,6 +234,10 @@ CMakeFiles/CDUD.dir/src/utils.c.o:
 
 /lib/x86_64-linux-gnu/libwebp.so.7:
 
+/lib/x86_64-linux-gnu/libfreetype.so.6:
+
+/lib/x86_64-linux-gnu/libharfbuzz.so.0:
+
 /lib64/ld-linux-x86-64.so.2:
 
 /usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-17.0.so:
@@ -250,6 +266,14 @@ CMakeFiles/CDUD.dir/src/utils.c.o:
 
 /lib/x86_64-linux-gnu/libsharpyuv.so.0:
 
+/lib/x86_64-linux-gnu/libbz2.so.1.0:
+
+/lib/x86_64-linux-gnu/libbrotlidec.so.1:
+
+/lib/x86_64-linux-gnu/libglib-2.0.so.0:
+
+/lib/x86_64-linux-gnu/libgraphite2.so.3:
+
 /lib/x86_64-linux-gnu/libsndfile.so.1:
 
 /lib/x86_64-linux-gnu/libX11-xcb.so.1:
@@ -265,6 +289,12 @@ CMakeFiles/CDUD.dir/src/utils.c.o:
 /lib/x86_64-linux-gnu/libstdc++.so.6:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/libgcc_s.so.1:
+
+/lib/x86_64-linux-gnu/libbrotlicommon.so.1:
+
+/lib/x86_64-linux-gnu/libatomic.so.1:
+
+/lib/x86_64-linux-gnu/libpcre2-8.so.0:
 
 /lib/x86_64-linux-gnu/libFLAC.so.14:
 

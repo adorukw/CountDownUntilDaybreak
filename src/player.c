@@ -4,6 +4,9 @@
 #include <SDL_render.h>
 
 #define COYOTE_TIME 0.10
+#define PLAYER_MAX_HP 3
+#define INVINCIBLE_DURATION 1.5
+#define BLINK_HZ 8  // 闪烁频率（每秒闪 8 次）
 
 static const CollisionBox STATE_BOXES[] = {
     [PLAYER_IDLE]  = { -14, -42, 22, 38 },
@@ -42,6 +45,12 @@ void PlayerInit(Player *player) {
     player->collisionHeight = box.h;
 
     player->facingRight = true;
+
+    player->hp = PLAYER_MAX_HP;
+    player->maxHp = PLAYER_MAX_HP;
+    player->invincibleTimer = 0.0;
+    player->blinkTimer = 0.0;
+    player->dead = false;
 }
 
 static void
@@ -90,7 +99,21 @@ PlayerHandleInput(Player *player, const PlayerInput *input, double deltaTime) {
 void PlayerUpdate(
     Player *player, MapData *mapData, const PlayerInput *input,
     double deltaTime) {
+    /* ── 死亡后停止一切逻辑 ── */
+    if (player->dead) {
+        return;
+    }
+
     AnimationUpdate(&player->animator, deltaTime);
+
+    /* ── 无敌时间倒计时 + 闪烁计时器 ── */
+    if (player->invincibleTimer > 0.0) {
+        player->invincibleTimer -= deltaTime;
+        if (player->invincibleTimer < 0.0) {
+            player->invincibleTimer = 0.0;
+        }
+        player->blinkTimer += deltaTime;
+    }
 
     /* ── Coyote Timer 维护（基于上一帧 onGround） ──
      * 在地面时刷新窗口；离地后倒计时，窗口内仍允许跳跃。
@@ -180,6 +203,14 @@ void PlayerUpdate(
     player->velocity = body.velocity;
     player->onGround = ry.onGround;
 
+    /* ── 掉出地图判定：踩过地图底部即死亡 ── */
+    if (player->position.y > mapData->pixelHeight) {
+        player->position.y = mapData->pixelHeight;
+        player->hp = 0;
+        player->dead = true;
+        player->invincibleTimer = 0.0;
+    }
+
     /* ── 状态收尾 ── */
     if (player->state == PLAYER_ATTACK) {
         /* 攻击动画播放完毕 → 退出到对应状态。
@@ -205,6 +236,19 @@ void PlayerUpdate(
     }
 }
 void PlayerRender(Player *player, SDL_Renderer *renderer, Vec2 cameraPos) {
+    /* 死亡后不渲染角色 */
+    if (player->dead) {
+        return;
+    }
+
+    /* 无敌期间 8Hz 硬开关闪烁：偶数相位不画 */
+    if (player->invincibleTimer > 0.0) {
+        int phase = (int)(player->blinkTimer * BLINK_HZ * 2) % 2;
+        if (phase == 1) {
+            return;
+        }
+    }
+
     const AnimationFrame *frame = AnimatorGetCurrFrame(&player->animator);
     if (!frame || !frame->texture) {
         return;
@@ -252,4 +296,72 @@ PlayerInput PlayerPollInput(const Uint8 *keys) {
     prevAttack = attackNow;
 
     return input;
+}
+
+/* ─────────────────────────────────────────────
+ * 受击 / 死亡 / HUD
+ * ───────────────────────────────────────────── */
+
+bool PlayerTakeDamage(Player *player, int damage) {
+    /* 已死亡或无敌期 → 不扣血 */
+    if (player->dead || player->invincibleTimer > 0.0) {
+        return false;
+    }
+
+    player->hp -= damage;
+    player->invincibleTimer = INVINCIBLE_DURATION;
+    player->blinkTimer = 0.0;
+
+    if (player->hp <= 0) {
+        player->hp = 0;
+        player->dead = true;
+        player->invincibleTimer = 0.0;
+    }
+    return true;
+}
+
+/* 像素心点阵（5×5，每格 2px → 单颗心 10×10） */
+static const int HEART_PATTERN[5][5] = {
+    { 1, 1, 0, 1, 1 },
+    { 1, 1, 1, 1, 1 },
+    { 1, 1, 1, 1, 1 },
+    { 0, 1, 1, 1, 0 },
+    { 0, 0, 1, 0, 0 },
+};
+
+static void
+DrawHeart(SDL_Renderer *renderer, int x, int y, bool filled) {
+    /* 实心心：(220,40,50) 红色填充
+     * 空心心：(70,25,30) 暗色填充，表示已失去 */
+    Uint8 r = filled ? 220 : 70;
+    Uint8 g = filled ? 40 : 25;
+    Uint8 b = filled ? 50 : 30;
+    SDL_SetRenderDrawColor(renderer, r, g, b, 255);
+
+    const int PX = 2;  /* 每格像素大小 */
+    for (int row = 0; row < 5; row++) {
+        for (int col = 0; col < 5; col++) {
+            if (HEART_PATTERN[row][col]) {
+                SDL_Rect dot = { x + col * PX, y + row * PX, PX, PX };
+                SDL_RenderFillRect(renderer, &dot);
+            }
+        }
+    }
+}
+
+void PlayerRenderHUD(const Player *player, SDL_Renderer *renderer) {
+    /* 左上角，每颗心宽 10px + 间距 6px */
+    const int START_X = 12;
+    const int START_Y = 12;
+    const int SPACING = 16;
+
+    for (int i = 0; i < player->maxHp; i++) {
+        bool filled = (i < player->hp);
+        DrawHeart(renderer, START_X + i * SPACING, START_Y, filled);
+    }
+}
+
+void PlayerReset(Player *player) {
+    /* PlayerInit 会重置所有字段（位置、速度、状态、hp、无敌、死亡等） */
+    PlayerInit(player);
 }

@@ -78,7 +78,7 @@
     },
     "frame.defaultDuration": 250,
     "last.exportedFilePath": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps",
-    "last.imagePath": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/images/sprites/player",
+    "last.imagePath": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/images/props",
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
@@ -89,7 +89,7 @@
         "start.tmx"
     ],
     "project": "CDUD.tiled-project",
-    "property.type": "bool",
+    "property.type": "int",
     "recentFiles": [
         "tiles.tsx",
         "start.tmx",

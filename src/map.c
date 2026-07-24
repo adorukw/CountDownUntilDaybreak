@@ -154,6 +154,38 @@ FindTileDescriptor(CuteTiledTileset *ctt, int local_id) {
     return NULL;
 }
 
+/* ── 动画图块：根据全局时间 nowMs 解析当前应显示的 localId ──
+ * 无动画 / 帧数为 0 / duration 为 0 → 返回原 localId。
+ * 有动画 → 取整周期取余，顺序累加 duration 找到当前帧。
+ * 全局同步（所有同 tile 实例相位一致）。 */
+static int ResolveAnimFrame(CuteTiledTileset *cts, int localId, Uint32 nowMs) {
+    CuteTiledTileDescriptor *td = FindTileDescriptor(cts, localId);
+    if (!td || !td->animation || td->frame_count <= 0) {
+        return localId;
+    }
+
+    /* 计算总周期（毫秒）。duration 为 0 的帧按 1ms 处理避免死循环。 */
+    int total = 0;
+    for (int i = 0; i < td->frame_count; i++) {
+        int d = td->animation[i].duration;
+        total += (d > 0) ? d : 1;
+    }
+    if (total <= 0) {
+        return localId;
+    }
+
+    int t = (int)(nowMs % (unsigned int)total);
+    for (int i = 0; i < td->frame_count; i++) {
+        int d = td->animation[i].duration;
+        d = (d > 0) ? d : 1;
+        if (t < d) {
+            return td->animation[i].tileid;
+        }
+        t -= d;
+    }
+    return td->animation[0].tileid;
+}
+
 static void SpriteSheetSrcRect(
     CuteTiledTileset *ctt, int localId, int *outSpriteX, int *outSpriteY,
     int *outSpriteW, int *outSpriteH) {
@@ -266,6 +298,7 @@ bool MapLoad(MapData *mapData, SDL_Renderer *renderer, const char *tmjPath) {
     }
 
     SDL_Log("=== map_load 完成 === (缓存纹理 %d 张)", mapData->textureCount);
+    mapData->animStartTime = SDL_GetTicks();
     return true;
 }
 
@@ -371,6 +404,10 @@ static void RenderTilelayer(
                 continue;
             }
 
+            /* 动画图块：根据全局时间解析当前应显示帧的 localId */
+            Uint32 nowMs = SDL_GetTicks() - mapData->animStartTime;
+            int displayId = ResolveAnimFrame(cts, localId, nowMs);
+
             /* 目标矩形 */
             SDL_Rect dstRec;
             dstRec.x = x * mapData->tileWidth - (int)cameraX + offsetX;
@@ -403,7 +440,7 @@ static void RenderTilelayer(
                 }
 
                 int sx, sy, sw, sh;
-                SpriteSheetSrcRect(cts, localId, &sx, &sy, &sw, &sh);
+                SpriteSheetSrcRect(cts, displayId, &sx, &sy, &sw, &sh);
                 SDL_Rect src = { sx, sy, sw, sh };
                 dstRec.w = sw;
                 dstRec.h = sh;
@@ -413,7 +450,7 @@ static void RenderTilelayer(
 
             } else {
                 /* === 集合贴图模式 === */
-                CuteTiledTileDescriptor *td = FindTileDescriptor(cts, localId);
+                CuteTiledTileDescriptor *td = FindTileDescriptor(cts, displayId);
                 if (!td || !td->image.ptr) {
                     continue;
                 }
@@ -521,7 +558,7 @@ static void RenderObjectGroup(
                 } else {
                     CuteTiledTileDescriptor *cttd = tileset->tiles;
                     while (cttd) {
-                        if (obj->gid == tileset->firstgid + cttd->tile_index) {
+                        if (cleanGid == (unsigned int)(tileset->firstgid + cttd->tile_index)) {
                             local_id = cttd->tile_index;
                             break;
                         }
@@ -536,6 +573,10 @@ static void RenderObjectGroup(
                 continue;
             }
 
+            /* 动画图块：根据全局时间解析当前应显示帧的 localId */
+            Uint32 nowMs = SDL_GetTicks() - mapData->animStartTime;
+            int display_id = ResolveAnimFrame(tileset, local_id, nowMs);
+
             /* Tiled 贴图对象的 y 是底部边缘 → 转为顶部 */
             double objY =
                 (tileset->columns > 0) ? obj->y : (obj->y - obj->height);
@@ -543,10 +584,17 @@ static void RenderObjectGroup(
                              (int)round(objY - cameraY + offsetY),
                              (int)round(obj->width), (int)round(obj->height) };
 
-            /* 翻转（cute_tiled 的 gid 已为纯 GID，从对象拿不到翻转标志）
-             * 但对象自身的 rotation 字段可用 */
+            /* 翻转：对象 gid 高位携带 H/V/D 翻转标志（前面已取出）。
+             * angle 用对象自身 rotation；dFlip 与 rotation 组合忽略。
+             * DecodeTiledFlags 输出的 angle 不使用，只取 flip。 */
+            unsigned int rawFlags = 0;
+            if (hFlip) rawFlags |= TILE_FLIP_H;
+            if (vFlip) rawFlags |= TILE_FLIP_V;
+            if (dFlip) rawFlags |= TILE_FLIP_D;
+            double discardAngle;
+            SDL_RendererFlip flip;
+            DecodeTiledFlags(rawFlags, &discardAngle, &flip);
             double angle = obj->rotation;
-            SDL_RendererFlip flip = SDL_FLIP_NONE;
 
             if (tileset->image.ptr && tileset->columns > 0) {
                 /* 精灵表模式 */
@@ -562,14 +610,14 @@ static void RenderObjectGroup(
                 }
 
                 int sx, sy, sw, sh;
-                SpriteSheetSrcRect(tileset, local_id, &sx, &sy, &sw, &sh);
+                SpriteSheetSrcRect(tileset, display_id, &sx, &sy, &sw, &sh);
                 SDL_Rect src = { sx, sy, sw, sh };
                 SDL_RenderCopyEx(renderer, tex, &src, &dst, angle, NULL, flip);
 
             } else {
                 /* 集合贴图模式 */
                 CuteTiledTileDescriptor *cttd =
-                    FindTileDescriptor(tileset, local_id);
+                    FindTileDescriptor(tileset, display_id);
                 if (!cttd || !cttd->image.ptr) {
                     obj = obj->next;
                     continue;

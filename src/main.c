@@ -1,10 +1,12 @@
 #include "camera.h"
 #include "config.h"
+#include "damage.h"
 #include "map.h"
 #include "player.h"
 #include "player_anim.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 #include <stdbool.h>
 
 int main(int argc, char *argv[]) {
@@ -13,6 +15,12 @@ int main(int argc, char *argv[]) {
     /* ── SDL 初始化 ── */
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) < 0) {
         SDL_Log("SDL初始化失败：%s", SDL_GetError());
+        return -1;
+    }
+
+    if (TTF_Init() < 0) {
+        SDL_Log("TTF初始化失败：%s", TTF_GetError());
+        SDL_Quit();
         return -1;
     }
 
@@ -58,6 +66,15 @@ int main(int argc, char *argv[]) {
 
     PlayerAnimLoadAll(renderer);
 
+    /* ── 加载字体（Game Over 文字用） ── */
+    TTF_Font *titleFont =
+        TTF_OpenFont("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 28);
+    TTF_Font *hintFont =
+        TTF_OpenFont("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 14);
+    if (!titleFont || !hintFont) {
+        SDL_Log("警告：字体加载失败 — %s", TTF_GetError());
+    }
+
     /* ── 全屏状态 ── */
     bool fullscreen = SDL_TRUE;
 
@@ -100,6 +117,13 @@ int main(int argc, char *argv[]) {
                     }
                     break;
 
+                case SDLK_r:
+                    /* 死亡后按 R 重开 */
+                    if (player.dead) {
+                        PlayerReset(&player);
+                    }
+                    break;
+
                 default:
                     break;
                 }
@@ -115,6 +139,8 @@ int main(int argc, char *argv[]) {
         while (accumulator >= FIXED_DT) {
             PlayerInput input = PlayerPollInput(keys);
             PlayerUpdate(&player, &mapData, &input, FIXED_DT);
+            /* 伤害检测：地刺/bat 等带 damage 属性的对象 */
+            DamageCheckPlayerHit(&player, &mapData);
             accumulator -= FIXED_DT;
         }
 
@@ -130,11 +156,65 @@ int main(int argc, char *argv[]) {
         // PlayerRenderDebug(&player, renderer, camPos);  // 调试时取消注释
         // RenderDebugGrid(renderer, camPos.x, camPos.y);
 
+        /* ── HUD：红心（左上角） ── */
+        PlayerRenderHUD(&player, renderer);
+
+        /* ── 死亡：半透明遮罩 + Game Over 文字 ── */
+        if (player.dead) {
+            /* 半透明黑色遮罩 */
+            SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 160);
+            SDL_Rect overlay = { 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT };
+            SDL_RenderFillRect(renderer, &overlay);
+            SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
+
+            /* "GAME OVER" 大标题 */
+            if (titleFont) {
+                SDL_Color red = { 230, 60, 70, 255 };
+                SDL_Surface *surf =
+                    TTF_RenderText_Solid(titleFont, "GAME OVER", red);
+                if (surf) {
+                    SDL_Texture *tex =
+                        SDL_CreateTextureFromSurface(renderer, surf);
+                    SDL_Rect dst = {
+                        WINDOW_WIDTH / 2 - surf->w / 2,
+                        WINDOW_HEIGHT / 2 - surf->h / 2 - 10,
+                        surf->w, surf->h
+                    };
+                    SDL_RenderCopy(renderer, tex, NULL, &dst);
+                    SDL_DestroyTexture(tex);
+                    SDL_FreeSurface(surf);
+                }
+            }
+
+            /* "Press R to Restart" 提示 */
+            if (hintFont) {
+                SDL_Color gray = { 210, 210, 210, 255 };
+                SDL_Surface *surf =
+                    TTF_RenderText_Solid(hintFont, "Press R to Restart", gray);
+                if (surf) {
+                    SDL_Texture *tex =
+                        SDL_CreateTextureFromSurface(renderer, surf);
+                    SDL_Rect dst = {
+                        WINDOW_WIDTH / 2 - surf->w / 2,
+                        WINDOW_HEIGHT / 2 + 20,
+                        surf->w, surf->h
+                    };
+                    SDL_RenderCopy(renderer, tex, NULL, &dst);
+                    SDL_DestroyTexture(tex);
+                    SDL_FreeSurface(surf);
+                }
+            }
+        }
+
         SDL_RenderPresent(renderer);
     }
 
     /* ── 清理 ── */
     MapDestroy(&mapData);
+    if (titleFont) TTF_CloseFont(titleFont);
+    if (hintFont) TTF_CloseFont(hintFont);
+    TTF_Quit();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();

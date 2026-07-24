@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.12.2" name="props" tilewidth="76" tileheight="321" tilecount="15" columns="0">
+<tileset version="1.10" tiledversion="1.12.2" name="props" tilewidth="76" tileheight="321" tilecount="13" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="1">
   <properties>
@@ -38,6 +38,10 @@
   <image source="../images/props/hang_light.png" width="60" height="228"/>
  </tile>
  <tile id="19">
+  <properties>
+   <property name="damage" type="int" value="1"/>
+   <property name="hp" type="int" value="1"/>
+  </properties>
   <image source="../images/characters/enemy/bat_idle1.png" width="32" height="32"/>
   <animation>
    <frame tileid="19" duration="250"/>
@@ -55,13 +59,10 @@
  <tile id="22">
   <image source="../images/characters/enemy/bat_idle4.png" width="32" height="32"/>
  </tile>
- <tile id="23">
-  <image source="../images/sprites/player/idle_1.png" width="54" height="54"/>
- </tile>
- <tile id="24">
-  <image source="../images/sprites/player/slide_1.png" width="54" height="54"/>
- </tile>
- <tile id="25">
-  <image source="../images/sprites/player/slide_2.png" width="54" height="54"/>
+ <tile id="26">
+  <properties>
+   <property name="damage" type="int" value="1"/>
+  </properties>
+  <image source="../images/props/spike.png" width="16" height="16"/>
  </tile>
 </tileset>

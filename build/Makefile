@@ -263,6 +263,30 @@ src/cute_tiled.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/cute_tiled.c.s
 .PHONY : src/cute_tiled.c.s
 
+src/damage.o: src/damage.c.o
+.PHONY : src/damage.o
+
+# target to build an object file
+src/damage.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/damage.c.o
+.PHONY : src/damage.c.o
+
+src/damage.i: src/damage.c.i
+.PHONY : src/damage.i
+
+# target to preprocess a source file
+src/damage.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/damage.c.i
+.PHONY : src/damage.c.i
+
+src/damage.s: src/damage.c.s
+.PHONY : src/damage.s
+
+# target to generate assembly for a file
+src/damage.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/damage.c.s
+.PHONY : src/damage.c.s
+
 src/main.o: src/main.c.o
 .PHONY : src/main.o
 
@@ -408,6 +432,9 @@ help:
 	@echo "... src/cute_tiled.o"
 	@echo "... src/cute_tiled.i"
 	@echo "... src/cute_tiled.s"
+	@echo "... src/damage.o"
+	@echo "... src/damage.i"
+	@echo "... src/damage.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

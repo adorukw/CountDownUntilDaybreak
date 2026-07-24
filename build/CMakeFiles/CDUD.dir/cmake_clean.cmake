@@ -12,6 +12,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/CDUD.dir/src/config.c.o.d"
   "CMakeFiles/CDUD.dir/src/cute_tiled.c.o"
   "CMakeFiles/CDUD.dir/src/cute_tiled.c.o.d"
+  "CMakeFiles/CDUD.dir/src/damage.c.o"
+  "CMakeFiles/CDUD.dir/src/damage.c.o.d"
   "CMakeFiles/CDUD.dir/src/main.c.o"
   "CMakeFiles/CDUD.dir/src/main.c.o.d"
   "CMakeFiles/CDUD.dir/src/map.c.o"
