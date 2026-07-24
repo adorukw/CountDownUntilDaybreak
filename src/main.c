@@ -2,6 +2,7 @@
 #include "config.h"
 #include "map.h"
 #include "player.h"
+#include "player_anim.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <stdbool.h>
@@ -54,6 +55,8 @@ int main(int argc, char *argv[]) {
 
     Player player;
     PlayerInit(&player);
+
+    PlayerAnimLoadAll(renderer);
 
     /* ── 全屏状态 ── */
     bool fullscreen = SDL_TRUE;

@@ -2,7 +2,7 @@
 #define FRAME_CONFIG_H
 
 #include "animation.h"
-#define DIR "assets/sprites/player"
+#define DIR "assets/images/sprites/player/"
 
 // 格式：{ 文件名, pivotX,pivotY, colOffX,colOffY, colW,colH, duration }
 

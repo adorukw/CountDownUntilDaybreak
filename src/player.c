@@ -1,10 +1,13 @@
 #include "player.h"
 #include "config.h"
+#include "frame_config.h"
 #include "map.h"
+#include "player_anim.h"
+#include <SDL_render.h>
 
 void PlayerInit(Player *player) {
     /* 出生在地面上（y=160 脚底平贴行 11 的地板砖） */
-    player->position = (Vec2){ 64.0, 160.0 };
+    player->position = (Vec2){ 91.0, 180.0 };
     player->velocity = (Vec2){ 0.0, 0.0 };
     player->state = PLAYER_IDLE;
     player->onGround = true;
@@ -16,8 +19,11 @@ void PlayerInit(Player *player) {
     player->runSpeed = 120.0;     // 水平移动速度
     player->maxFallSpeed = 600.0; // 最大下落速度
 
-    player->collisionWidth = 12;
-    player->collisionHeight = 16;
+    player->collisionWidth = playerIdleConfig[0].collisionWidth;
+    player->collisionHeight = playerIdleConfig[0].collisionHeight;
+
+    player->collisionOffX = playerIdleConfig[0].collisionOffX;
+    player->collisionOffY = playerIdleConfig[0].collisionOffY;
 }
 
 static void
@@ -50,13 +56,12 @@ PlayerHandleInput(Player *player, const PlayerInput *input, double deltaTime) {
 
 /* ── 仅水平方向碰撞 ── */
 static void CollideWithTilesX(Player *player, MapData *mapData) {
+    int left = (int)(player->position.x + player->collisionOffX);
+    int top = (int)(player->position.y + player->collisionOffY);
+    int right = left + player->collisionWidth;
+    int bottom = top + player->collisionHeight;
+
     int tileSize = TILE_SIZE;
-
-    int left = (int)player->position.x;
-    int right = (int)(player->position.x + player->collisionWidth);
-    int top = (int)player->position.y;
-    int bottom = (int)(player->position.y + player->collisionHeight);
-
     int tileLeft = left / tileSize;
     int tileRight = (right - 1) / tileSize;
     int tileTop = top / tileSize;
@@ -66,11 +71,13 @@ static void CollideWithTilesX(Player *player, MapData *mapData) {
         for (int tx = tileLeft; tx <= tileRight; tx++) {
             if (MapIsTileSolid(mapData, tx, ty)) {
                 if (player->velocity.x > 0) {
-                    player->position.x =
-                        (double)(tx * tileSize) - (double)player->collisionWidth;
+                    player->position.x = (double)(tx * tileSize) -
+                                         player->collisionOffX -
+                                         player->collisionWidth;
                     player->velocity.x = 0;
                 } else if (player->velocity.x < 0) {
-                    player->position.x = (double)((tx + 1) * tileSize);
+                    player->position.x =
+                        (double)((tx + 1) * tileSize) - player->collisionOffX;
                     player->velocity.x = 0;
                 }
             }
@@ -80,12 +87,12 @@ static void CollideWithTilesX(Player *player, MapData *mapData) {
 
 /* ── 仅垂直方向碰撞（落地 / 撞头） ── */
 static void CollideWithTilesY(Player *player, MapData *mapData) {
-    int tileSize = TILE_SIZE;
+    int left = (int)(player->position.x + player->collisionOffX);
+    int top = (int)(player->position.y + player->collisionOffY);
+    int right = left + player->collisionWidth;
+    int bottom = top + player->collisionHeight;
 
-    int left = (int)player->position.x;
-    int right = (int)(player->position.x + player->collisionWidth);
-    int top = (int)player->position.y;
-    int bottom = (int)(player->position.y + player->collisionHeight);
+    int tileSize = TILE_SIZE;
 
     int tileLeft = left / tileSize;
     int tileRight = (right - 1) / tileSize;
@@ -100,7 +107,8 @@ static void CollideWithTilesY(Player *player, MapData *mapData) {
             if (MapIsCollisionByAttribute(mapData, tx, ty, &surfaceTop)) {
                 if (player->velocity.y > 0) {
                     /* 落地（使用精确碰撞面，而非 tile 网格） */
-                    player->position.y = surfaceTop - (double)player->collisionHeight;
+                    player->position.y = surfaceTop - player->collisionOffY -
+                                         player->collisionHeight;
                     player->velocity.y = 0;
                     player->onGround = true;
                     if (player->state == PLAYER_JUMP) {
@@ -108,7 +116,8 @@ static void CollideWithTilesY(Player *player, MapData *mapData) {
                     }
                 } else if (player->velocity.y < 0) {
                     /* 撞头 */
-                    player->position.y = (double)((ty + 1) * tileSize);
+                    player->position.y =
+                        (double)((ty + 1) * tileSize) - player->collisionOffY;
                     player->velocity.y = 0;
                 }
             }
@@ -125,8 +134,10 @@ void PlayerUpdate(
     /* ── 水平速度（WASD 自由移动） ── */
     if (input->moveLeft) {
         player->velocity.x = -player->runSpeed;
+        player->facingRight = false;
     } else if (input->moveRight) {
         player->velocity.x = player->runSpeed;
+        player->facingRight = true;
     } else {
         player->velocity.x = 0.0;
     }
@@ -170,31 +181,46 @@ void PlayerUpdate(
         player->state = PLAYER_JUMP;
         player->jumpHoldTimer = 0;
     }
+
+    switch (player->state) {
+    case PLAYER_IDLE:
+        AnimatorPlay(&player->animator, &playerIdleAnimation);
+        break;
+    default:
+        break;
+    }
+    AnimationUpdate(&player->animator, deltaTime);
 }
 
 void PlayerRender(Player *player, SDL_Renderer *renderer, Vec2 cameraPos) {
-    SDL_Rect rect = { (int)(player->position.x - cameraPos.x),
-                      (int)(player->position.y - cameraPos.y), player->collisionWidth,
-                      player->collisionHeight };
-    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-    SDL_RenderFillRect(renderer, &rect);
-}
+    const AnimationFrame *frame = AnimatorGetCurrFrame(&player->animator);
+    if (!frame || !frame->texture) {
+        return;
+    }
 
-void PlayerRenderDebug(Player *player, SDL_Renderer *renderer, Vec2 cameraPos) {
-    SDL_Rect rect = { (int)(player->position.x - cameraPos.x),
-                      (int)(player->position.y - cameraPos.y), player->collisionWidth,
-                      player->collisionHeight };
-    /* 黄色边框 */
-    SDL_SetRenderDrawColor(renderer, 255, 255, 0, 200);
-    SDL_RenderDrawRect(renderer, &rect);
+    int screenX = (int)(player->position.x - cameraPos.x);
+    int screenY = (int)(player->position.y - cameraPos.y);
 
-    /* 红色脚底点 */
-    int footX =
-        (int)(player->position.x + player->collisionWidth / 2.0) - (int)cameraPos.x;
-    int footY =
-        (int)(player->position.y + player->collisionHeight) - (int)cameraPos.y;
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-    SDL_RenderDrawPoint(renderer, footX, footY);
+    if (player->facingRight) {
+        screenX -= frame->pivotX;
+    } else {
+        screenX -= (frame->textureWidth - frame->pivotX);
+    }
+    SDL_Rect dst = { screenX, screenY, frame->textureWidth,
+                     frame->textureHeight };
+    SDL_RendererFlip flip =
+        player->facingRight ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
+    SDL_RenderCopyEx(renderer, frame->texture, NULL, &dst, 0, NULL, flip);
+
+    // ── 可选：调试时画出碰撞框 ──
+    // CollisionBox colBox = {
+    //     (int)(player->position.x - cameraPos.x) + player->colOffsetX,
+    //     (int)(player->position.y - cameraPos.y) + player->colOffsetY,
+    //     player->colWidth,
+    //     player->colHeight
+    // };
+    // SDL_SetRenderDrawColor(renderer, 0, 255, 0, 128);
+    // SDL_RenderDrawRect(renderer, (SDL_Rect*)&colBox);
 }
 
 PlayerInput PlayerPollInput(const Uint8 *keys) {

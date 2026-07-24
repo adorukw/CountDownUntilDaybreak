@@ -2,12 +2,14 @@ CDUD: \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o \
   /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o \
+  CMakeFiles/CDUD.dir/src/animation.c.o \
   CMakeFiles/CDUD.dir/src/camera.c.o \
   CMakeFiles/CDUD.dir/src/config.c.o \
   CMakeFiles/CDUD.dir/src/cute_tiled.c.o \
   CMakeFiles/CDUD.dir/src/main.c.o \
   CMakeFiles/CDUD.dir/src/map.c.o \
   CMakeFiles/CDUD.dir/src/player.c.o \
+  CMakeFiles/CDUD.dir/src/player_anim.c.o \
   CMakeFiles/CDUD.dir/src/utils.c.o \
   /usr/lib/x86_64-linux-gnu/libSDL2.so \
   /usr/lib/x86_64-linux-gnu/libSDL2_image.so \
@@ -97,6 +99,8 @@ CDUD: \
 
 /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o:
 
+CMakeFiles/CDUD.dir/src/animation.c.o:
+
 CMakeFiles/CDUD.dir/src/camera.c.o:
 
 CMakeFiles/CDUD.dir/src/config.c.o:
@@ -108,6 +112,8 @@ CMakeFiles/CDUD.dir/src/main.c.o:
 CMakeFiles/CDUD.dir/src/map.c.o:
 
 CMakeFiles/CDUD.dir/src/player.c.o:
+
+CMakeFiles/CDUD.dir/src/player_anim.c.o:
 
 CMakeFiles/CDUD.dir/src/utils.c.o:
 

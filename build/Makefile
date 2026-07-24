@@ -143,6 +143,30 @@ copy_compile_db/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/copy_compile_db.dir/build.make CMakeFiles/copy_compile_db.dir/build
 .PHONY : copy_compile_db/fast
 
+src/animation.o: src/animation.c.o
+.PHONY : src/animation.o
+
+# target to build an object file
+src/animation.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/animation.c.o
+.PHONY : src/animation.c.o
+
+src/animation.i: src/animation.c.i
+.PHONY : src/animation.i
+
+# target to preprocess a source file
+src/animation.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/animation.c.i
+.PHONY : src/animation.c.i
+
+src/animation.s: src/animation.c.s
+.PHONY : src/animation.s
+
+# target to generate assembly for a file
+src/animation.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/animation.c.s
+.PHONY : src/animation.c.s
+
 src/camera.o: src/camera.c.o
 .PHONY : src/camera.o
 
@@ -287,6 +311,30 @@ src/player.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/player.c.s
 .PHONY : src/player.c.s
 
+src/player_anim.o: src/player_anim.c.o
+.PHONY : src/player_anim.o
+
+# target to build an object file
+src/player_anim.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/player_anim.c.o
+.PHONY : src/player_anim.c.o
+
+src/player_anim.i: src/player_anim.c.i
+.PHONY : src/player_anim.i
+
+# target to preprocess a source file
+src/player_anim.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/player_anim.c.i
+.PHONY : src/player_anim.c.i
+
+src/player_anim.s: src/player_anim.c.s
+.PHONY : src/player_anim.s
+
+# target to generate assembly for a file
+src/player_anim.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/player_anim.c.s
+.PHONY : src/player_anim.c.s
+
 src/utils.o: src/utils.c.o
 .PHONY : src/utils.o
 
@@ -321,6 +369,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... copy_compile_db"
 	@echo "... CDUD"
+	@echo "... src/animation.o"
+	@echo "... src/animation.i"
+	@echo "... src/animation.s"
 	@echo "... src/camera.o"
 	@echo "... src/camera.i"
 	@echo "... src/camera.s"
@@ -339,6 +390,9 @@ help:
 	@echo "... src/player.o"
 	@echo "... src/player.i"
 	@echo "... src/player.s"
+	@echo "... src/player_anim.o"
+	@echo "... src/player_anim.i"
+	@echo "... src/player_anim.s"
 	@echo "... src/utils.o"
 	@echo "... src/utils.i"
 	@echo "... src/utils.s"

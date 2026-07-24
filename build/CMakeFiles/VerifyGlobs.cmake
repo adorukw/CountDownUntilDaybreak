@@ -5,12 +5,14 @@ cmake_policy(SET CMP0009 NEW)
 # SRC at CMakeLists.txt:18 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/*.c")
 set(OLD_GLOB
+  "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/animation.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/camera.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/config.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/map.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player.c"
+  "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_anim.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/utils.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

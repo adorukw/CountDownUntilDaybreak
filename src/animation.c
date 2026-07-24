@@ -19,7 +19,7 @@ void AnimatorPlay(Animator *animator, const Animation *animation) {
     animator->finished = false;
 }
 
-void AnimatorUpdate(Animator *animator, double dletaTime) {
+void AnimationUpdate(Animator *animator, double dletaTime) {
     if (!animator->currAnimation || animator->finished) {
         return;
     }

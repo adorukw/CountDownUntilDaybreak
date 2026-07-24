@@ -2,6 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/CDUD.dir/link.d"
   "CDUD"
   "CDUD.pdb"
+  "CMakeFiles/CDUD.dir/src/animation.c.o"
+  "CMakeFiles/CDUD.dir/src/animation.c.o.d"
   "CMakeFiles/CDUD.dir/src/camera.c.o"
   "CMakeFiles/CDUD.dir/src/camera.c.o.d"
   "CMakeFiles/CDUD.dir/src/config.c.o"
@@ -14,6 +16,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/CDUD.dir/src/map.c.o.d"
   "CMakeFiles/CDUD.dir/src/player.c.o"
   "CMakeFiles/CDUD.dir/src/player.c.o.d"
+  "CMakeFiles/CDUD.dir/src/player_anim.c.o"
+  "CMakeFiles/CDUD.dir/src/player_anim.c.o.d"
   "CMakeFiles/CDUD.dir/src/utils.c.o"
   "CMakeFiles/CDUD.dir/src/utils.c.o.d"
 )

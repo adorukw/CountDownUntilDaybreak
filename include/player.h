@@ -30,9 +30,11 @@ typedef struct {
     double jumpHoldTimer;
 
     int collisionWidth, collisionHeight;
-    int collisionOffsetX, collisionOffsetY;
+    int collisionOffX, collisionOffY;
 
     Animator animator;
+
+    bool facingRight;
 } Player;
 
 typedef struct {

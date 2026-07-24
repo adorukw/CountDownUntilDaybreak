@@ -183,5 +183,7 @@ CMakeFiles/CDUD.dir/src/main.c.o: \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/config.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/map.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/player.h \
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/animation.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/map.h \
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/player_anim.h \
  /usr/include/SDL2/SDL_image.h /usr/include/SDL2/SDL.h

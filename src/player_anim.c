@@ -19,6 +19,6 @@ void PlayerAnimLoadAll(SDL_Renderer *renderer) {
     LoadAnimationFrames(renderer, playerIdleConfig, 3, idleFrames);
     playerIdleAnimation.name = "idle";
     playerIdleAnimation.frames = idleFrames;
-    playerIdleAnimation.frameCount = 2;
+    playerIdleAnimation.frameCount = 3;
     playerIdleAnimation.loop = true;
 }

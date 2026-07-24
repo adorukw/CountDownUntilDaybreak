@@ -323,32 +323,6 @@
                  "y":144
                 }, 
                 {
-                 "gid":24,
-                 "height":54,
-                 "id":52,
-                 "name":"",
-                 "opacity":1,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":54,
-                 "x":53.5,
-                 "y":180.25
-                }, 
-                {
-                 "gid":25,
-                 "height":54,
-                 "id":53,
-                 "name":"",
-                 "opacity":1,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":54,
-                 "x":94.75,
-                 "y":179.75
-                }, 
-                {
                  "gid":26,
                  "height":54,
                  "id":54,

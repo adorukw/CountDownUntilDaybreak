@@ -48,8 +48,6 @@
   <object id="49" gid="2147483668" x="608" y="80" width="32" height="32"/>
   <object id="50" gid="21" x="400" y="144" width="32" height="32"/>
   <object id="51" gid="20" x="336" y="144" width="32" height="32"/>
-  <object id="52" gid="24" x="53.5" y="180.25" width="54" height="54"/>
-  <object id="53" gid="25" x="94.75" y="179.75" width="54" height="54"/>
   <object id="54" gid="26" x="145" y="179.5" width="54" height="54"/>
  </objectgroup>
  <layer id="1" name="main" width="60" height="18">
