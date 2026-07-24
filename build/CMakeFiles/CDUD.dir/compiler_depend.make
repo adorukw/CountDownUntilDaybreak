@@ -781,7 +781,6 @@ CMakeFiles/CDUD.dir/src/cute_tiled.c.o: /home/adorukw/AAAPAN/Project/CountDownUn
 CMakeFiles/CDUD.dir/src/main.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/animation.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/camera.h \
-  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/collision.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/config.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/map.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/player.h \

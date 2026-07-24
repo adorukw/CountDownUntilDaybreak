@@ -6,6 +6,7 @@ Animation playerRunAnimation;
 Animation playerJumpAnimation;
 Animation playerSlideAnimation;
 Animation playerFallAnimation;
+Animation playerAttackAnimation;
 
 static bool playerAnimLoaded = false;
 
@@ -14,6 +15,7 @@ static AnimationFrame jumpFrames[4];
 static AnimationFrame fallFrames[1];
 static AnimationFrame runFrames[8];
 static AnimationFrame slideFrames[2];
+static AnimationFrame attackFrames[6];
 
 void PlayerAnimLoadAll(SDL_Renderer *renderer) {
     if (playerAnimLoaded) {
@@ -49,4 +51,10 @@ void PlayerAnimLoadAll(SDL_Renderer *renderer) {
     playerSlideAnimation.frames = slideFrames;
     playerSlideAnimation.frameCount = 2;
     playerSlideAnimation.loop = false;
+
+    LoadAnimationFrames(renderer, playerAttackConfig, 6, attackFrames);
+    playerAttackAnimation.name = "attack";
+    playerAttackAnimation.frames = attackFrames;
+    playerAttackAnimation.frameCount = 6;
+    playerAttackAnimation.loop = false;
 }

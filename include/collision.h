@@ -48,7 +48,9 @@ AABB CollisionGetBodyAABB(const Body *body);
 bool CollisionAABBOverlap(AABB a, AABB b);
 
 bool CollisionIsTileSolid(
-    MapData *map, int tileX, int tileY, double *outSurfaceTop);
+    MapData *map, int tileX, int tileY,
+    double *outSurfaceTop, double *outSurfaceBottom,
+    const AABB *queryAABB);
 
 CollisionResult CollisionMoveX(Body *body, MapData *map, double dx);
 

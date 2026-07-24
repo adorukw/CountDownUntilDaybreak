@@ -8,6 +8,7 @@ extern Animation playerRunAnimation;
 extern Animation playerJumpAnimation;
 extern Animation playerSlideAnimation;
 extern Animation playerFallAnimation;
+extern Animation playerAttackAnimation;
 
 void PlayerAnimLoadAll(SDL_Renderer *);
 #endif

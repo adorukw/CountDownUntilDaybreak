@@ -2,7 +2,6 @@
 #define PLAYER_H
 
 #include "animation.h"
-#include "collision.h"
 #include "map.h"
 #include "types.h"
 #include <SDL2/SDL.h>
@@ -13,7 +12,8 @@ typedef enum {
     PLAYER_RUN,
     PLAYER_JUMP,
     PLAYER_SLIDE,
-    PLAYER_FALL
+    PLAYER_FALL,
+    PLAYER_ATTACK
 } PlayerState;
 
 typedef struct {
@@ -29,6 +29,7 @@ typedef struct {
 
     bool onGround;
     double jumpHoldTimer;
+    double coyoteTimer; /* 离地后仍允许跳跃的剩余时间 */
 
     double collisionWidth, collisionHeight;
     double collisionOffX, collisionOffY;
@@ -43,6 +44,7 @@ typedef struct {
     bool jumpHeld;     // 当前按住
     bool slidePressed; // 这一帧刚按下
     bool slideHeld;    // 当前按住
+    bool attackPressed;// 这一帧刚按下
     bool moveLeft;     // A 按住
     bool moveRight;    // D 按住
 } PlayerInput;

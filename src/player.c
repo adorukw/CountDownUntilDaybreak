@@ -3,16 +3,20 @@
 #include "player_anim.h"
 #include <SDL_render.h>
 
-static CollisionBox GetStateCollisionBox(PlayerState state) {
-    static const CollisionBox STATE_BOXES[] = {
-        [PLAYER_IDLE] = { -14, -42, 22, 38 },
-        [PLAYER_RUN] = { -6, -40, 18, 36 },
-        [PLAYER_JUMP] = { -11, -51, 22, 44 },
-        [PLAYER_FALL] = { -8, -52, 13, 42 },
-        [PLAYER_SLIDE] = { -10, -30, 17, 26 },
-    };
+#define COYOTE_TIME 0.10
 
-    if (state < 0 || state >= sizeof(STATE_BOXES) / sizeof(STATE_BOXES[0]))
+static const CollisionBox STATE_BOXES[] = {
+    [PLAYER_IDLE]  = { -14, -42, 22, 38 },
+    [PLAYER_RUN]   = { -6,  -40, 18, 36 },
+    [PLAYER_JUMP]  = { -11, -47, 22, 43 },
+    [PLAYER_FALL]  = { -8,  -46, 13, 42 },
+    [PLAYER_SLIDE] = { -10, -30, 17, 26 },
+    [PLAYER_ATTACK] = {-14, -37, 24, 33,},
+};
+
+static CollisionBox GetStateCollisionBox(PlayerState state) {
+    if (state < 0 ||
+        state >= (int)(sizeof(STATE_BOXES) / sizeof(STATE_BOXES[0])))
         return STATE_BOXES[PLAYER_IDLE];
     return STATE_BOXES[state];
 }
@@ -23,6 +27,7 @@ void PlayerInit(Player *player) {
     player->state = PLAYER_IDLE;
     player->onGround = true;
     player->jumpHoldTimer = 0.0;
+    player->coyoteTimer = COYOTE_TIME;
 
     /* ── 先调这套参数，之后按手感改 ── */
     player->gravity = 980.0;      // 像素/秒²
@@ -41,9 +46,26 @@ void PlayerInit(Player *player) {
 
 static void
 PlayerHandleInput(Player *player, const PlayerInput *input, double deltaTime) {
-    if (input->jumpPressed && player->onGround) {
+    /* ── 攻击触发：地面、非滑铲、非攻击中按下 J ──
+     * 进入 ATTACK 后立即 return，本帧不再处理任何其他输入。 */
+    if (input->attackPressed && player->onGround &&
+        player->state != PLAYER_SLIDE && player->state != PLAYER_ATTACK) {
+        player->state = PLAYER_ATTACK;
+        return;
+    }
+
+    /* ── 攻击中：锁住所有其他操作 ── */
+    if (player->state == PLAYER_ATTACK) {
+        return;
+    }
+
+    /* 跳跃条件：Coyote Timer 仍在窗口内即可起跳，
+     * 不再要求 onGround。一旦起跳立即清零窗口防二段跳。 */
+    if (input->jumpPressed && player->coyoteTimer > 0.0 &&
+        player->state != PLAYER_SLIDE) {
         player->velocity.y = player->jumpSpeed;
         player->onGround = false;
+        player->coyoteTimer = 0.0;
         player->state = PLAYER_JUMP;
         player->jumpHoldTimer = 0;
     }
@@ -65,17 +87,30 @@ PlayerHandleInput(Player *player, const PlayerInput *input, double deltaTime) {
     }
 }
 
-
 void PlayerUpdate(
     Player *player, MapData *mapData, const PlayerInput *input,
     double deltaTime) {
     AnimationUpdate(&player->animator, deltaTime);
 
+    /* ── Coyote Timer 维护（基于上一帧 onGround） ──
+     * 在地面时刷新窗口；离地后倒计时，窗口内仍允许跳跃。
+     * 必须在 PlayerHandleInput 之前更新，让本帧跳跃判定读到最新值。 */
+    if (player->onGround) {
+        player->coyoteTimer = COYOTE_TIME;
+    } else {
+        player->coyoteTimer -= deltaTime;
+        if (player->coyoteTimer < 0.0) {
+            player->coyoteTimer = 0.0;
+        }
+    }
+
     /* ── 输入 ── */
     PlayerHandleInput(player, input, deltaTime);
 
-    /* ── 水平速度（WASD 自由移动） ── */
-    if (input->moveLeft) {
+    /* ── 水平速度（WASD 自由移动；攻击中锁定） ── */
+    if (player->state == PLAYER_ATTACK) {
+        player->velocity.x = 0.0;
+    } else if (input->moveLeft) {
         player->velocity.x = -player->runSpeed;
         player->facingRight = false;
     } else if (input->moveRight) {
@@ -91,8 +126,9 @@ void PlayerUpdate(
         player->velocity.y = player->maxFallSpeed;
     }
 
-    /* ── 状态更新（预物理：检测下落） ── */
-    if (player->velocity.y > 0 && !player->onGround) {
+    /* ── 状态更新（预物理：检测下落；攻击中不切换） ── */
+    if (player->state != PLAYER_ATTACK &&
+        player->velocity.y > 0 && !player->onGround) {
         player->state = PLAYER_FALL;
     }
 
@@ -114,6 +150,9 @@ void PlayerUpdate(
         break;
     case PLAYER_SLIDE:
         AnimatorPlay(&player->animator, &playerSlideAnimation);
+        break;
+    case PLAYER_ATTACK:
+        AnimatorPlay(&player->animator, &playerAttackAnimation);
         break;
     default:
         break;
@@ -141,8 +180,21 @@ void PlayerUpdate(
     player->velocity = body.velocity;
     player->onGround = ry.onGround;
 
-    /* ── 落地后理顺状态 / 滑铲离地退出 ── */
-    if (player->state == PLAYER_SLIDE && !player->onGround) {
+    /* ── 状态收尾 ── */
+    if (player->state == PLAYER_ATTACK) {
+        /* 攻击动画播放完毕 → 退出到对应状态。
+         * 攻击期间 onGround 由碰撞维护，若中途走出平台会变成离地。 */
+        if (AnimatorIsFinished(&player->animator)) {
+            if (!player->onGround) {
+                player->state = PLAYER_FALL;
+            } else if (input->moveLeft || input->moveRight) {
+                player->state = PLAYER_RUN;
+            } else {
+                player->state = PLAYER_IDLE;
+            }
+        }
+        /* 攻击中不执行后续的滑铲/落地状态切换 */
+    } else if (player->state == PLAYER_SLIDE && !player->onGround) {
         player->state = PLAYER_FALL;
     } else if (player->onGround && player->state != PLAYER_SLIDE) {
         if (input->moveLeft || input->moveRight) {
@@ -150,15 +202,6 @@ void PlayerUpdate(
         } else {
             player->state = PLAYER_IDLE;
         }
-    }
-
-    /* ── 跳跃缓冲：Coyote Time ── */
-    if (player->onGround && input->jumpPressed &&
-        player->state != PLAYER_SLIDE) {
-        player->velocity.y = player->jumpSpeed;
-        player->onGround = false;
-        player->state = PLAYER_JUMP;
-        player->jumpHoldTimer = 0;
     }
 }
 void PlayerRender(Player *player, SDL_Renderer *renderer, Vec2 cameraPos) {
@@ -186,23 +229,27 @@ void PlayerRender(Player *player, SDL_Renderer *renderer, Vec2 cameraPos) {
 PlayerInput PlayerPollInput(const Uint8 *keys) {
     static bool prevJump = false;
     static bool prevSlide = false;
+    static bool prevAttack = false;
 
-    /* WASD: W=跳 A=左 S=滑铲 D=右；保留方向键/Space 作为备选 */
+    /* WASD: W=跳 A=左 S=滑铲 D=右；J=攻击；保留方向键/Space/Z 作为备选 */
     bool jumpNow = keys[SDL_SCANCODE_W] || keys[SDL_SCANCODE_SPACE] ||
                    keys[SDL_SCANCODE_UP] || keys[SDL_SCANCODE_Z];
     bool slideNow = keys[SDL_SCANCODE_S] || keys[SDL_SCANCODE_DOWN];
+    bool attackNow = keys[SDL_SCANCODE_J];
 
     PlayerInput input = {
         .jumpPressed = jumpNow && !prevJump,
         .jumpHeld = jumpNow,
         .slidePressed = slideNow && !prevSlide,
         .slideHeld = slideNow,
+        .attackPressed = attackNow && !prevAttack,
         .moveLeft = keys[SDL_SCANCODE_A],
         .moveRight = keys[SDL_SCANCODE_D],
     };
 
     prevJump = jumpNow;
     prevSlide = slideNow;
+    prevAttack = attackNow;
 
     return input;
 }
