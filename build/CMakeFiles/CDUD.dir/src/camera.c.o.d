@@ -179,4 +179,5 @@ CMakeFiles/CDUD.dir/src/camera.c.o: \
  /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
  /usr/include/SDL2/SDL_misc.h \
- /usr/lib/gcc/x86_64-linux-gnu/14/include/stdbool.h
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/stdbool.h \
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/config.h

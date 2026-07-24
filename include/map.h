@@ -14,6 +14,7 @@ typedef struct cute_tiled_tileset_t CuteTiledTileset;
 typedef struct cute_tiled_tile_descriptor_t CuteTiledTileDescriptor;
 typedef struct cute_tiled_layer_t CuteTiledLayer;
 typedef struct cute_tiled_object_t CuteTiledObject;
+typedef struct cute_tiled_property_t CuteTiledProperty;
 
 typedef struct {
     char path[512];
@@ -45,4 +46,5 @@ void MapRenderAll(
     MapData *map, SDL_Renderer *renderer, double cameraX, double cameraY,
     int viewWidth, int viewHeight);
 
+bool MapIsCollisionByAttribute(MapData *mapData, int tileX, int tileY);
 #endif

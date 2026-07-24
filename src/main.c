@@ -1,7 +1,7 @@
 #include "camera.h"
 #include "config.h"
 #include "map.h"
-#include "utils.h"
+#include "player.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <stdbool.h>
@@ -52,6 +52,9 @@ int main(int argc, char *argv[]) {
     CameraInit(&camera, WINDOW_WIDTH, WINDOW_HEIGHT);
     CameraSetBounds(&camera, mapData.pixelWidth, mapData.pixelHeight);
 
+    Player player;
+    PlayerInit(&player);
+
     /* ── 全屏状态 ── */
     bool fullscreen = SDL_TRUE;
 
@@ -100,29 +103,16 @@ int main(int argc, char *argv[]) {
             }
         }
 
-        /* ── 相机移动（基于键盘状态，帧率无关） ── */
-        if (keys[SDL_SCANCODE_LEFT] || keys[SDL_SCANCODE_A]) {
-            CameraMove(&camera, (Vec2){ -CAMERA_SPEED * frameTime, 0 });
-        }
-        if (keys[SDL_SCANCODE_RIGHT] || keys[SDL_SCANCODE_D]) {
-            CameraMove(&camera, (Vec2){ CAMERA_SPEED * frameTime, 0 });
-        }
-        /* 原来没有上下移动，这里顺手补上 */
-        if (keys[SDL_SCANCODE_UP] || keys[SDL_SCANCODE_W]) {
-            CameraMove(&camera, (Vec2){ 0, -CAMERA_SPEED * frameTime });
-        }
-        if (keys[SDL_SCANCODE_DOWN] || keys[SDL_SCANCODE_S]) {
-            CameraMove(&camera, (Vec2){ 0, CAMERA_SPEED * frameTime });
-        }
-
+        CameraHandleInput(&camera, keys, frameTime);
         /* ── 相机更新：clamp + 震动（每帧调用一次） ── */
         CameraUpdate(&camera, frameTime);
 
         /* ── 固定步长更新 ── */
         accumulator += frameTime;
-        while (accumulator >= 1.0 / 60.0) {
-            /* 后续在这里更新物理/逻辑 */
-            accumulator -= 1.0 / 60.0;
+        while (accumulator >= FIXED_DT) {
+            PlayerInput input = PlayerPollInput(keys);
+            PlayerUpdate(&player, &mapData, &input, FIXED_DT);
+            accumulator -= FIXED_DT;
         }
 
         /* ── 渲染 ── */
@@ -133,6 +123,8 @@ int main(int argc, char *argv[]) {
         MapRenderAll(
             &mapData, renderer, camPos.x, camPos.y, WINDOW_WIDTH,
             WINDOW_HEIGHT);
+        PlayerRender(&player, renderer, camPos);
+        // PlayerRenderDebug(&player, renderer, camPos);  // 调试时取消注释
         // RenderDebugGrid(renderer, camPos.x, camPos.y);
 
         SDL_RenderPresent(renderer);

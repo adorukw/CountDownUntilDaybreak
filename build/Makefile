@@ -239,6 +239,30 @@ src/map.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/map.c.s
 .PHONY : src/map.c.s
 
+src/player.o: src/player.c.o
+.PHONY : src/player.o
+
+# target to build an object file
+src/player.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/player.c.o
+.PHONY : src/player.c.o
+
+src/player.i: src/player.c.i
+.PHONY : src/player.i
+
+# target to preprocess a source file
+src/player.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/player.c.i
+.PHONY : src/player.c.i
+
+src/player.s: src/player.c.s
+.PHONY : src/player.s
+
+# target to generate assembly for a file
+src/player.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/player.c.s
+.PHONY : src/player.c.s
+
 src/utils.o: src/utils.c.o
 .PHONY : src/utils.o
 
@@ -285,6 +309,9 @@ help:
 	@echo "... src/map.o"
 	@echo "... src/map.i"
 	@echo "... src/map.s"
+	@echo "... src/player.o"
+	@echo "... src/player.i"
+	@echo "... src/player.s"
 	@echo "... src/utils.o"
 	@echo "... src/utils.i"
 	@echo "... src/utils.s"

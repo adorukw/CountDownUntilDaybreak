@@ -10,6 +10,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/CDUD.dir/src/main.c.o.d"
   "CMakeFiles/CDUD.dir/src/map.c.o"
   "CMakeFiles/CDUD.dir/src/map.c.o.d"
+  "CMakeFiles/CDUD.dir/src/player.c.o"
+  "CMakeFiles/CDUD.dir/src/player.c.o.d"
   "CMakeFiles/CDUD.dir/src/utils.c.o"
   "CMakeFiles/CDUD.dir/src/utils.c.o.d"
 )

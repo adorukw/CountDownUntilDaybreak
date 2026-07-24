@@ -9,6 +9,7 @@ set(OLD_GLOB
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/map.c"
+  "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/utils.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

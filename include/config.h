@@ -11,5 +11,6 @@ static const double MAX_FRAME_TIME = 0.1;
 static const int TILE_SIZE = 16;
 
 static const double CAMERA_SPEED = 320.0;
+static const double CAMERA_AUTO_SCROLL_SPEED = 30.0;
 
 #endif

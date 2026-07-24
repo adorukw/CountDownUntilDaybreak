@@ -1,4 +1,5 @@
 #include "map.h"
+#include "config.h"
 #include "cute_tiled.h"
 #include <SDL2/SDL_image.h>
 #include <math.h>
@@ -292,6 +293,20 @@ int MapResolveGid(
             *outTileset = ctt;
             return (int)(gid - ctt->firstgid);
         }
+
+        /* 集合贴图（columns==0）的 tile ID 可能稀疏或超出 tilecount，
+         * 遍历所有 tile descriptor 按 firstgid + tile_index 匹配 */
+        if (ctt->columns == 0 && ctt->tiles) {
+            CuteTiledTileDescriptor *td = ctt->tiles;
+            while (td) {
+                if (gid == (unsigned int)(ctt->firstgid + td->tile_index)) {
+                    *outTileset = ctt;
+                    return td->tile_index;
+                }
+                td = td->next;
+            }
+        }
+
         ctt = ctt->next;
     }
 
@@ -629,4 +644,130 @@ void MapRenderAll(
         RenderLayer(renderer, mapData, layer, cameraX, cameraY, viewWidth);
         layer = layer->next;
     }
+}
+
+/* ── 统一的碰撞检测：查所有图层的 collision 属性 ── */
+bool MapIsCollisionByAttribute(MapData *mapData, int tileX, int tileY) {
+    if (tileX < 0 || tileX >= mapData->mapWidth || tileY < 0 ||
+        tileY >= mapData->mapHeight) {
+        return true;
+    }
+
+    /* 要检测的 tile 的世界坐标矩形 */
+    SDL_Rect tileBox = { tileX * TILE_SIZE, tileY * TILE_SIZE, TILE_SIZE,
+                         TILE_SIZE };
+
+    CuteTiledLayer *layer = mapData->cuteTiledMap->layers;
+    while (layer) {
+        if (!layer->visible) {
+            layer = layer->next;
+            continue;
+        }
+
+        /* ── tile 层 ── */
+        if (layer->type.ptr && strcmp(layer->type.ptr, "tilelayer") == 0 &&
+            layer->data) {
+            int rawGid = layer->data[tileY * layer->width + tileX];
+            if (rawGid == 0) {
+                layer = layer->next;
+                continue;
+            }
+
+            int gid = cute_tiled_unset_flags(rawGid);
+            CuteTiledTileset *ts = NULL;
+            int localId = MapResolveGid(mapData, (unsigned int)gid, &ts);
+            if (localId < 0 || !ts) {
+                layer = layer->next;
+                continue;
+            }
+
+            CuteTiledTileDescriptor *td = ts->tiles;
+            while (td && td->tile_index != localId) {
+                td = td->next;
+            }
+            if (!td) {
+                layer = layer->next;
+                continue;
+            }
+
+            for (int i = 0; i < td->property_count; i++) {
+                CuteTiledProperty *prop = &td->properties[i];
+                if (prop->name.ptr &&
+                    strcmp(prop->name.ptr, "collision") == 0 &&
+                    prop->data.boolean) {
+                    return true;
+                }
+            }
+        }
+
+        /* ── 对象层 ── */
+        if (layer->type.ptr && strcmp(layer->type.ptr, "objectgroup") == 0) {
+            CuteTiledObject *obj = layer->objects;
+            while (obj) {
+                if (!obj->visible) {
+                    obj = obj->next;
+                    continue;
+                }
+
+                SDL_Rect objBox;
+                bool hasCollision = false;
+
+                if (obj->gid) {
+                    /* 贴图对象：查它用的 tile 有没有 collision 属性 */
+                    unsigned int rawGid = obj->gid;
+                    unsigned int cleanGid = cute_tiled_unset_flags(rawGid);
+
+                    CuteTiledTileset *ts = NULL;
+                    int localId = MapResolveGid(mapData, cleanGid, &ts);
+                    if (localId >= 0 && ts) {
+                        CuteTiledTileDescriptor *td = ts->tiles;
+                        while (td && td->tile_index != localId) {
+                            td = td->next;
+                        }
+                        if (td) {
+                            for (int i = 0; i < td->property_count; i++) {
+                                CuteTiledProperty *prop = &td->properties[i];
+                                if (prop->name.ptr &&
+                                    strcmp(prop->name.ptr, "collision") == 0 &&
+                                    prop->data.boolean) {
+                                    hasCollision = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    /* 对象实例上的 collision 属性覆盖 tile 属性 */
+                    for (int i = 0; i < obj->property_count; i++) {
+                        CuteTiledProperty *prop = &obj->properties[i];
+                        if (prop->name.ptr &&
+                            strcmp(prop->name.ptr, "collision") == 0) {
+                            hasCollision = prop->data.boolean;
+                            break;
+                        }
+                    }
+
+                    objBox =
+                        (SDL_Rect){ (int)obj->x, (int)(obj->y - obj->height),
+                                    (int)obj->width, (int)obj->height };
+                } else {
+                    /* 手画矩形：本身没有图片，直接当碰撞框 */
+                    hasCollision = true;
+                    objBox =
+                        (SDL_Rect){ (int)obj->x, (int)(obj->y - obj->height),
+                                    (int)obj->width, (int)obj->height };
+                }
+
+                if (hasCollision && SDL_HasIntersection(&tileBox, &objBox)) {
+                    return true;
+                }
+
+                obj = obj->next;
+            }
+        }
+
+        layer = layer->next;
+    }
+
+    return false;
 }
