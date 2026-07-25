@@ -103,7 +103,6 @@ CDUD
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles/CDUD.dir/src/ui.c.o
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles/CDUD.dir/src/utils.c.o
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles/CDUD.dir/src/vampire.c.o
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles/CDUD.dir/src/world_map.c.o
 
 CMakeFiles/CDUD.dir/src/animation.c.o
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/animation.c
@@ -976,16 +975,12 @@ CMakeFiles/CDUD.dir/src/clock.c.o
 
 CMakeFiles/CDUD.dir/src/collision.c.o
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/collision.c
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/animation.h
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/collision.h
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/config.h
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/cute_tiled.h
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/enemy.h
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/map.h
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/player.h
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/texture_cache.h
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/types.h
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/world_map.h
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
  /usr/include/SDL2/SDL_atomic.h
@@ -1486,7 +1481,6 @@ CMakeFiles/CDUD.dir/src/game_state.c.o
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/types.h
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/ui.h
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/vampire.h
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/world_map.h
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
  /usr/include/SDL2/SDL_atomic.h
@@ -1544,7 +1538,6 @@ CMakeFiles/CDUD.dir/src/game_state.c.o
  /usr/include/features-time64.h
  /usr/include/features.h
  /usr/include/inttypes.h
- /usr/include/limits.h
  /usr/include/math.h
  /usr/include/stdc-predef.h
  /usr/include/stdint.h
@@ -1657,7 +1650,6 @@ CMakeFiles/CDUD.dir/src/game_state.c.o
  /usr/lib/gcc/x86_64-linux-gnu/14/include/ia32intrin.h
  /usr/lib/gcc/x86_64-linux-gnu/14/include/immintrin.h
  /usr/lib/gcc/x86_64-linux-gnu/14/include/keylockerintrin.h
- /usr/lib/gcc/x86_64-linux-gnu/14/include/limits.h
  /usr/lib/gcc/x86_64-linux-gnu/14/include/lwpintrin.h
  /usr/lib/gcc/x86_64-linux-gnu/14/include/lzcntintrin.h
  /usr/lib/gcc/x86_64-linux-gnu/14/include/mm_malloc.h
@@ -1685,7 +1677,6 @@ CMakeFiles/CDUD.dir/src/game_state.c.o
  /usr/lib/gcc/x86_64-linux-gnu/14/include/stdbool.h
  /usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h
  /usr/lib/gcc/x86_64-linux-gnu/14/include/stdint.h
- /usr/lib/gcc/x86_64-linux-gnu/14/include/syslimits.h
  /usr/lib/gcc/x86_64-linux-gnu/14/include/tbmintrin.h
  /usr/lib/gcc/x86_64-linux-gnu/14/include/tmmintrin.h
  /usr/lib/gcc/x86_64-linux-gnu/14/include/tsxldtrkintrin.h
@@ -1721,7 +1712,6 @@ CMakeFiles/CDUD.dir/src/main.c.o
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/types.h
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/ui.h
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/vampire.h
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/world_map.h
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
  /usr/include/SDL2/SDL_atomic.h
@@ -2380,13 +2370,11 @@ CMakeFiles/CDUD.dir/src/player.c.o
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player.c
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/animation.h
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/collision.h
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/enemy.h
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/map.h
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/player.h
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/player_anim.h
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/texture_cache.h
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/types.h
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/world_map.h
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
  /usr/include/SDL2/SDL_atomic.h

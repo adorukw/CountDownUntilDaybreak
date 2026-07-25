@@ -31,7 +31,7 @@ void PlayerInit(Player *player) {
 
     /* ── 先调这套参数，之后按手感改 ── */
     player->gravity = 980.0;      // 像素/秒²
-    player->jumpSpeed = -420.0;   // 向上跳的初速度
+    player->jumpSpeed = -350.0;   // 向上跳的初速度
     player->runSpeed = 120.0;     // 水平移动速度
     player->maxFallSpeed = 600.0; // 最大下落速度
 
