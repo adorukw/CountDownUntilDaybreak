@@ -2,7 +2,6 @@
 #define VAMPIRE_H
 
 #include "camera.h"
-#include "collision.h"
 #include "player.h"
 #include <SDL2/SDL.h>
 #include <stdbool.h>

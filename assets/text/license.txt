@@ -1,0 +1,17 @@
+Track Name: No More Magic
+Artist: HorrorPenAsset
+Source: https://opengameart.org/content/no-more-magic
+Licence: CC-BY 3.0 (Creative Commons Attribution 3.0 Unported)
+
+Music: NES Shooter Music (5 tracks, 3 jingles)
+Source: https://opengameart.org/content/nes-shooter-music-5-tracks-3-jingles
+License: CC0 1.0 Universal
+
+Asset: Vampire Huntress - Animated pixel character
+Author: ImogiaGames
+Source URL: https://opengameart.org/content/vampire-huntress-animated-pixel-character
+License: OGA-BY 3.0
+
+Asset: castle platformer
+Author：Jetrel
+Source：https://opengameart.org/content/castle-platformer

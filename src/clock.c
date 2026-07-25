@@ -8,7 +8,7 @@
 #endif
 
 /* 表盘几何参数 */
-static const int CLOCK_CENTER_X_OFFSET = 36;   /* 圆心距右边的偏移 */
+static const int CLOCK_CENTER_X_OFFSET = 36; /* 圆心距右边的偏移 */
 static const int CLOCK_CENTER_Y = 36;
 static const int CLOCK_RADIUS = 24;
 
@@ -23,7 +23,8 @@ static void DrawThickLine(
     double dx = x2 - x1;
     double dy = y2 - y1;
     double len = sqrt(dx * dx + dy * dy);
-    if (len < 1e-6) return;
+    if (len < 1e-6)
+        return;
     double nx = -dy / len;
     double ny = dx / len;
     int half = thickness / 2;
@@ -37,8 +38,8 @@ static void DrawThickLine(
 /* ── 内部工具：画表盘指针 ──
  * angleDeg: 时钟角度，12 点方向 = 0°，顺时针增加 */
 static void DrawHand(
-    SDL_Renderer *renderer, int cx, int cy,
-    double angleDeg, int len, int thickness) {
+    SDL_Renderer *renderer, int cx, int cy, double angleDeg, int len,
+    int thickness) {
     double rad = (angleDeg - 90.0) * M_PI / 180.0;
     int x2 = cx + (int)(cos(rad) * len);
     int y2 = cy + (int)(sin(rad) * len);
@@ -46,8 +47,7 @@ static void DrawHand(
 }
 
 /* ── 内部工具：用多个水平线段填充圆（SDL2 没原生填充圆） ── */
-static void FillCircle(
-    SDL_Renderer *renderer, int cx, int cy, int r) {
+static void FillCircle(SDL_Renderer *renderer, int cx, int cy, int r) {
     for (int y = -r; y <= r; y++) {
         int dx = (int)(sqrt((double)(r * r - y * y)));
         SDL_RenderDrawLine(renderer, cx - dx, cy + y, cx + dx, cy + y);
@@ -55,8 +55,7 @@ static void FillCircle(
 }
 
 /* ── 内部工具：画圆轮廓 ── */
-static void DrawCircle(
-    SDL_Renderer *renderer, int cx, int cy, int r) {
+static void DrawCircle(SDL_Renderer *renderer, int cx, int cy, int r) {
     /* 用 64 段折线近似 */
     const int SEG = 64;
     int prevX = cx + r, prevY = cy;
@@ -65,17 +64,20 @@ static void DrawCircle(
         int x = cx + (int)(cos(a) * r);
         int y = cy + (int)(sin(a) * r);
         SDL_RenderDrawLine(renderer, prevX, prevY, x, y);
-        prevX = x; prevY = y;
+        prevX = x;
+        prevY = y;
     }
 }
 
 /* ── 内部工具：TTF 文字渲染（居中） ── */
 static void DrawTextCentered(
-    SDL_Renderer *renderer, TTF_Font *font, const char *text,
-    int centerX, int y, SDL_Color color) {
-    if (!font || !text) return;
+    SDL_Renderer *renderer, TTF_Font *font, const char *text, int centerX,
+    int y, SDL_Color color) {
+    if (!font || !text)
+        return;
     SDL_Surface *surf = TTF_RenderText_Solid(font, text, color);
-    if (!surf) return;
+    if (!surf)
+        return;
     SDL_Texture *tex = SDL_CreateTextureFromSurface(renderer, surf);
     if (tex) {
         SDL_Rect dst = { centerX - surf->w / 2, y, surf->w, surf->h };
@@ -88,9 +90,7 @@ static void DrawTextCentered(
 /* ════════════════════════════════════════════════════════════
  * 生命周期
  * ════════════════════════════════════════════════════════════ */
-void GameClockReset(GameClock *c) {
-    c->elapsedSeconds = 0.0;
-}
+void GameClockReset(GameClock *c) { c->elapsedSeconds = 0.0; }
 
 void GameClockUpdate(GameClock *c, double dt) {
     /* 1 现实秒 = 1 游戏分钟 → dt 现实秒 = dt 游戏分钟 */
@@ -107,22 +107,27 @@ bool GameClockIsDaybreak(const GameClock *c) {
 
 double GameClockProgress(const GameClock *c) {
     double p = c->elapsedSeconds / (CLOCK_TOTAL_REAL_SECONDS * 60.0);
-    if (p < 0.0) p = 0.0;
-    if (p > 1.0) p = 1.0;
+    if (p < 0.0)
+        p = 0.0;
+    if (p > 1.0)
+        p = 1.0;
     return p;
 }
 
 void GameClockGetTime(const GameClock *c, int *outHour, int *outMinute) {
     /* elapsedSeconds 单位为"游戏分钟" */
     int totalMinutes = (int)(c->elapsedSeconds);
-    if (outHour)   *outHour = totalMinutes / 60;
-    if (outMinute) *outMinute = totalMinutes % 60;
+    if (outHour)
+        *outHour = totalMinutes / 60;
+    if (outMinute)
+        *outMinute = totalMinutes % 60;
 }
 
 double GameClockRemainingSeconds(const GameClock *c) {
     double totalGameMinutes = CLOCK_TOTAL_REAL_SECONDS * 60.0;
     double remaining = totalGameMinutes - c->elapsedSeconds;
-    if (remaining < 0.0) remaining = 0.0;
+    if (remaining < 0.0)
+        remaining = 0.0;
     /* 游戏分钟 → 现实秒：1 现实秒 = 1 游戏分钟 */
     return remaining / 60.0;
 }
@@ -170,7 +175,7 @@ void GameClockRender(
     /* ── 计算时分秒 ── */
     int hour, minute;
     GameClockGetTime(c, &hour, &minute);
-    int second = (int)(c->elapsedSeconds) % 60;  /* 游戏秒，秒针跳动 */
+    int second = (int)(c->elapsedSeconds) % 60; /* 游戏秒，秒针跳动 */
 
     /* 时针：每小时 30°，每分钟额外 0.5° */
     double hourAngle = (hour % 12) * 30.0 + minute * 0.5;
@@ -179,10 +184,11 @@ void GameClockRender(
     /* 秒针：每秒 6°（跳动，不平滑） */
     double secondAngle = second * 6.0;
 
-    /* 时针：短粗黑 */
-    SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);
-    DrawHand(renderer, cx, cy, hourAngle, CLOCK_RADIUS - 12, 3);
-    /* 分针：中长黑 */
+    /* 时针：深灰 */
+    SDL_SetRenderDrawColor(renderer, 50, 50, 50, 255);
+    DrawHand(renderer, cx, cy, hourAngle, CLOCK_RADIUS - 12, 4);
+    /* 分针：黑色 */
+    SDL_SetRenderDrawColor(renderer, 20, 20, 20, 255);
     DrawHand(renderer, cx, cy, minuteAngle, CLOCK_RADIUS - 6, 2);
     /* 秒针：细红长 */
     SDL_SetRenderDrawColor(renderer, 220, 50, 60, 255);

@@ -20,6 +20,8 @@ bool GameContextInit(GameContext *ctx, SDL_Renderer *renderer) {
     ctx->mouseX = 0;
     ctx->mouseY = 0;
     ctx->mouseClicked = false;
+    ctx->menuShowLicense = false;
+    ctx->licenseBackRequested = false;
 
     UIFontsLoad(&ctx->fonts);
 
@@ -64,6 +66,8 @@ void GameEnterMenu(GameContext *ctx) {
     CameraSetPosition(&ctx->camera, (Vec2){ 0, 0 });
     ctx->state = GAME_STATE_MENU;
     ctx->menuSelection = 0;
+    ctx->menuShowLicense = false;
+    ctx->licenseBackRequested = false;
     AudioPlayBgm(AUDIO_BGM_MENU);
 }
 
@@ -259,19 +263,33 @@ void GameRender(GameContext *ctx) {
     /* ── UI 叠加 ── */
     switch (ctx->state) {
     case GAME_STATE_MENU: {
-        int hovered = -1;
-        int clicked = UIRenderMenu(
-            ctx->renderer, &ctx->fonts, w, h,
-            ctx->menuSelection, ctx->mouseX, ctx->mouseY,
-            ctx->mouseClicked, &hovered);
-        if (hovered >= 0) {
-            ctx->menuSelection = hovered;  /* 鼠标悬停同步选中 */
-        }
-        if (clicked >= 0) {
-            if (clicked == 0) {
-                GameStartFadeOut(ctx, FADE_TARGET_PLAYING, FADE_DURATION);
-            } else {
-                ctx->quitRequested = true;
+        /* 若显示 License 面板，则不渲染主菜单按钮（避免冲突） */
+        if (ctx->menuShowLicense) {
+            UIRenderLicense(
+                ctx->renderer, &ctx->fonts, w, h, ctx->licenseBackRequested);
+            /* 消费一次返回请求 */
+            ctx->licenseBackRequested = false;
+        } else {
+            int hovered = -1;
+            int clicked = UIRenderMenu(
+                ctx->renderer, &ctx->fonts, w, h,
+                ctx->menuSelection, ctx->mouseX, ctx->mouseY,
+                ctx->mouseClicked, &hovered);
+            if (hovered >= 0) {
+                ctx->menuSelection = hovered;  /* 鼠标悬停同步选中 */
+            }
+            if (clicked >= 0) {
+                switch (clicked) {
+                case 0:  /* Start Game */
+                    GameStartFadeOut(ctx, FADE_TARGET_PLAYING, FADE_DURATION);
+                    break;
+                case 1:  /* Asset License */
+                    ctx->menuShowLicense = true;
+                    break;
+                case 2:  /* Exit Game */
+                    ctx->quitRequested = true;
+                    break;
+                }
             }
         }
         break;
@@ -341,23 +359,45 @@ bool GameHandleEvent(GameContext *ctx, const SDL_Event *event) {
 
     switch (ctx->state) {
     case GAME_STATE_MENU: {
+        /* License 面板显示中：Esc/J/Backspace 返回主菜单 */
+        if (ctx->menuShowLicense) {
+            if (event->type == SDL_KEYDOWN) {
+                switch (event->key.keysym.sym) {
+                case SDLK_ESCAPE:
+                case SDLK_j:
+                case SDLK_RETURN:
+                case SDLK_SPACE:
+                case SDLK_BACKSPACE:
+                    ctx->menuShowLicense = false;
+                    ctx->licenseBackRequested = false; /* 防止残留 */
+                    break;
+                }
+            }
+            break;
+        }
         if (event->type == SDL_KEYDOWN) {
             switch (event->key.keysym.sym) {
             case SDLK_w:
             case SDLK_UP:
-                ctx->menuSelection = (ctx->menuSelection - 1 + 2) % 2;
+                ctx->menuSelection = (ctx->menuSelection - 1 + 3) % 3;
                 break;
             case SDLK_s:
             case SDLK_DOWN:
-                ctx->menuSelection = (ctx->menuSelection + 1) % 2;
+                ctx->menuSelection = (ctx->menuSelection + 1) % 3;
                 break;
             case SDLK_j:
             case SDLK_RETURN:
             case SDLK_SPACE:
-                if (ctx->menuSelection == 0) {
+                switch (ctx->menuSelection) {
+                case 0:  /* Start Game */
                     GameStartFadeOut(ctx, FADE_TARGET_PLAYING, FADE_DURATION);
-                } else {
+                    break;
+                case 1:  /* Asset License */
+                    ctx->menuShowLicense = true;
+                    break;
+                case 2:  /* Exit Game */
                     ctx->quitRequested = true;
+                    break;
                 }
                 break;
             }

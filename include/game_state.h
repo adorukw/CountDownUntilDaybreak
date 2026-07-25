@@ -52,6 +52,10 @@ typedef struct {
     /* ── 退出请求（UI 点击退出按钮或键盘选中退出） ── */
     bool quitRequested;
 
+    /* ── 菜单子状态：是否显示 License 面板 ── */
+    bool menuShowLicense;
+    bool licenseBackRequested;  /* 事件中请求返回，渲染中消费 */
+
     /* ── 子系统 ── */
     MapData menuMap;      /* 主菜单背景地图 */
     MapData startMap;     /* 游戏关卡地图 */

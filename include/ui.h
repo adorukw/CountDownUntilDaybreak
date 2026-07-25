@@ -46,6 +46,13 @@ int UIRenderPause(
     int pauseSelection, int mouseX, int mouseY, bool mouseClicked,
     int *outHovered);
 
+/* ── License 面板 ──
+ * 全屏深色面板，展示 assets/text/license.txt 的内容。
+ * 返回值：0=用户按 Esc/J 返回（关闭面板），-1=未触发。 */
+int UIRenderLicense(
+    SDL_Renderer *renderer, const UIFonts *fonts, int width, int height,
+    bool backRequested);
+
 /* ── 过渡淡入淡出遮罩 ──
  * alpha: 0~255，0=完全透明，255=完全黑 */
 void UIRenderFade(

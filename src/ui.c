@@ -1,5 +1,8 @@
 #include "ui.h"
 
+#include <stdio.h>
+#include <string.h>
+
 static void DrawText(
     SDL_Renderer *renderer, TTF_Font *font, const char *text, int x, int y,
     SDL_Color color, bool centered) {
@@ -160,11 +163,56 @@ int UIRenderMenu(
             height / 2 - 100, titleColor, true);
     }
 
-    const char *labels[] = { "Start Game", "Exit Game" };
-    const int N = 2;
+    /* ── 左侧：背景故事面板 ── */
+    if (fonts->helpFont) {
+        const int storyX = 16;
+        const int storyY = 60;
+        const int storyW = width / 4 - 24;  /* 与按钮 centerX 的左半部分对齐 */
+
+        /* 半透明深色背景框 */
+        SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 140);
+        SDL_Rect storyBg = { storyX - 6, storyY - 6, storyW + 12, 150 };
+        SDL_RenderFillRect(renderer, &storyBg);
+        SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
+
+        SDL_Color yellow = { 255, 220, 80, 255 };
+        SDL_Color light = { 220, 220, 220, 255 };
+
+        DrawText(renderer, fonts->menuFontDim, "BACKSTORY",
+            storyX, storyY, yellow, false);
+
+        const char *story[] = {
+            "You break into Dracula's castle.",
+            "He's not happy.",
+            "",
+            "The Count stalks you in the dark—",
+            "one touch, you're dead.",
+            "Bats, traps, his minions—all hunting you.",
+            "",
+            "One weakness: sunlight.",
+            "",
+            "It's midnight. Sunrise is 6 minutes",
+            "away (real time; 6 hours in-game).",
+            "Run, jump, slide, fight.",
+            "",
+            "Survive till 6 AM.",
+            "When dawn breaks, Dracula burns to ash.",
+            "And you live.",
+        };
+        const int N = sizeof(story) / sizeof(story[0]);
+        for (int i = 0; i < N; i++) {
+            DrawText(renderer, fonts->hintFont, story[i],
+                storyX, storyY + 22 + i * 8, light, false);
+        }
+    }
+
+    /* ── 中部：菜单按钮（3 项） ── */
+    const char *labels[] = { "Start Game", "Asset License", "Exit Game" };
+    const int N = 3;
     const int centerX = width / 4; /* 左 1/4 处居中 */
     const int startY = height / 2 - 20;
-    const int spacing = 38;
+    const int spacing = 32;
 
     SDL_Rect hitboxes[N];
     int hovered = -1;
@@ -172,10 +220,6 @@ int UIRenderMenu(
     for (int i = 0; i < N; i++) {
         bool sel = (i == menuSelection);
         bool hov = false;
-        /* 先用一个临时 hitbox 检测，但 DrawButton 内部已计算 hitbox。
-         * 这里先用 dim 字体算一次 hitbox 范围（与最终选中的 hitbox 接近）。
-         * 为简单起见，绘制后用返回的 hitbox 做命中检测，
-         * 命中则用 hovered 字体重绘。 */
         hitboxes[i] = DrawButton(
             renderer, fonts->menuFontSel, fonts->menuFontDim, labels[i],
             centerX, startY + i * spacing, sel, false);
@@ -187,8 +231,6 @@ int UIRenderMenu(
                 *outHovered = i;
         }
 
-        /* 如果悬停但非选中，重绘一次以应用悬停样式（覆盖之前的渲染）。
-         * 用 SDL_RenderCopy 覆盖即可（不透明文字）。 */
         if (hov && !sel) {
             DrawButton(
                 renderer, fonts->menuFontSel, fonts->menuFontDim, labels[i],
@@ -312,4 +354,67 @@ void UIRenderFade(SDL_Renderer *renderer, int width, int height, Uint8 alpha) {
     SDL_Rect overlay = { 0, 0, width, height };
     SDL_RenderFillRect(renderer, &overlay);
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
+}
+
+/* ════════════════════════════════════════════════════════════
+ * License 面板
+ * ════════════════════════════════════════════════════════════ */
+int UIRenderLicense(
+    SDL_Renderer *renderer, const UIFonts *fonts, int width, int height,
+    bool backRequested) {
+
+    /* 全屏深色面板 */
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+    SDL_SetRenderDrawColor(renderer, 10, 10, 30, 230);
+    SDL_Rect bg = { 0, 0, width, height };
+    SDL_RenderFillRect(renderer, &bg);
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
+
+    /* 标题 */
+    if (fonts->titleFont) {
+        SDL_Color yellow = { 255, 220, 80, 255 };
+        DrawText(renderer, fonts->titleFont, "ASSET LICENSE",
+            width / 2, 20, yellow, true);
+    }
+
+    /* 读取 license.txt 逐行渲染 */
+    FILE *fp = fopen("assets/text/license.txt", "r");
+    if (fp) {
+        char line[256];
+        int y = 70;
+        const int lineHeight = 14;
+        SDL_Color light = { 220, 220, 220, 255 };
+        while (fgets(line, sizeof(line), fp) != NULL) {
+            /* 去掉末尾换行 */
+            size_t len = strlen(line);
+            while (len > 0 && (line[len - 1] == '\n' || line[len - 1] == '\r')) {
+                line[--len] = '\0';
+            }
+            if (len > 0 && fonts->hintFont) {
+                DrawText(renderer, fonts->hintFont, line,
+                    20, y, light, false);
+            }
+            y += lineHeight;
+            /* 超出视口底部就停止（避免溢出） */
+            if (y > height - 30) break;
+        }
+        fclose(fp);
+    } else {
+        if (fonts->hintFont) {
+            SDL_Color red = { 230, 80, 80, 255 };
+            DrawText(renderer, fonts->hintFont,
+                "Failed to load assets/text/license.txt",
+                20, 70, red, false);
+        }
+    }
+
+    /* 底部返回提示 */
+    if (fonts->hintFont) {
+        SDL_Color gray = { 200, 200, 200, 255 };
+        DrawText(renderer, fonts->hintFont,
+            "Press Esc or J to go back",
+            width / 2, height - 20, gray, true);
+    }
+
+    return backRequested ? 0 : -1;
 }
