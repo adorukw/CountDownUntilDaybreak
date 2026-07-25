@@ -52,9 +52,16 @@ typedef struct {
     /* ── 退出请求（UI 点击退出按钮或键盘选中退出） ── */
     bool quitRequested;
 
-    /* ── 菜单子状态：是否显示 License 面板 ── */
+    /* ── 菜单子状态：全屏文本面板 ── */
     bool menuShowLicense;
     bool licenseBackRequested;  /* 事件中请求返回，渲染中消费 */
+    bool menuShowBackstory;
+    bool menuShowHelp;
+    bool backstoryBackRequested;
+    bool helpBackRequested;
+    int licenseScroll;     /* 各面板当前滚动行偏移 */
+    int backstoryScroll;
+    int helpScroll;
 
     /* ── 子系统 ── */
     MapData menuMap;      /* 主菜单背景地图 */

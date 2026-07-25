@@ -46,12 +46,26 @@ int UIRenderPause(
     int pauseSelection, int mouseX, int mouseY, bool mouseClicked,
     int *outHovered);
 
-/* ── License 面板 ──
- * 全屏深色面板，展示 assets/text/license.txt 的内容。
- * 返回值：0=用户按 Esc/J 返回（关闭面板），-1=未触发。 */
+/* ── 可复用文本面板 ──
+ * 全屏深色面板，读取 filepath 指定的 txt 内容逐行渲染，
+ * title 为面板标题。scrollOffset 为跳过的行数（滚动位置），
+ * backRequested 为事件层请求返回信号。
+ * 返回值：0=用户要求返回，-1=未触发。 */
+int UIRenderTextPanel(
+    SDL_Renderer *renderer, const UIFonts *fonts, int width, int height,
+    const char *title, const char *filepath,
+    int scrollOffset, bool backRequested);
+
+/* ── 三个具体面板的快捷包装 ── */
 int UIRenderLicense(
     SDL_Renderer *renderer, const UIFonts *fonts, int width, int height,
-    bool backRequested);
+    int scrollOffset, bool backRequested);
+int UIRenderBackstory(
+    SDL_Renderer *renderer, const UIFonts *fonts, int width, int height,
+    int scrollOffset, bool backRequested);
+int UIRenderHelp(
+    SDL_Renderer *renderer, const UIFonts *fonts, int width, int height,
+    int scrollOffset, bool backRequested);
 
 /* ── 过渡淡入淡出遮罩 ──
  * alpha: 0~255，0=完全透明，255=完全黑 */

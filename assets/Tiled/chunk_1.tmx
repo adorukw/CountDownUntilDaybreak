@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="16" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="78">
+ <editorsettings>
+  <export target="../maps/start.tmj" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" source="props.tsx"/>
+ <tileset firstgid="28" source="tiles.tsx"/>
+ <imagelayer id="3" name="mount_lake" offsetx="0" offsety="-12" parallaxx="0.8" repeatx="1">
+  <image source="../images/backgrounds/mount_lake.png" width="256" height="300"/>
+ </imagelayer>
+ <imagelayer id="4" name="moon" offsetx="256" offsety="32" parallaxx="0.1">
+  <image source="../images/backgrounds/moon.png" width="35" height="249"/>
+ </imagelayer>
+ <objectgroup id="11" name="props">
+  <object id="73" gid="2147483668" x="112" y="144" width="32" height="32"/>
+  <object id="74" gid="7" x="144" y="288" width="64" height="112"/>
+  <object id="75" gid="2" x="208" y="144" width="48" height="21"/>
+  <object id="76" gid="27" x="16" y="160" width="16" height="16"/>
+  <object id="77" gid="27" x="64" y="160" width="16" height="16"/>
+ </objectgroup>
+ <layer id="10" name="main" width="16" height="18">
+  <data encoding="base64" compression="zlib">
+   eJxTZmBgUMGCVRmIA8qj+hlkGRgcsGEijRjRABp+WLEckfqxxR+xcTiqf2D1AwAhgBAN
+  </data>
+ </layer>
+</map>

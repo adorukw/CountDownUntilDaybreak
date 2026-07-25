@@ -159,60 +159,21 @@ int UIRenderMenu(
     if (fonts->titleFont) {
         SDL_Color titleColor = { 255, 220, 80, 255 }; // 亮黄色
         DrawText(
-            renderer, fonts->titleFont, "Count Down", width / 2,
+            renderer, fonts->titleFont, "Count Down: Until Daybreak", width / 2,
             height / 2 - 100, titleColor, true);
     }
 
-    /* ── 左侧：背景故事面板 ── */
-    if (fonts->helpFont) {
-        const int storyX = 16;
-        const int storyY = 60;
-        const int storyW = width / 4 - 24;  /* 与按钮 centerX 的左半部分对齐 */
 
-        /* 半透明深色背景框 */
-        SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 140);
-        SDL_Rect storyBg = { storyX - 6, storyY - 6, storyW + 12, 150 };
-        SDL_RenderFillRect(renderer, &storyBg);
-        SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
 
-        SDL_Color yellow = { 255, 220, 80, 255 };
-        SDL_Color light = { 220, 220, 220, 255 };
-
-        DrawText(renderer, fonts->menuFontDim, "BACKSTORY",
-            storyX, storyY, yellow, false);
-
-        const char *story[] = {
-            "You break into Dracula's castle.",
-            "He's not happy.",
-            "",
-            "The Count stalks you in the dark—",
-            "one touch, you're dead.",
-            "Bats, traps, his minions—all hunting you.",
-            "",
-            "One weakness: sunlight.",
-            "",
-            "It's midnight. Sunrise is 6 minutes",
-            "away (real time; 6 hours in-game).",
-            "Run, jump, slide, fight.",
-            "",
-            "Survive till 6 AM.",
-            "When dawn breaks, Dracula burns to ash.",
-            "And you live.",
-        };
-        const int N = sizeof(story) / sizeof(story[0]);
-        for (int i = 0; i < N; i++) {
-            DrawText(renderer, fonts->hintFont, story[i],
-                storyX, storyY + 22 + i * 8, light, false);
-        }
-    }
-
-    /* ── 中部：菜单按钮（3 项） ── */
-    const char *labels[] = { "Start Game", "Asset License", "Exit Game" };
-    const int N = 3;
-    const int centerX = width / 4; /* 左 1/4 处居中 */
+    /* ── 中部：菜单按钮（5 项） ── */
+    const char *labels[] = {
+        "Start Game", "Backstory", "Help",
+        "Asset License", "Exit Game"
+    };
+    const int N = 5;
+    const int centerX = width / 2;
     const int startY = height / 2 - 20;
-    const int spacing = 32;
+    const int spacing = 28;
 
     SDL_Rect hitboxes[N];
     int hovered = -1;
@@ -238,35 +199,7 @@ int UIRenderMenu(
         }
     }
 
-    /* ── 右侧：Help 说明 ── */
-    if (fonts->helpFont) {
-        const int helpX = width / 2 + 20;
-        const int helpY = 120;
-        SDL_Color white = { 240, 240, 240, 255 };
-        SDL_Color yellow = { 255, 220, 80, 255 };
-        SDL_Color gray = { 180, 180, 180, 255 };
 
-        DrawText(
-            renderer, fonts->helpFont, "HELP", helpX, helpY, yellow, false);
-
-        const char *helps[] = {
-            "Move       :  A / D", "Jump       :  W / Space",
-            "Attack     :  J",     "Pause      :  Esc",
-            "Restart    :  R",     "Fullscreen :  F11",
-        };
-        const int M = sizeof(helps) / sizeof(helps[0]);
-        for (int i = 0; i < M; i++) {
-            DrawText(
-                renderer, fonts->helpFont, helps[i], helpX, helpY + 15 + i * 10,
-                white, false);
-        }
-
-        /* 底部小提示 */
-        DrawText(
-            renderer, fonts->hintFont,
-            "Mouse / Up Down to select, J or Click to confirm", helpX-80,
-            helpY + 15 + M * 10 + 10, gray, false);
-    }
 
     /* ── 点击检测 ── */
     if (mouseClicked && hovered >= 0) {
@@ -357,11 +290,12 @@ void UIRenderFade(SDL_Renderer *renderer, int width, int height, Uint8 alpha) {
 }
 
 /* ════════════════════════════════════════════════════════════
- * License 面板
+ * 可复用文本面板（支持滚动）
  * ════════════════════════════════════════════════════════════ */
-int UIRenderLicense(
+int UIRenderTextPanel(
     SDL_Renderer *renderer, const UIFonts *fonts, int width, int height,
-    bool backRequested) {
+    const char *title, const char *filepath,
+    int scrollOffset, bool backRequested) {
 
     /* 全屏深色面板 */
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
@@ -371,50 +305,122 @@ int UIRenderLicense(
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
 
     /* 标题 */
-    if (fonts->titleFont) {
+    if (title && fonts->titleFont) {
         SDL_Color yellow = { 255, 220, 80, 255 };
-        DrawText(renderer, fonts->titleFont, "ASSET LICENSE",
+        DrawText(renderer, fonts->titleFont, title,
             width / 2, 20, yellow, true);
     }
 
-    /* 读取 license.txt 逐行渲染 */
-    FILE *fp = fopen("assets/text/license.txt", "r");
-    if (fp) {
-        char line[256];
-        int y = 70;
-        const int lineHeight = 14;
-        SDL_Color light = { 220, 220, 220, 255 };
-        while (fgets(line, sizeof(line), fp) != NULL) {
-            /* 去掉末尾换行 */
-            size_t len = strlen(line);
-            while (len > 0 && (line[len - 1] == '\n' || line[len - 1] == '\r')) {
-                line[--len] = '\0';
+    /* 滚动指示器颜色 */
+    SDL_Color dim = { 140, 140, 160, 255 };
+
+    /* ── 第一遍：数总行数 ── */
+    int totalLines = 0;
+    if (filepath) {
+        FILE *fp = fopen(filepath, "r");
+        if (fp) {
+            char line[256];
+            while (fgets(line, sizeof(line), fp) != NULL) {
+                totalLines++;
             }
-            if (len > 0 && fonts->hintFont) {
-                DrawText(renderer, fonts->hintFont, line,
-                    20, y, light, false);
-            }
-            y += lineHeight;
-            /* 超出视口底部就停止（避免溢出） */
-            if (y > height - 30) break;
-        }
-        fclose(fp);
-    } else {
-        if (fonts->hintFont) {
-            SDL_Color red = { 230, 80, 80, 255 };
-            DrawText(renderer, fonts->hintFont,
-                "Failed to load assets/text/license.txt",
-                20, 70, red, false);
+            fclose(fp);
         }
     }
 
-    /* 底部返回提示 */
+    /* ── 第二遍：从 scrollOffset 开始渲染 ── */
+    bool moreBelow = false;
+    if (filepath) {
+        FILE *fp = fopen(filepath, "r");
+        if (fp) {
+            char line[256];
+            int y = 70;
+            const int lineHeight = 14;
+            SDL_Color light = { 220, 220, 220, 255 };
+            int lineIndex = 0;
+
+            while (fgets(line, sizeof(line), fp) != NULL) {
+                size_t len = strlen(line);
+                while (len > 0 && (line[len - 1] == '\n' || line[len - 1] == '\r')) {
+                    line[--len] = '\0';
+                }
+
+                if (lineIndex >= scrollOffset) {
+                    if (len > 0 && fonts->hintFont) {
+                        DrawText(renderer, fonts->hintFont, line,
+                            20, y, light, false);
+                    } else if (len == 0) {
+                        y += lineHeight / 2;
+                    }
+                    y += lineHeight;
+                    if (y > height - 30) {
+                        moreBelow = true;
+                        break;
+                    }
+                }
+                lineIndex++;
+            }
+            fclose(fp);
+        } else {
+            if (fonts->hintFont) {
+                SDL_Color red = { 230, 80, 80, 255 };
+                char errMsg[280];
+                snprintf(errMsg, sizeof(errMsg),
+                    "Failed to load: %s", filepath);
+                DrawText(renderer, fonts->hintFont, errMsg,
+                    20, 70, red, false);
+            }
+        }
+    }
+
+    /* ── 滚动指示器 ── */
+    bool canScrollUp = (scrollOffset > 0);
+    bool canScrollDown = moreBelow;
+
+    if (canScrollUp && fonts->hintFont) {
+        DrawText(renderer, fonts->hintFont, "^",
+            width - 30, 70, dim, false);  /* ^ */
+    }
+    if (canScrollDown && fonts->hintFont) {
+        DrawText(renderer, fonts->hintFont, "v",
+            width - 30, height - 55, dim, false);  /* v */
+    }
+
+    /* 底部提示（含滚动提示） */
     if (fonts->hintFont) {
         SDL_Color gray = { 200, 200, 200, 255 };
-        DrawText(renderer, fonts->hintFont,
-            "Press Esc or J to go back",
+        const char *hint = (canScrollUp || canScrollDown)
+            ? ">< scroll  |  Esc/J back"
+            : "Esc/J to go back";
+        DrawText(renderer, fonts->hintFont, hint,
             width / 2, height - 20, gray, true);
     }
 
     return backRequested ? 0 : -1;
+}
+
+/* ════════════════════════════════════════════════════════════
+ * 三个具体面板的快捷包装
+ * ════════════════════════════════════════════════════════════ */
+int UIRenderLicense(
+    SDL_Renderer *renderer, const UIFonts *fonts, int width, int height,
+    int scrollOffset, bool backRequested) {
+    return UIRenderTextPanel(renderer, fonts, width, height,
+        "ASSET LICENSE", "assets/text/license.txt",
+        scrollOffset, backRequested);
+}
+
+int UIRenderBackstory(
+    SDL_Renderer *renderer, const UIFonts *fonts, int width, int height,
+    int scrollOffset, bool backRequested) {
+    return UIRenderTextPanel(renderer, fonts, width, height,
+        "BACKSTORY", "assets/text/backstory.txt",
+        scrollOffset, backRequested);
+}
+
+int UIRenderHelp(
+    SDL_Renderer *renderer, const UIFonts *fonts, int width, int height,
+    int scrollOffset, bool backRequested) {
+    return UIRenderTextPanel(renderer, fonts, width, height,
+        "HELP", "assets/text/help.txt",
+        scrollOffset, backRequested);
 }

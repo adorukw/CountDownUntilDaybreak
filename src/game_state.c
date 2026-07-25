@@ -22,6 +22,13 @@ bool GameContextInit(GameContext *ctx, SDL_Renderer *renderer) {
     ctx->mouseClicked = false;
     ctx->menuShowLicense = false;
     ctx->licenseBackRequested = false;
+    ctx->menuShowBackstory = false;
+    ctx->menuShowHelp = false;
+    ctx->backstoryBackRequested = false;
+    ctx->helpBackRequested = false;
+    ctx->licenseScroll = 0;
+    ctx->backstoryScroll = 0;
+    ctx->helpScroll = 0;
 
     UIFontsLoad(&ctx->fonts);
 
@@ -68,6 +75,13 @@ void GameEnterMenu(GameContext *ctx) {
     ctx->menuSelection = 0;
     ctx->menuShowLicense = false;
     ctx->licenseBackRequested = false;
+    ctx->menuShowBackstory = false;
+    ctx->menuShowHelp = false;
+    ctx->backstoryBackRequested = false;
+    ctx->helpBackRequested = false;
+    ctx->licenseScroll = 0;
+    ctx->backstoryScroll = 0;
+    ctx->helpScroll = 0;
     AudioPlayBgm(AUDIO_BGM_MENU);
 }
 
@@ -263,12 +277,22 @@ void GameRender(GameContext *ctx) {
     /* ── UI 叠加 ── */
     switch (ctx->state) {
     case GAME_STATE_MENU: {
-        /* 若显示 License 面板，则不渲染主菜单按钮（避免冲突） */
+        /* 全屏文本面板优先，不渲染主菜单按钮 */
         if (ctx->menuShowLicense) {
             UIRenderLicense(
-                ctx->renderer, &ctx->fonts, w, h, ctx->licenseBackRequested);
-            /* 消费一次返回请求 */
+                ctx->renderer, &ctx->fonts, w, h,
+                ctx->licenseScroll, ctx->licenseBackRequested);
             ctx->licenseBackRequested = false;
+        } else if (ctx->menuShowBackstory) {
+            UIRenderBackstory(
+                ctx->renderer, &ctx->fonts, w, h,
+                ctx->backstoryScroll, ctx->backstoryBackRequested);
+            ctx->backstoryBackRequested = false;
+        } else if (ctx->menuShowHelp) {
+            UIRenderHelp(
+                ctx->renderer, &ctx->fonts, w, h,
+                ctx->helpScroll, ctx->helpBackRequested);
+            ctx->helpBackRequested = false;
         } else {
             int hovered = -1;
             int clicked = UIRenderMenu(
@@ -276,17 +300,23 @@ void GameRender(GameContext *ctx) {
                 ctx->menuSelection, ctx->mouseX, ctx->mouseY,
                 ctx->mouseClicked, &hovered);
             if (hovered >= 0) {
-                ctx->menuSelection = hovered;  /* 鼠标悬停同步选中 */
+                ctx->menuSelection = hovered;
             }
             if (clicked >= 0) {
                 switch (clicked) {
                 case 0:  /* Start Game */
                     GameStartFadeOut(ctx, FADE_TARGET_PLAYING, FADE_DURATION);
                     break;
-                case 1:  /* Asset License */
+                case 1:  /* Backstory */
+                    ctx->menuShowBackstory = true;
+                    break;
+                case 2:  /* Help */
+                    ctx->menuShowHelp = true;
+                    break;
+                case 3:  /* Asset License */
                     ctx->menuShowLicense = true;
                     break;
-                case 2:  /* Exit Game */
+                case 4:  /* Exit Game */
                     ctx->quitRequested = true;
                     break;
                 }
@@ -359,7 +389,7 @@ bool GameHandleEvent(GameContext *ctx, const SDL_Event *event) {
 
     switch (ctx->state) {
     case GAME_STATE_MENU: {
-        /* License 面板显示中：Esc/J/Backspace 返回主菜单 */
+        /* ── 全屏文本面板（支持滚动与返回） ── */
         if (ctx->menuShowLicense) {
             if (event->type == SDL_KEYDOWN) {
                 switch (event->key.keysym.sym) {
@@ -369,7 +399,63 @@ bool GameHandleEvent(GameContext *ctx, const SDL_Event *event) {
                 case SDLK_SPACE:
                 case SDLK_BACKSPACE:
                     ctx->menuShowLicense = false;
-                    ctx->licenseBackRequested = false; /* 防止残留 */
+                    ctx->licenseBackRequested = false;
+                    break;
+                case SDLK_w:
+                case SDLK_UP:
+                    if (ctx->licenseScroll > 0) ctx->licenseScroll -= 3;
+                    break;
+                case SDLK_s:
+                case SDLK_DOWN:
+                    ctx->licenseScroll += 3;
+                    break;
+                }
+            }
+            break;
+        }
+        if (ctx->menuShowBackstory) {
+            if (event->type == SDL_KEYDOWN) {
+                switch (event->key.keysym.sym) {
+                case SDLK_ESCAPE:
+                case SDLK_j:
+                case SDLK_RETURN:
+                case SDLK_SPACE:
+                case SDLK_BACKSPACE:
+                    ctx->menuShowBackstory = false;
+                    ctx->backstoryBackRequested = false;
+                    ctx->backstoryScroll = 0;
+                    break;
+                case SDLK_w:
+                case SDLK_UP:
+                    if (ctx->backstoryScroll > 0) ctx->backstoryScroll -= 3;
+                    break;
+                case SDLK_s:
+                case SDLK_DOWN:
+                    ctx->backstoryScroll += 3;
+                    break;
+                }
+            }
+            break;
+        }
+        if (ctx->menuShowHelp) {
+            if (event->type == SDL_KEYDOWN) {
+                switch (event->key.keysym.sym) {
+                case SDLK_ESCAPE:
+                case SDLK_j:
+                case SDLK_RETURN:
+                case SDLK_SPACE:
+                case SDLK_BACKSPACE:
+                    ctx->menuShowHelp = false;
+                    ctx->helpBackRequested = false;
+                    ctx->helpScroll = 0;
+                    break;
+                case SDLK_w:
+                case SDLK_UP:
+                    if (ctx->helpScroll > 0) ctx->helpScroll -= 3;
+                    break;
+                case SDLK_s:
+                case SDLK_DOWN:
+                    ctx->helpScroll += 3;
                     break;
                 }
             }
@@ -379,11 +465,11 @@ bool GameHandleEvent(GameContext *ctx, const SDL_Event *event) {
             switch (event->key.keysym.sym) {
             case SDLK_w:
             case SDLK_UP:
-                ctx->menuSelection = (ctx->menuSelection - 1 + 3) % 3;
+                ctx->menuSelection = (ctx->menuSelection - 1 + 5) % 5;
                 break;
             case SDLK_s:
             case SDLK_DOWN:
-                ctx->menuSelection = (ctx->menuSelection + 1) % 3;
+                ctx->menuSelection = (ctx->menuSelection + 1) % 5;
                 break;
             case SDLK_j:
             case SDLK_RETURN:
@@ -392,10 +478,16 @@ bool GameHandleEvent(GameContext *ctx, const SDL_Event *event) {
                 case 0:  /* Start Game */
                     GameStartFadeOut(ctx, FADE_TARGET_PLAYING, FADE_DURATION);
                     break;
-                case 1:  /* Asset License */
+                case 1:  /* Backstory */
+                    ctx->menuShowBackstory = true;
+                    break;
+                case 2:  /* Help */
+                    ctx->menuShowHelp = true;
+                    break;
+                case 3:  /* Asset License */
                     ctx->menuShowLicense = true;
                     break;
-                case 2:  /* Exit Game */
+                case 4:  /* Exit Game */
                     ctx->quitRequested = true;
                     break;
                 }
