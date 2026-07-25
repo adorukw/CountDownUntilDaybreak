@@ -1,6 +1,10 @@
 CMakeFiles/CDUD.dir/src/main.c.o: \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c \
  /usr/include/stdc-predef.h \
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/config.h \
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/audio.h \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/stdbool.h \
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/game_state.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/camera.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/types.h \
  /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_main.h \
@@ -179,14 +183,13 @@ CMakeFiles/CDUD.dir/src/main.c.o: \
  /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
  /usr/include/SDL2/SDL_misc.h \
- /usr/lib/gcc/x86_64-linux-gnu/14/include/stdbool.h \
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/config.h \
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/damage.h \
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/enemy.h \
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/collision.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/map.h \
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/texture_cache.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/player.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/animation.h \
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/map.h \
- /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/player.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/player_anim.h \
- /usr/include/SDL2/SDL_image.h /usr/include/SDL2/SDL.h \
- /usr/include/SDL2/SDL_ttf.h
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/ui.h \
+ /usr/include/SDL2/SDL_ttf.h /usr/include/SDL2/SDL.h \
+ /usr/include/SDL2/SDL_image.h /usr/include/SDL2/SDL_mixer.h

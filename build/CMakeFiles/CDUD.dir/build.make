@@ -86,10 +86,24 @@ CMakeFiles/CDUD.dir/src/animation.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDUD.dir/src/animation.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/animation.c -o CMakeFiles/CDUD.dir/src/animation.c.s
 
+CMakeFiles/CDUD.dir/src/audio.c.o: CMakeFiles/CDUD.dir/flags.make
+CMakeFiles/CDUD.dir/src/audio.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/audio.c
+CMakeFiles/CDUD.dir/src/audio.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/CDUD.dir/src/audio.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/audio.c.o -MF CMakeFiles/CDUD.dir/src/audio.c.o.d -o CMakeFiles/CDUD.dir/src/audio.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/audio.c
+
+CMakeFiles/CDUD.dir/src/audio.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/CDUD.dir/src/audio.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/audio.c > CMakeFiles/CDUD.dir/src/audio.c.i
+
+CMakeFiles/CDUD.dir/src/audio.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDUD.dir/src/audio.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/audio.c -o CMakeFiles/CDUD.dir/src/audio.c.s
+
 CMakeFiles/CDUD.dir/src/camera.c.o: CMakeFiles/CDUD.dir/flags.make
 CMakeFiles/CDUD.dir/src/camera.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/camera.c
 CMakeFiles/CDUD.dir/src/camera.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/CDUD.dir/src/camera.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/CDUD.dir/src/camera.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/camera.c.o -MF CMakeFiles/CDUD.dir/src/camera.c.o.d -o CMakeFiles/CDUD.dir/src/camera.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/camera.c
 
 CMakeFiles/CDUD.dir/src/camera.c.i: cmake_force
@@ -103,7 +117,7 @@ CMakeFiles/CDUD.dir/src/camera.c.s: cmake_force
 CMakeFiles/CDUD.dir/src/collision.c.o: CMakeFiles/CDUD.dir/flags.make
 CMakeFiles/CDUD.dir/src/collision.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/collision.c
 CMakeFiles/CDUD.dir/src/collision.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/CDUD.dir/src/collision.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/CDUD.dir/src/collision.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/collision.c.o -MF CMakeFiles/CDUD.dir/src/collision.c.o.d -o CMakeFiles/CDUD.dir/src/collision.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/collision.c
 
 CMakeFiles/CDUD.dir/src/collision.c.i: cmake_force
@@ -117,7 +131,7 @@ CMakeFiles/CDUD.dir/src/collision.c.s: cmake_force
 CMakeFiles/CDUD.dir/src/config.c.o: CMakeFiles/CDUD.dir/flags.make
 CMakeFiles/CDUD.dir/src/config.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/config.c
 CMakeFiles/CDUD.dir/src/config.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/CDUD.dir/src/config.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/CDUD.dir/src/config.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/config.c.o -MF CMakeFiles/CDUD.dir/src/config.c.o.d -o CMakeFiles/CDUD.dir/src/config.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/config.c
 
 CMakeFiles/CDUD.dir/src/config.c.i: cmake_force
@@ -131,7 +145,7 @@ CMakeFiles/CDUD.dir/src/config.c.s: cmake_force
 CMakeFiles/CDUD.dir/src/cute_tiled.c.o: CMakeFiles/CDUD.dir/flags.make
 CMakeFiles/CDUD.dir/src/cute_tiled.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c
 CMakeFiles/CDUD.dir/src/cute_tiled.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/CDUD.dir/src/cute_tiled.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/CDUD.dir/src/cute_tiled.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/cute_tiled.c.o -MF CMakeFiles/CDUD.dir/src/cute_tiled.c.o.d -o CMakeFiles/CDUD.dir/src/cute_tiled.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c
 
 CMakeFiles/CDUD.dir/src/cute_tiled.c.i: cmake_force
@@ -142,24 +156,38 @@ CMakeFiles/CDUD.dir/src/cute_tiled.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDUD.dir/src/cute_tiled.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c -o CMakeFiles/CDUD.dir/src/cute_tiled.c.s
 
-CMakeFiles/CDUD.dir/src/damage.c.o: CMakeFiles/CDUD.dir/flags.make
-CMakeFiles/CDUD.dir/src/damage.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/damage.c
-CMakeFiles/CDUD.dir/src/damage.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/CDUD.dir/src/damage.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/damage.c.o -MF CMakeFiles/CDUD.dir/src/damage.c.o.d -o CMakeFiles/CDUD.dir/src/damage.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/damage.c
+CMakeFiles/CDUD.dir/src/enemy.c.o: CMakeFiles/CDUD.dir/flags.make
+CMakeFiles/CDUD.dir/src/enemy.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/enemy.c
+CMakeFiles/CDUD.dir/src/enemy.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/CDUD.dir/src/enemy.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/enemy.c.o -MF CMakeFiles/CDUD.dir/src/enemy.c.o.d -o CMakeFiles/CDUD.dir/src/enemy.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/enemy.c
 
-CMakeFiles/CDUD.dir/src/damage.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/CDUD.dir/src/damage.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/damage.c > CMakeFiles/CDUD.dir/src/damage.c.i
+CMakeFiles/CDUD.dir/src/enemy.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/CDUD.dir/src/enemy.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/enemy.c > CMakeFiles/CDUD.dir/src/enemy.c.i
 
-CMakeFiles/CDUD.dir/src/damage.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDUD.dir/src/damage.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/damage.c -o CMakeFiles/CDUD.dir/src/damage.c.s
+CMakeFiles/CDUD.dir/src/enemy.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDUD.dir/src/enemy.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/enemy.c -o CMakeFiles/CDUD.dir/src/enemy.c.s
+
+CMakeFiles/CDUD.dir/src/game_state.c.o: CMakeFiles/CDUD.dir/flags.make
+CMakeFiles/CDUD.dir/src/game_state.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/game_state.c
+CMakeFiles/CDUD.dir/src/game_state.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/CDUD.dir/src/game_state.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/game_state.c.o -MF CMakeFiles/CDUD.dir/src/game_state.c.o.d -o CMakeFiles/CDUD.dir/src/game_state.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/game_state.c
+
+CMakeFiles/CDUD.dir/src/game_state.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/CDUD.dir/src/game_state.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/game_state.c > CMakeFiles/CDUD.dir/src/game_state.c.i
+
+CMakeFiles/CDUD.dir/src/game_state.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDUD.dir/src/game_state.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/game_state.c -o CMakeFiles/CDUD.dir/src/game_state.c.s
 
 CMakeFiles/CDUD.dir/src/main.c.o: CMakeFiles/CDUD.dir/flags.make
 CMakeFiles/CDUD.dir/src/main.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c
 CMakeFiles/CDUD.dir/src/main.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/CDUD.dir/src/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/CDUD.dir/src/main.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/main.c.o -MF CMakeFiles/CDUD.dir/src/main.c.o.d -o CMakeFiles/CDUD.dir/src/main.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/main.c
 
 CMakeFiles/CDUD.dir/src/main.c.i: cmake_force
@@ -173,7 +201,7 @@ CMakeFiles/CDUD.dir/src/main.c.s: cmake_force
 CMakeFiles/CDUD.dir/src/map.c.o: CMakeFiles/CDUD.dir/flags.make
 CMakeFiles/CDUD.dir/src/map.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/map.c
 CMakeFiles/CDUD.dir/src/map.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/CDUD.dir/src/map.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/CDUD.dir/src/map.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/map.c.o -MF CMakeFiles/CDUD.dir/src/map.c.o.d -o CMakeFiles/CDUD.dir/src/map.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/map.c
 
 CMakeFiles/CDUD.dir/src/map.c.i: cmake_force
@@ -184,10 +212,24 @@ CMakeFiles/CDUD.dir/src/map.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDUD.dir/src/map.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/map.c -o CMakeFiles/CDUD.dir/src/map.c.s
 
+CMakeFiles/CDUD.dir/src/map_renderer.c.o: CMakeFiles/CDUD.dir/flags.make
+CMakeFiles/CDUD.dir/src/map_renderer.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/map_renderer.c
+CMakeFiles/CDUD.dir/src/map_renderer.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/CDUD.dir/src/map_renderer.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/map_renderer.c.o -MF CMakeFiles/CDUD.dir/src/map_renderer.c.o.d -o CMakeFiles/CDUD.dir/src/map_renderer.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/map_renderer.c
+
+CMakeFiles/CDUD.dir/src/map_renderer.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/CDUD.dir/src/map_renderer.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/map_renderer.c > CMakeFiles/CDUD.dir/src/map_renderer.c.i
+
+CMakeFiles/CDUD.dir/src/map_renderer.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDUD.dir/src/map_renderer.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/map_renderer.c -o CMakeFiles/CDUD.dir/src/map_renderer.c.s
+
 CMakeFiles/CDUD.dir/src/player.c.o: CMakeFiles/CDUD.dir/flags.make
 CMakeFiles/CDUD.dir/src/player.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player.c
 CMakeFiles/CDUD.dir/src/player.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/CDUD.dir/src/player.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/CDUD.dir/src/player.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/player.c.o -MF CMakeFiles/CDUD.dir/src/player.c.o.d -o CMakeFiles/CDUD.dir/src/player.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player.c
 
 CMakeFiles/CDUD.dir/src/player.c.i: cmake_force
@@ -201,7 +243,7 @@ CMakeFiles/CDUD.dir/src/player.c.s: cmake_force
 CMakeFiles/CDUD.dir/src/player_anim.c.o: CMakeFiles/CDUD.dir/flags.make
 CMakeFiles/CDUD.dir/src/player_anim.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_anim.c
 CMakeFiles/CDUD.dir/src/player_anim.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/CDUD.dir/src/player_anim.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/CDUD.dir/src/player_anim.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/player_anim.c.o -MF CMakeFiles/CDUD.dir/src/player_anim.c.o.d -o CMakeFiles/CDUD.dir/src/player_anim.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_anim.c
 
 CMakeFiles/CDUD.dir/src/player_anim.c.i: cmake_force
@@ -212,10 +254,66 @@ CMakeFiles/CDUD.dir/src/player_anim.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDUD.dir/src/player_anim.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_anim.c -o CMakeFiles/CDUD.dir/src/player_anim.c.s
 
+CMakeFiles/CDUD.dir/src/player_hud.c.o: CMakeFiles/CDUD.dir/flags.make
+CMakeFiles/CDUD.dir/src/player_hud.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_hud.c
+CMakeFiles/CDUD.dir/src/player_hud.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/CDUD.dir/src/player_hud.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/player_hud.c.o -MF CMakeFiles/CDUD.dir/src/player_hud.c.o.d -o CMakeFiles/CDUD.dir/src/player_hud.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_hud.c
+
+CMakeFiles/CDUD.dir/src/player_hud.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/CDUD.dir/src/player_hud.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_hud.c > CMakeFiles/CDUD.dir/src/player_hud.c.i
+
+CMakeFiles/CDUD.dir/src/player_hud.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDUD.dir/src/player_hud.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_hud.c -o CMakeFiles/CDUD.dir/src/player_hud.c.s
+
+CMakeFiles/CDUD.dir/src/player_render.c.o: CMakeFiles/CDUD.dir/flags.make
+CMakeFiles/CDUD.dir/src/player_render.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_render.c
+CMakeFiles/CDUD.dir/src/player_render.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/CDUD.dir/src/player_render.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/player_render.c.o -MF CMakeFiles/CDUD.dir/src/player_render.c.o.d -o CMakeFiles/CDUD.dir/src/player_render.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_render.c
+
+CMakeFiles/CDUD.dir/src/player_render.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/CDUD.dir/src/player_render.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_render.c > CMakeFiles/CDUD.dir/src/player_render.c.i
+
+CMakeFiles/CDUD.dir/src/player_render.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDUD.dir/src/player_render.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_render.c -o CMakeFiles/CDUD.dir/src/player_render.c.s
+
+CMakeFiles/CDUD.dir/src/texture_cache.c.o: CMakeFiles/CDUD.dir/flags.make
+CMakeFiles/CDUD.dir/src/texture_cache.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/texture_cache.c
+CMakeFiles/CDUD.dir/src/texture_cache.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/CDUD.dir/src/texture_cache.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/texture_cache.c.o -MF CMakeFiles/CDUD.dir/src/texture_cache.c.o.d -o CMakeFiles/CDUD.dir/src/texture_cache.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/texture_cache.c
+
+CMakeFiles/CDUD.dir/src/texture_cache.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/CDUD.dir/src/texture_cache.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/texture_cache.c > CMakeFiles/CDUD.dir/src/texture_cache.c.i
+
+CMakeFiles/CDUD.dir/src/texture_cache.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDUD.dir/src/texture_cache.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/texture_cache.c -o CMakeFiles/CDUD.dir/src/texture_cache.c.s
+
+CMakeFiles/CDUD.dir/src/ui.c.o: CMakeFiles/CDUD.dir/flags.make
+CMakeFiles/CDUD.dir/src/ui.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/ui.c
+CMakeFiles/CDUD.dir/src/ui.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/CDUD.dir/src/ui.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/ui.c.o -MF CMakeFiles/CDUD.dir/src/ui.c.o.d -o CMakeFiles/CDUD.dir/src/ui.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/ui.c
+
+CMakeFiles/CDUD.dir/src/ui.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/CDUD.dir/src/ui.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/ui.c > CMakeFiles/CDUD.dir/src/ui.c.i
+
+CMakeFiles/CDUD.dir/src/ui.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDUD.dir/src/ui.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/ui.c -o CMakeFiles/CDUD.dir/src/ui.c.s
+
 CMakeFiles/CDUD.dir/src/utils.c.o: CMakeFiles/CDUD.dir/flags.make
 CMakeFiles/CDUD.dir/src/utils.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/utils.c
 CMakeFiles/CDUD.dir/src/utils.c.o: CMakeFiles/CDUD.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/CDUD.dir/src/utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/CDUD.dir/src/utils.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDUD.dir/src/utils.c.o -MF CMakeFiles/CDUD.dir/src/utils.c.o.d -o CMakeFiles/CDUD.dir/src/utils.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/utils.c
 
 CMakeFiles/CDUD.dir/src/utils.c.i: cmake_force
@@ -229,30 +327,44 @@ CMakeFiles/CDUD.dir/src/utils.c.s: cmake_force
 # Object files for target CDUD
 CDUD_OBJECTS = \
 "CMakeFiles/CDUD.dir/src/animation.c.o" \
+"CMakeFiles/CDUD.dir/src/audio.c.o" \
 "CMakeFiles/CDUD.dir/src/camera.c.o" \
 "CMakeFiles/CDUD.dir/src/collision.c.o" \
 "CMakeFiles/CDUD.dir/src/config.c.o" \
 "CMakeFiles/CDUD.dir/src/cute_tiled.c.o" \
-"CMakeFiles/CDUD.dir/src/damage.c.o" \
+"CMakeFiles/CDUD.dir/src/enemy.c.o" \
+"CMakeFiles/CDUD.dir/src/game_state.c.o" \
 "CMakeFiles/CDUD.dir/src/main.c.o" \
 "CMakeFiles/CDUD.dir/src/map.c.o" \
+"CMakeFiles/CDUD.dir/src/map_renderer.c.o" \
 "CMakeFiles/CDUD.dir/src/player.c.o" \
 "CMakeFiles/CDUD.dir/src/player_anim.c.o" \
+"CMakeFiles/CDUD.dir/src/player_hud.c.o" \
+"CMakeFiles/CDUD.dir/src/player_render.c.o" \
+"CMakeFiles/CDUD.dir/src/texture_cache.c.o" \
+"CMakeFiles/CDUD.dir/src/ui.c.o" \
 "CMakeFiles/CDUD.dir/src/utils.c.o"
 
 # External object files for target CDUD
 CDUD_EXTERNAL_OBJECTS =
 
 CDUD: CMakeFiles/CDUD.dir/src/animation.c.o
+CDUD: CMakeFiles/CDUD.dir/src/audio.c.o
 CDUD: CMakeFiles/CDUD.dir/src/camera.c.o
 CDUD: CMakeFiles/CDUD.dir/src/collision.c.o
 CDUD: CMakeFiles/CDUD.dir/src/config.c.o
 CDUD: CMakeFiles/CDUD.dir/src/cute_tiled.c.o
-CDUD: CMakeFiles/CDUD.dir/src/damage.c.o
+CDUD: CMakeFiles/CDUD.dir/src/enemy.c.o
+CDUD: CMakeFiles/CDUD.dir/src/game_state.c.o
 CDUD: CMakeFiles/CDUD.dir/src/main.c.o
 CDUD: CMakeFiles/CDUD.dir/src/map.c.o
+CDUD: CMakeFiles/CDUD.dir/src/map_renderer.c.o
 CDUD: CMakeFiles/CDUD.dir/src/player.c.o
 CDUD: CMakeFiles/CDUD.dir/src/player_anim.c.o
+CDUD: CMakeFiles/CDUD.dir/src/player_hud.c.o
+CDUD: CMakeFiles/CDUD.dir/src/player_render.c.o
+CDUD: CMakeFiles/CDUD.dir/src/texture_cache.c.o
+CDUD: CMakeFiles/CDUD.dir/src/ui.c.o
 CDUD: CMakeFiles/CDUD.dir/src/utils.c.o
 CDUD: CMakeFiles/CDUD.dir/build.make
 CDUD: CMakeFiles/CDUD.dir/compiler_depend.ts
@@ -261,7 +373,7 @@ CDUD: /usr/lib/x86_64-linux-gnu/libSDL2_image.so
 CDUD: /usr/lib/x86_64-linux-gnu/libSDL2_mixer.so
 CDUD: /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so
 CDUD: CMakeFiles/CDUD.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking C executable CDUD"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking C executable CDUD"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CDUD.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

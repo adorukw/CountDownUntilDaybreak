@@ -2,10 +2,13 @@
 #define PLAYER_H
 
 #include "animation.h"
+#include "collision.h"
 #include "map.h"
 #include "types.h"
 #include <SDL2/SDL.h>
 #include <stdbool.h>
+
+#define PLAYER_ATTACK_DAMAGE 1
 
 typedef enum {
     PLAYER_IDLE,
@@ -43,6 +46,7 @@ typedef struct {
     double invincibleTimer;  // 无敌剩余时间（秒，>0 时不可受击）
     double blinkTimer;       // 闪烁相位计时器（秒，仅用于渲染）
     bool dead;               // 是否死亡
+    bool attackHasHit;       // 本次攻击是否已造成伤害（防多段）
 } Player;
 
 typedef struct {
@@ -74,4 +78,8 @@ void PlayerRenderHUD(const Player *player, SDL_Renderer *renderer);
 
 /* 重置玩家到初始状态（R 键重开用） */
 void PlayerReset(Player *player);
+
+/* 获取当前攻击判定 AABB（已按朝向镜像）。
+ * 仅在 PLAYER_ATTACK 状态下有效。 */
+AABB PlayerGetAttackAABB(const Player *player);
 #endif

@@ -3,15 +3,22 @@ CDUD: \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o \
   /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o \
   CMakeFiles/CDUD.dir/src/animation.c.o \
+  CMakeFiles/CDUD.dir/src/audio.c.o \
   CMakeFiles/CDUD.dir/src/camera.c.o \
   CMakeFiles/CDUD.dir/src/collision.c.o \
   CMakeFiles/CDUD.dir/src/config.c.o \
   CMakeFiles/CDUD.dir/src/cute_tiled.c.o \
-  CMakeFiles/CDUD.dir/src/damage.c.o \
+  CMakeFiles/CDUD.dir/src/enemy.c.o \
+  CMakeFiles/CDUD.dir/src/game_state.c.o \
   CMakeFiles/CDUD.dir/src/main.c.o \
   CMakeFiles/CDUD.dir/src/map.c.o \
+  CMakeFiles/CDUD.dir/src/map_renderer.c.o \
   CMakeFiles/CDUD.dir/src/player.c.o \
   CMakeFiles/CDUD.dir/src/player_anim.c.o \
+  CMakeFiles/CDUD.dir/src/player_hud.c.o \
+  CMakeFiles/CDUD.dir/src/player_render.c.o \
+  CMakeFiles/CDUD.dir/src/texture_cache.c.o \
+  CMakeFiles/CDUD.dir/src/ui.c.o \
   CMakeFiles/CDUD.dir/src/utils.c.o \
   /usr/lib/x86_64-linux-gnu/libSDL2.so \
   /usr/lib/x86_64-linux-gnu/libSDL2_image.so \
@@ -64,6 +71,11 @@ CDUD: \
   /lib/x86_64-linux-gnu/libtiff.so.6 \
   /lib/x86_64-linux-gnu/libwebpdemux.so.2 \
   /lib/x86_64-linux-gnu/libwebp.so.7 \
+  /lib/x86_64-linux-gnu/libxmp.so.4 \
+  /lib/x86_64-linux-gnu/libvorbisfile.so.3 \
+  /lib/x86_64-linux-gnu/libFLAC.so.14 \
+  /lib/x86_64-linux-gnu/libmpg123.so.0 \
+  /lib/x86_64-linux-gnu/libopusfile.so.0 \
   /lib/x86_64-linux-gnu/libfreetype.so.6 \
   /lib/x86_64-linux-gnu/libharfbuzz.so.0 \
   /lib64/ld-linux-x86-64.so.2 \
@@ -80,6 +92,9 @@ CDUD: \
   /lib/x86_64-linux-gnu/libjbig.so.0 \
   /lib/x86_64-linux-gnu/libdeflate.so.0 \
   /lib/x86_64-linux-gnu/libsharpyuv.so.0 \
+  /lib/x86_64-linux-gnu/libvorbis.so.0 \
+  /lib/x86_64-linux-gnu/libogg.so.0 \
+  /lib/x86_64-linux-gnu/libopus.so.0 \
   /lib/x86_64-linux-gnu/libbz2.so.1.0 \
   /lib/x86_64-linux-gnu/libbrotlidec.so.1 \
   /lib/x86_64-linux-gnu/libglib-2.0.so.0 \
@@ -95,12 +110,7 @@ CDUD: \
   /lib/x86_64-linux-gnu/libbrotlicommon.so.1 \
   /lib/x86_64-linux-gnu/libatomic.so.1 \
   /lib/x86_64-linux-gnu/libpcre2-8.so.0 \
-  /lib/x86_64-linux-gnu/libFLAC.so.14 \
-  /lib/x86_64-linux-gnu/libvorbis.so.0 \
   /lib/x86_64-linux-gnu/libvorbisenc.so.2 \
-  /lib/x86_64-linux-gnu/libopus.so.0 \
-  /lib/x86_64-linux-gnu/libogg.so.0 \
-  /lib/x86_64-linux-gnu/libmpg123.so.0 \
   /lib/x86_64-linux-gnu/libmp3lame.so.0 \
   /lib/x86_64-linux-gnu/libcap.so.2
 
@@ -112,6 +122,8 @@ CDUD: \
 
 CMakeFiles/CDUD.dir/src/animation.c.o:
 
+CMakeFiles/CDUD.dir/src/audio.c.o:
+
 CMakeFiles/CDUD.dir/src/camera.c.o:
 
 CMakeFiles/CDUD.dir/src/collision.c.o:
@@ -120,15 +132,27 @@ CMakeFiles/CDUD.dir/src/config.c.o:
 
 CMakeFiles/CDUD.dir/src/cute_tiled.c.o:
 
-CMakeFiles/CDUD.dir/src/damage.c.o:
+CMakeFiles/CDUD.dir/src/enemy.c.o:
+
+CMakeFiles/CDUD.dir/src/game_state.c.o:
 
 CMakeFiles/CDUD.dir/src/main.c.o:
 
 CMakeFiles/CDUD.dir/src/map.c.o:
 
+CMakeFiles/CDUD.dir/src/map_renderer.c.o:
+
 CMakeFiles/CDUD.dir/src/player.c.o:
 
 CMakeFiles/CDUD.dir/src/player_anim.c.o:
+
+CMakeFiles/CDUD.dir/src/player_hud.c.o:
+
+CMakeFiles/CDUD.dir/src/player_render.c.o:
+
+CMakeFiles/CDUD.dir/src/texture_cache.c.o:
+
+CMakeFiles/CDUD.dir/src/ui.c.o:
 
 CMakeFiles/CDUD.dir/src/utils.c.o:
 
@@ -234,6 +258,16 @@ CMakeFiles/CDUD.dir/src/utils.c.o:
 
 /lib/x86_64-linux-gnu/libwebp.so.7:
 
+/lib/x86_64-linux-gnu/libxmp.so.4:
+
+/lib/x86_64-linux-gnu/libvorbisfile.so.3:
+
+/lib/x86_64-linux-gnu/libFLAC.so.14:
+
+/lib/x86_64-linux-gnu/libmpg123.so.0:
+
+/lib/x86_64-linux-gnu/libopusfile.so.0:
+
 /lib/x86_64-linux-gnu/libfreetype.so.6:
 
 /lib/x86_64-linux-gnu/libharfbuzz.so.0:
@@ -266,6 +300,12 @@ CMakeFiles/CDUD.dir/src/utils.c.o:
 
 /lib/x86_64-linux-gnu/libsharpyuv.so.0:
 
+/lib/x86_64-linux-gnu/libvorbis.so.0:
+
+/lib/x86_64-linux-gnu/libogg.so.0:
+
+/lib/x86_64-linux-gnu/libopus.so.0:
+
 /lib/x86_64-linux-gnu/libbz2.so.1.0:
 
 /lib/x86_64-linux-gnu/libbrotlidec.so.1:
@@ -296,17 +336,7 @@ CMakeFiles/CDUD.dir/src/utils.c.o:
 
 /lib/x86_64-linux-gnu/libpcre2-8.so.0:
 
-/lib/x86_64-linux-gnu/libFLAC.so.14:
-
-/lib/x86_64-linux-gnu/libvorbis.so.0:
-
 /lib/x86_64-linux-gnu/libvorbisenc.so.2:
-
-/lib/x86_64-linux-gnu/libopus.so.0:
-
-/lib/x86_64-linux-gnu/libogg.so.0:
-
-/lib/x86_64-linux-gnu/libmpg123.so.0:
 
 /lib/x86_64-linux-gnu/libmp3lame.so.0:
 

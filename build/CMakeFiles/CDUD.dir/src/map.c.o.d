@@ -2,6 +2,7 @@ CMakeFiles/CDUD.dir/src/map.c.o: \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/map.c \
  /usr/include/stdc-predef.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/map.h \
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/texture_cache.h \
  /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_main.h \
  /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_config.h \
  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
@@ -180,4 +181,5 @@ CMakeFiles/CDUD.dir/src/map.c.o: \
  /usr/include/SDL2/SDL_misc.h \
  /usr/lib/gcc/x86_64-linux-gnu/14/include/stdbool.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/cute_tiled.h \
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/texture_cache.h \
  /usr/include/SDL2/SDL_image.h /usr/include/SDL2/SDL.h

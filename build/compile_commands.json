@@ -7,6 +7,12 @@
 },
 {
   "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
+  "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/audio.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/audio.c",
+  "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/audio.c",
+  "output": "CMakeFiles/CDUD.dir/src/audio.c.o"
+},
+{
+  "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
   "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/camera.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/camera.c",
   "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/camera.c",
   "output": "CMakeFiles/CDUD.dir/src/camera.c.o"
@@ -31,9 +37,15 @@
 },
 {
   "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
-  "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/damage.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/damage.c",
-  "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/damage.c",
-  "output": "CMakeFiles/CDUD.dir/src/damage.c.o"
+  "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/enemy.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/enemy.c",
+  "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/enemy.c",
+  "output": "CMakeFiles/CDUD.dir/src/enemy.c.o"
+},
+{
+  "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
+  "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/game_state.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/game_state.c",
+  "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/game_state.c",
+  "output": "CMakeFiles/CDUD.dir/src/game_state.c.o"
 },
 {
   "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
@@ -49,6 +61,12 @@
 },
 {
   "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
+  "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/map_renderer.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/map_renderer.c",
+  "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/map_renderer.c",
+  "output": "CMakeFiles/CDUD.dir/src/map_renderer.c.o"
+},
+{
+  "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
   "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/player.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player.c",
   "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player.c",
   "output": "CMakeFiles/CDUD.dir/src/player.c.o"
@@ -58,6 +76,30 @@
   "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/player_anim.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_anim.c",
   "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_anim.c",
   "output": "CMakeFiles/CDUD.dir/src/player_anim.c.o"
+},
+{
+  "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
+  "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/player_hud.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_hud.c",
+  "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_hud.c",
+  "output": "CMakeFiles/CDUD.dir/src/player_hud.c.o"
+},
+{
+  "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
+  "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/player_render.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_render.c",
+  "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player_render.c",
+  "output": "CMakeFiles/CDUD.dir/src/player_render.c.o"
+},
+{
+  "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
+  "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/texture_cache.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/texture_cache.c",
+  "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/texture_cache.c",
+  "output": "CMakeFiles/CDUD.dir/src/texture_cache.c.o"
+},
+{
+  "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
+  "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/ui.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/ui.c",
+  "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/ui.c",
+  "output": "CMakeFiles/CDUD.dir/src/ui.c.o"
 },
 {
   "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",

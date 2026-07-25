@@ -51,12 +51,24 @@
   </animation>
  </tile>
  <tile id="20">
+  <properties>
+   <property name="damage" type="int" value="1"/>
+   <property name="hp" type="int" value="1"/>
+  </properties>
   <image source="../images/characters/enemy/bat_idle2.png" width="32" height="32"/>
  </tile>
  <tile id="21">
+  <properties>
+   <property name="damage" type="int" value="1"/>
+   <property name="hp" type="int" value="1"/>
+  </properties>
   <image source="../images/characters/enemy/bat_idle3.png" width="32" height="32"/>
  </tile>
  <tile id="22">
+  <properties>
+   <property name="damage" type="int" value="1"/>
+   <property name="hp" type="int" value="1"/>
+  </properties>
   <image source="../images/characters/enemy/bat_idle4.png" width="32" height="32"/>
  </tile>
  <tile id="26">

@@ -40,12 +40,12 @@ static const FrameConfig playerSlideConfig[] = {
 };
 
 static const FrameConfig playerAttackConfig[] = {
-    { DIR "attack_1.png", 44, 62, -14, -37, 24, 33, 0.1 },
-    { DIR "attack_2.png", 44, 62, -14, -37, 24, 33, 0.1 },
-    { DIR "attack_3.png", 44, 62, -14, -37, 24, 33, 0.1 },
-    { DIR "attack_4.png", 44, 62, -14, -37, 24, 33, 0.1 },
-    { DIR "attack_5.png", 44, 62, -14, -37, 24, 33, 0.1 },
-    { DIR "attack_6.png", 44, 62, -14, -37, 24, 33, 0.1 },
+    { DIR "attack_1.png", 44, 62, -14, -37, 24, 33, 0.05 },
+    { DIR "attack_2.png", 44, 62, -14, -37, 24, 33, 0.05 },
+    { DIR "attack_3.png", 44, 62, -14, -37, 24, 33, 0.05 },
+    { DIR "attack_4.png", 44, 62, -14, -37, 24, 33, 0.05 },
+    { DIR "attack_5.png", 44, 62, -14, -37, 24, 33, 0.05 },
+    { DIR "attack_6.png", 44, 62, -14, -37, 24, 33, 0.05 },
 };
 
 #endif

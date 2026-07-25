@@ -167,6 +167,30 @@ src/animation.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/animation.c.s
 .PHONY : src/animation.c.s
 
+src/audio.o: src/audio.c.o
+.PHONY : src/audio.o
+
+# target to build an object file
+src/audio.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/audio.c.o
+.PHONY : src/audio.c.o
+
+src/audio.i: src/audio.c.i
+.PHONY : src/audio.i
+
+# target to preprocess a source file
+src/audio.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/audio.c.i
+.PHONY : src/audio.c.i
+
+src/audio.s: src/audio.c.s
+.PHONY : src/audio.s
+
+# target to generate assembly for a file
+src/audio.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/audio.c.s
+.PHONY : src/audio.c.s
+
 src/camera.o: src/camera.c.o
 .PHONY : src/camera.o
 
@@ -263,29 +287,53 @@ src/cute_tiled.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/cute_tiled.c.s
 .PHONY : src/cute_tiled.c.s
 
-src/damage.o: src/damage.c.o
-.PHONY : src/damage.o
+src/enemy.o: src/enemy.c.o
+.PHONY : src/enemy.o
 
 # target to build an object file
-src/damage.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/damage.c.o
-.PHONY : src/damage.c.o
+src/enemy.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/enemy.c.o
+.PHONY : src/enemy.c.o
 
-src/damage.i: src/damage.c.i
-.PHONY : src/damage.i
+src/enemy.i: src/enemy.c.i
+.PHONY : src/enemy.i
 
 # target to preprocess a source file
-src/damage.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/damage.c.i
-.PHONY : src/damage.c.i
+src/enemy.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/enemy.c.i
+.PHONY : src/enemy.c.i
 
-src/damage.s: src/damage.c.s
-.PHONY : src/damage.s
+src/enemy.s: src/enemy.c.s
+.PHONY : src/enemy.s
 
 # target to generate assembly for a file
-src/damage.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/damage.c.s
-.PHONY : src/damage.c.s
+src/enemy.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/enemy.c.s
+.PHONY : src/enemy.c.s
+
+src/game_state.o: src/game_state.c.o
+.PHONY : src/game_state.o
+
+# target to build an object file
+src/game_state.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/game_state.c.o
+.PHONY : src/game_state.c.o
+
+src/game_state.i: src/game_state.c.i
+.PHONY : src/game_state.i
+
+# target to preprocess a source file
+src/game_state.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/game_state.c.i
+.PHONY : src/game_state.c.i
+
+src/game_state.s: src/game_state.c.s
+.PHONY : src/game_state.s
+
+# target to generate assembly for a file
+src/game_state.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/game_state.c.s
+.PHONY : src/game_state.c.s
 
 src/main.o: src/main.c.o
 .PHONY : src/main.o
@@ -335,6 +383,30 @@ src/map.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/map.c.s
 .PHONY : src/map.c.s
 
+src/map_renderer.o: src/map_renderer.c.o
+.PHONY : src/map_renderer.o
+
+# target to build an object file
+src/map_renderer.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/map_renderer.c.o
+.PHONY : src/map_renderer.c.o
+
+src/map_renderer.i: src/map_renderer.c.i
+.PHONY : src/map_renderer.i
+
+# target to preprocess a source file
+src/map_renderer.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/map_renderer.c.i
+.PHONY : src/map_renderer.c.i
+
+src/map_renderer.s: src/map_renderer.c.s
+.PHONY : src/map_renderer.s
+
+# target to generate assembly for a file
+src/map_renderer.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/map_renderer.c.s
+.PHONY : src/map_renderer.c.s
+
 src/player.o: src/player.c.o
 .PHONY : src/player.o
 
@@ -383,6 +455,102 @@ src/player_anim.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/player_anim.c.s
 .PHONY : src/player_anim.c.s
 
+src/player_hud.o: src/player_hud.c.o
+.PHONY : src/player_hud.o
+
+# target to build an object file
+src/player_hud.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/player_hud.c.o
+.PHONY : src/player_hud.c.o
+
+src/player_hud.i: src/player_hud.c.i
+.PHONY : src/player_hud.i
+
+# target to preprocess a source file
+src/player_hud.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/player_hud.c.i
+.PHONY : src/player_hud.c.i
+
+src/player_hud.s: src/player_hud.c.s
+.PHONY : src/player_hud.s
+
+# target to generate assembly for a file
+src/player_hud.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/player_hud.c.s
+.PHONY : src/player_hud.c.s
+
+src/player_render.o: src/player_render.c.o
+.PHONY : src/player_render.o
+
+# target to build an object file
+src/player_render.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/player_render.c.o
+.PHONY : src/player_render.c.o
+
+src/player_render.i: src/player_render.c.i
+.PHONY : src/player_render.i
+
+# target to preprocess a source file
+src/player_render.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/player_render.c.i
+.PHONY : src/player_render.c.i
+
+src/player_render.s: src/player_render.c.s
+.PHONY : src/player_render.s
+
+# target to generate assembly for a file
+src/player_render.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/player_render.c.s
+.PHONY : src/player_render.c.s
+
+src/texture_cache.o: src/texture_cache.c.o
+.PHONY : src/texture_cache.o
+
+# target to build an object file
+src/texture_cache.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/texture_cache.c.o
+.PHONY : src/texture_cache.c.o
+
+src/texture_cache.i: src/texture_cache.c.i
+.PHONY : src/texture_cache.i
+
+# target to preprocess a source file
+src/texture_cache.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/texture_cache.c.i
+.PHONY : src/texture_cache.c.i
+
+src/texture_cache.s: src/texture_cache.c.s
+.PHONY : src/texture_cache.s
+
+# target to generate assembly for a file
+src/texture_cache.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/texture_cache.c.s
+.PHONY : src/texture_cache.c.s
+
+src/ui.o: src/ui.c.o
+.PHONY : src/ui.o
+
+# target to build an object file
+src/ui.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/ui.c.o
+.PHONY : src/ui.c.o
+
+src/ui.i: src/ui.c.i
+.PHONY : src/ui.i
+
+# target to preprocess a source file
+src/ui.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/ui.c.i
+.PHONY : src/ui.c.i
+
+src/ui.s: src/ui.c.s
+.PHONY : src/ui.s
+
+# target to generate assembly for a file
+src/ui.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/ui.c.s
+.PHONY : src/ui.c.s
+
 src/utils.o: src/utils.c.o
 .PHONY : src/utils.o
 
@@ -420,6 +588,9 @@ help:
 	@echo "... src/animation.o"
 	@echo "... src/animation.i"
 	@echo "... src/animation.s"
+	@echo "... src/audio.o"
+	@echo "... src/audio.i"
+	@echo "... src/audio.s"
 	@echo "... src/camera.o"
 	@echo "... src/camera.i"
 	@echo "... src/camera.s"
@@ -432,21 +603,39 @@ help:
 	@echo "... src/cute_tiled.o"
 	@echo "... src/cute_tiled.i"
 	@echo "... src/cute_tiled.s"
-	@echo "... src/damage.o"
-	@echo "... src/damage.i"
-	@echo "... src/damage.s"
+	@echo "... src/enemy.o"
+	@echo "... src/enemy.i"
+	@echo "... src/enemy.s"
+	@echo "... src/game_state.o"
+	@echo "... src/game_state.i"
+	@echo "... src/game_state.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
 	@echo "... src/map.o"
 	@echo "... src/map.i"
 	@echo "... src/map.s"
+	@echo "... src/map_renderer.o"
+	@echo "... src/map_renderer.i"
+	@echo "... src/map_renderer.s"
 	@echo "... src/player.o"
 	@echo "... src/player.i"
 	@echo "... src/player.s"
 	@echo "... src/player_anim.o"
 	@echo "... src/player_anim.i"
 	@echo "... src/player_anim.s"
+	@echo "... src/player_hud.o"
+	@echo "... src/player_hud.i"
+	@echo "... src/player_hud.s"
+	@echo "... src/player_render.o"
+	@echo "... src/player_render.i"
+	@echo "... src/player_render.s"
+	@echo "... src/texture_cache.o"
+	@echo "... src/texture_cache.i"
+	@echo "... src/texture_cache.s"
+	@echo "... src/ui.o"
+	@echo "... src/ui.i"
+	@echo "... src/ui.s"
 	@echo "... src/utils.o"
 	@echo "... src/utils.i"
 	@echo "... src/utils.s"

@@ -4,9 +4,6 @@
 #include <SDL_render.h>
 
 #define COYOTE_TIME 0.10
-#define PLAYER_MAX_HP 3
-#define INVINCIBLE_DURATION 1.5
-#define BLINK_HZ 8  // 闪烁频率（每秒闪 8 次）
 
 static const CollisionBox STATE_BOXES[] = {
     [PLAYER_IDLE]  = { -14, -42, 22, 38 },
@@ -46,20 +43,22 @@ void PlayerInit(Player *player) {
 
     player->facingRight = true;
 
-    player->hp = PLAYER_MAX_HP;
-    player->maxHp = PLAYER_MAX_HP;
+    player->hp = 3;
+    player->maxHp = 3;
     player->invincibleTimer = 0.0;
     player->blinkTimer = 0.0;
     player->dead = false;
+    player->attackHasHit = false;
 }
 
 static void
 PlayerHandleInput(Player *player, const PlayerInput *input, double deltaTime) {
-    /* ── 攻击触发：地面、非滑铲、非攻击中按下 J ──
-     * 进入 ATTACK 后立即 return，本帧不再处理任何其他输入。 */
-    if (input->attackPressed && player->onGround &&
+    /* ── 攻击触发：非滑铲、非攻击中按下 J ──
+     * 允许空中攻击；进入 ATTACK 后立即 return，本帧不再处理任何其他输入。 */
+    if (input->attackPressed &&
         player->state != PLAYER_SLIDE && player->state != PLAYER_ATTACK) {
         player->state = PLAYER_ATTACK;
+        player->attackHasHit = false;  /* 新攻击开始，重置命中标记 */
         return;
     }
 
@@ -130,9 +129,11 @@ void PlayerUpdate(
     /* ── 输入 ── */
     PlayerHandleInput(player, input, deltaTime);
 
-    /* ── 水平速度（WASD 自由移动；攻击中锁定） ── */
-    if (player->state == PLAYER_ATTACK) {
+    /* ── 水平速度（WASD 自由移动；地面攻击锁定，空中攻击保留惯性） ── */
+    if (player->state == PLAYER_ATTACK && player->onGround) {
         player->velocity.x = 0.0;
+    } else if (player->state == PLAYER_ATTACK && !player->onGround) {
+        /* 空中攻击：保留惯性滑行，不响应左右输入 */
     } else if (input->moveLeft) {
         player->velocity.x = -player->runSpeed;
         player->facingRight = false;
@@ -155,9 +156,6 @@ void PlayerUpdate(
         player->state = PLAYER_FALL;
     }
 
-    /* ════════════════════════════════════════════
-       ★ 变动①：动画推进 + 碰撞箱提取 移到移动前 ★
-       ════════════════════════════════════════════ */
     switch (player->state) {
     case PLAYER_IDLE:
         AnimatorPlay(&player->animator, &playerIdleAnimation);
@@ -235,40 +233,6 @@ void PlayerUpdate(
         }
     }
 }
-void PlayerRender(Player *player, SDL_Renderer *renderer, Vec2 cameraPos) {
-    /* 死亡后不渲染角色 */
-    if (player->dead) {
-        return;
-    }
-
-    /* 无敌期间 8Hz 硬开关闪烁：偶数相位不画 */
-    if (player->invincibleTimer > 0.0) {
-        int phase = (int)(player->blinkTimer * BLINK_HZ * 2) % 2;
-        if (phase == 1) {
-            return;
-        }
-    }
-
-    const AnimationFrame *frame = AnimatorGetCurrFrame(&player->animator);
-    if (!frame || !frame->texture) {
-        return;
-    }
-
-    int screenX = (int)(player->position.x - cameraPos.x);
-    int screenY = (int)(player->position.y - cameraPos.y) - frame->pivotY;
-
-    if (player->facingRight) {
-        screenX -= frame->pivotX;
-    } else {
-        screenX -= (frame->textureWidth - frame->pivotX);
-    }
-
-    SDL_Rect dst = { screenX, screenY, frame->textureWidth,
-                     frame->textureHeight };
-    SDL_RendererFlip flip =
-        player->facingRight ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
-    SDL_RenderCopyEx(renderer, frame->texture, NULL, &dst, 0, NULL, flip);
-}
 
 PlayerInput PlayerPollInput(const Uint8 *keys) {
     static bool prevJump = false;
@@ -296,72 +260,4 @@ PlayerInput PlayerPollInput(const Uint8 *keys) {
     prevAttack = attackNow;
 
     return input;
-}
-
-/* ─────────────────────────────────────────────
- * 受击 / 死亡 / HUD
- * ───────────────────────────────────────────── */
-
-bool PlayerTakeDamage(Player *player, int damage) {
-    /* 已死亡或无敌期 → 不扣血 */
-    if (player->dead || player->invincibleTimer > 0.0) {
-        return false;
-    }
-
-    player->hp -= damage;
-    player->invincibleTimer = INVINCIBLE_DURATION;
-    player->blinkTimer = 0.0;
-
-    if (player->hp <= 0) {
-        player->hp = 0;
-        player->dead = true;
-        player->invincibleTimer = 0.0;
-    }
-    return true;
-}
-
-/* 像素心点阵（5×5，每格 2px → 单颗心 10×10） */
-static const int HEART_PATTERN[5][5] = {
-    { 1, 1, 0, 1, 1 },
-    { 1, 1, 1, 1, 1 },
-    { 1, 1, 1, 1, 1 },
-    { 0, 1, 1, 1, 0 },
-    { 0, 0, 1, 0, 0 },
-};
-
-static void
-DrawHeart(SDL_Renderer *renderer, int x, int y, bool filled) {
-    /* 实心心：(220,40,50) 红色填充
-     * 空心心：(70,25,30) 暗色填充，表示已失去 */
-    Uint8 r = filled ? 220 : 70;
-    Uint8 g = filled ? 40 : 25;
-    Uint8 b = filled ? 50 : 30;
-    SDL_SetRenderDrawColor(renderer, r, g, b, 255);
-
-    const int PX = 2;  /* 每格像素大小 */
-    for (int row = 0; row < 5; row++) {
-        for (int col = 0; col < 5; col++) {
-            if (HEART_PATTERN[row][col]) {
-                SDL_Rect dot = { x + col * PX, y + row * PX, PX, PX };
-                SDL_RenderFillRect(renderer, &dot);
-            }
-        }
-    }
-}
-
-void PlayerRenderHUD(const Player *player, SDL_Renderer *renderer) {
-    /* 左上角，每颗心宽 10px + 间距 6px */
-    const int START_X = 12;
-    const int START_Y = 12;
-    const int SPACING = 16;
-
-    for (int i = 0; i < player->maxHp; i++) {
-        bool filled = (i < player->hp);
-        DrawHeart(renderer, START_X + i * SPACING, START_Y, filled);
-    }
-}
-
-void PlayerReset(Player *player) {
-    /* PlayerInit 会重置所有字段（位置、速度、状态、hp、无敌、死亡等） */
-    PlayerInit(player);
 }
