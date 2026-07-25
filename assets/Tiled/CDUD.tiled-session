@@ -1,5 +1,5 @@
 {
-    "activeFile": "menu.tmx",
+    "activeFile": "start.tmx",
     "automapping.whileDrawing": false,
     "expandedProjectPaths": [
     ],
@@ -51,6 +51,12 @@
                 "y": 127
             }
         },
+        "chunk_1.tmx#props": {
+            "scaleInDock": 1
+        },
+        "chunk_1.tmx#tiles": {
+            "scaleInDock": 1
+        },
         "chunk_2.tmx": {
             "expandedObjectLayers": [
                 11
@@ -61,6 +67,12 @@
                 "x": 186.33333333333334,
                 "y": 135.33333333333331
             }
+        },
+        "chunk_2.tmx#props": {
+            "scaleInDock": 1
+        },
+        "chunk_2.tmx#tiles": {
+            "scaleInDock": 1
         },
         "chunk_3.tmx": {
             "expandedObjectLayers": [
@@ -73,6 +85,12 @@
                 "y": 129.66666666666666
             }
         },
+        "chunk_3.tmx#props": {
+            "scaleInDock": 1
+        },
+        "chunk_3.tmx#tiles": {
+            "scaleInDock": 1
+        },
         "chunk_4.tmx": {
             "expandedObjectLayers": [
                 11
@@ -84,12 +102,18 @@
                 "y": 167
             }
         },
+        "chunk_4.tmx#props": {
+            "scaleInDock": 1
+        },
+        "chunk_4.tmx#tiles": {
+            "scaleInDock": 1
+        },
         "chunk_5.tmx": {
             "scale": 3,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 135,
-                "y": 153.66666666666669
+                "x": 161.33333333333334,
+                "y": 153
             }
         },
         "menu.tmx": {
@@ -117,11 +141,11 @@
             "expandedObjectLayers": [
                 6
             ],
-            "scale": 1.5,
-            "selectedLayer": 3,
+            "scale": 3,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 508,
-                "y": 166.66666666666663
+                "x": 207.66666666666669,
+                "y": 133.66666666666666
             }
         },
         "tiles.tsx": {
@@ -151,15 +175,15 @@
     "openFiles": [
         "tiles.tsx",
         "props.tsx",
-        "menu.tmx"
+        "start.tmx"
     ],
     "project": "CDUD.tiled-project",
     "property.type": "int",
     "recentFiles": [
         "tiles.tsx",
         "props.tsx",
-        "menu.tmx",
         "start.tmx",
+        "menu.tmx",
         "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmx",
         "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/assets/maps/start.tmj",
         "start",

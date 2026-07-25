@@ -101,7 +101,8 @@ CDUD: /lib/x86_64-linux-gnu/libFLAC.so.14 \
   CMakeFiles/CDUD.dir/src/texture_cache.c.o \
   CMakeFiles/CDUD.dir/src/ui.c.o \
   CMakeFiles/CDUD.dir/src/utils.c.o \
-  CMakeFiles/CDUD.dir/src/vampire.c.o
+  CMakeFiles/CDUD.dir/src/vampire.c.o \
+  CMakeFiles/CDUD.dir/src/world_map.c.o
 
 CMakeFiles/CDUD.dir/src/animation.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/animation.c \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/animation.h \
@@ -969,12 +970,16 @@ CMakeFiles/CDUD.dir/src/clock.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDa
   /usr/lib/gcc/x86_64-linux-gnu/14/include/xtestintrin.h
 
 CMakeFiles/CDUD.dir/src/collision.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/collision.c \
+  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/animation.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/collision.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/config.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/cute_tiled.h \
+  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/enemy.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/map.h \
+  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/player.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/texture_cache.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/types.h \
+  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/world_map.h \
   /usr/include/SDL2/SDL.h \
   /usr/include/SDL2/SDL_assert.h \
   /usr/include/SDL2/SDL_atomic.h \
@@ -1471,6 +1476,7 @@ CMakeFiles/CDUD.dir/src/game_state.c.o: /home/adorukw/AAAPAN/Project/CountDownUn
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/types.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/ui.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/vampire.h \
+  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/world_map.h \
   /usr/include/SDL2/SDL.h \
   /usr/include/SDL2/SDL_assert.h \
   /usr/include/SDL2/SDL_atomic.h \
@@ -1528,6 +1534,7 @@ CMakeFiles/CDUD.dir/src/game_state.c.o: /home/adorukw/AAAPAN/Project/CountDownUn
   /usr/include/features-time64.h \
   /usr/include/features.h \
   /usr/include/inttypes.h \
+  /usr/include/limits.h \
   /usr/include/math.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdint.h \
@@ -1640,6 +1647,7 @@ CMakeFiles/CDUD.dir/src/game_state.c.o: /home/adorukw/AAAPAN/Project/CountDownUn
   /usr/lib/gcc/x86_64-linux-gnu/14/include/ia32intrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/immintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/keylockerintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/lwpintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/lzcntintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/mm_malloc.h \
@@ -1667,6 +1675,7 @@ CMakeFiles/CDUD.dir/src/game_state.c.o: /home/adorukw/AAAPAN/Project/CountDownUn
   /usr/lib/gcc/x86_64-linux-gnu/14/include/stdbool.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/stdint.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/include/syslimits.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/tbmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/tmmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/include/tsxldtrkintrin.h \
@@ -1701,6 +1710,7 @@ CMakeFiles/CDUD.dir/src/main.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDay
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/types.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/ui.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/vampire.h \
+  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/world_map.h \
   /usr/include/SDL2/SDL.h \
   /usr/include/SDL2/SDL_assert.h \
   /usr/include/SDL2/SDL_atomic.h \
@@ -2356,11 +2366,13 @@ CMakeFiles/CDUD.dir/src/map_renderer.c.o: /home/adorukw/AAAPAN/Project/CountDown
 CMakeFiles/CDUD.dir/src/player.c.o: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/player.c \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/animation.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/collision.h \
+  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/enemy.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/map.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/player.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/player_anim.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/texture_cache.h \
   /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/types.h \
+  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/world_map.h \
   /usr/include/SDL2/SDL.h \
   /usr/include/SDL2/SDL_assert.h \
   /usr/include/SDL2/SDL_atomic.h \
@@ -4115,6 +4127,10 @@ CMakeFiles/CDUD.dir/src/vampire.c.o: /home/adorukw/AAAPAN/Project/CountDownUntil
 
 /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/map_renderer.c:
 
+/usr/lib/gcc/x86_64-linux-gnu/14/include/limits.h:
+
+/usr/include/limits.h:
+
 /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/vampire.h:
 
 /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/ui.h:
@@ -4125,11 +4141,11 @@ CMakeFiles/CDUD.dir/src/vampire.c.o: /home/adorukw/AAAPAN/Project/CountDownUntil
 
 /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/game_state.c:
 
-/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/enemy.h:
-
 /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c:
 
 /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/map.h:
+
+/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/enemy.h:
 
 /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/cute_tiled.h:
 
@@ -4221,6 +4237,10 @@ CMakeFiles/CDUD.dir/src/vampire.c.o: /home/adorukw/AAAPAN/Project/CountDownUntil
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/clzerointrin.h:
 
+/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/texture_cache.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/cldemoteintrin.h:
+
 /lib/x86_64-linux-gnu/libcap.so.2:
 
 /usr/include/SDL2/SDL_haptic.h:
@@ -4240,6 +4260,8 @@ CMakeFiles/CDUD.dir/src/vampire.c.o: /home/adorukw/AAAPAN/Project/CountDownUntil
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/14/include/syslimits.h:
 
 /usr/include/SDL2/SDL_audio.h:
 
@@ -4326,10 +4348,6 @@ CMakeFiles/CDUD.dir/src/utils.c.o:
 /usr/include/SDL2/SDL_metal.h:
 
 /lib/x86_64-linux-gnu/libffi.so.8:
-
-/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/texture_cache.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/14/include/cldemoteintrin.h:
 
 /lib/x86_64-linux-gnu/libXrandr.so.2:
 
@@ -4477,10 +4495,6 @@ CMakeFiles/CDUD.dir/src/clock.c.o:
 
 /lib/x86_64-linux-gnu/libXss.so.1:
 
-/usr/include/SDL2/SDL_locale.h:
-
-/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
-
 /lib/x86_64-linux-gnu/libXdmcp.so.6:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/shaintrin.h:
@@ -4573,6 +4587,10 @@ CMakeFiles/CDUD.dir/src/game_state.c.o:
 
 /usr/lib/gcc/x86_64-linux-gnu/14/include/avx512vbmivlintrin.h:
 
+/usr/include/SDL2/SDL_locale.h:
+
+/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
+
 /usr/include/SDL2/SDL_log.h:
 
 /usr/include/SDL2/SDL_main.h:
@@ -4615,6 +4633,8 @@ CMakeFiles/CDUD.dir/src/player.c.o:
 
 /usr/include/SDL2/SDL_surface.h:
 
+CMakeFiles/CDUD.dir/src/world_map.c.o:
+
 /usr/lib/gcc/x86_64-linux-gnu/14/include/avx2intrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
@@ -4644,6 +4664,8 @@ CMakeFiles/CDUD.dir/src/enemy.c.o:
 /usr/include/SDL2/SDL_version.h:
 
 /usr/include/SDL2/begin_code.h:
+
+/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/world_map.h:
 
 /usr/include/SDL2/close_code.h:
 
