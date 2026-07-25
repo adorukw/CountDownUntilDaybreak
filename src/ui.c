@@ -69,8 +69,8 @@ bool UIFontsLoad(UIFonts *fonts) {
     fonts->titleFont = TTF_OpenFont(path, 28);
     fonts->menuFontSel = TTF_OpenFont(path, 22);
     fonts->menuFontDim = TTF_OpenFont(path, 18);
-    fonts->helpFont = TTF_OpenFont(path, 16);
-    fonts->hintFont = TTF_OpenFont(path, 14);
+    fonts->helpFont = TTF_OpenFont(path, 10);
+    fonts->hintFont = TTF_OpenFont(path, 10);
     if (!fonts->titleFont || !fonts->menuFontSel || !fonts->menuFontDim ||
         !fonts->helpFont || !fonts->hintFont) {
         SDL_Log("警告：字体加载失败 — %s", TTF_GetError());
@@ -121,6 +121,12 @@ int UIRenderMenu(
     if (outHovered) {
         *outHovered = -1;
     }
+    if (fonts->titleFont) {
+        SDL_Color titleColor = { 255, 220, 80, 255 }; // 亮黄色
+        DrawText(
+            renderer, fonts->titleFont, "Count Down", width / 2,
+            height / 2 - 100, titleColor, true);
+    }
 
     const char *labels[] = { "Start Game", "Exit Game" };
     const int N = 2;
@@ -161,7 +167,7 @@ int UIRenderMenu(
     /* ── 右侧：Help 说明 ── */
     if (fonts->helpFont) {
         const int helpX = width / 2 + 20;
-        const int helpY = 40;
+        const int helpY = 120;
         SDL_Color white = { 240, 240, 240, 255 };
         SDL_Color yellow = { 255, 220, 80, 255 };
         SDL_Color gray = { 180, 180, 180, 255 };
@@ -177,15 +183,15 @@ int UIRenderMenu(
         const int M = sizeof(helps) / sizeof(helps[0]);
         for (int i = 0; i < M; i++) {
             DrawText(
-                renderer, fonts->helpFont, helps[i], helpX, helpY + 30 + i * 22,
+                renderer, fonts->helpFont, helps[i], helpX, helpY + 15 + i * 10,
                 white, false);
         }
 
         /* 底部小提示 */
         DrawText(
             renderer, fonts->hintFont,
-            "Mouse / Up Down to select, J or Click to confirm", helpX,
-            helpY + 30 + M * 22 + 10, gray, false);
+            "Mouse / Up Down to select, J or Click to confirm", helpX-80,
+            helpY + 15 + M * 10 + 10, gray, false);
     }
 
     /* ── 点击检测 ── */
