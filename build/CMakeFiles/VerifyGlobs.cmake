@@ -8,6 +8,7 @@ set(OLD_GLOB
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/animation.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/audio.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/camera.c"
+  "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/clock.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/collision.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/config.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c"
@@ -23,6 +24,7 @@ set(OLD_GLOB
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/texture_cache.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/ui.c"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/utils.c"
+  "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/vampire.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

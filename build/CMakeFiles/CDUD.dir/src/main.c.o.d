@@ -183,6 +183,8 @@ CMakeFiles/CDUD.dir/src/main.c.o: \
  /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
  /usr/include/SDL2/SDL_misc.h \
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/clock.h \
+ /usr/include/SDL2/SDL_ttf.h /usr/include/SDL2/SDL.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/enemy.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/collision.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/map.h \
@@ -191,5 +193,5 @@ CMakeFiles/CDUD.dir/src/main.c.o: \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/animation.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/player_anim.h \
  /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/ui.h \
- /usr/include/SDL2/SDL_ttf.h /usr/include/SDL2/SDL.h \
+ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include/vampire.h \
  /usr/include/SDL2/SDL_image.h /usr/include/SDL2/SDL_mixer.h

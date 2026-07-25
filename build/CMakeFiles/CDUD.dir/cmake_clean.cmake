@@ -8,6 +8,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/CDUD.dir/src/audio.c.o.d"
   "CMakeFiles/CDUD.dir/src/camera.c.o"
   "CMakeFiles/CDUD.dir/src/camera.c.o.d"
+  "CMakeFiles/CDUD.dir/src/clock.c.o"
+  "CMakeFiles/CDUD.dir/src/clock.c.o.d"
   "CMakeFiles/CDUD.dir/src/collision.c.o"
   "CMakeFiles/CDUD.dir/src/collision.c.o.d"
   "CMakeFiles/CDUD.dir/src/config.c.o"
@@ -38,6 +40,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/CDUD.dir/src/ui.c.o.d"
   "CMakeFiles/CDUD.dir/src/utils.c.o"
   "CMakeFiles/CDUD.dir/src/utils.c.o.d"
+  "CMakeFiles/CDUD.dir/src/vampire.c.o"
+  "CMakeFiles/CDUD.dir/src/vampire.c.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

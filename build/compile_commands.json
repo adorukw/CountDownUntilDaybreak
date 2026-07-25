@@ -19,6 +19,12 @@
 },
 {
   "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
+  "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/clock.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/clock.c",
+  "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/clock.c",
+  "output": "CMakeFiles/CDUD.dir/src/clock.c.o"
+},
+{
+  "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
   "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/collision.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/collision.c",
   "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/collision.c",
   "output": "CMakeFiles/CDUD.dir/src/collision.c.o"
@@ -106,5 +112,11 @@
   "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/utils.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/utils.c",
   "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/utils.c",
   "output": "CMakeFiles/CDUD.dir/src/utils.c.o"
+},
+{
+  "directory": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build",
+  "command": "/usr/bin/cc  -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c11 -Wall -Wextra -g -o CMakeFiles/CDUD.dir/src/vampire.c.o -c /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/vampire.c",
+  "file": "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/vampire.c",
+  "output": "CMakeFiles/CDUD.dir/src/vampire.c.o"
 }
 ]

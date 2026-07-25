@@ -113,6 +113,38 @@ void UIRenderGameOver(
     }
 }
 
+/* ════════════════════════════════════════════════════════════
+ * 胜利（日出）
+ * ════════════════════════════════════════════════════════════ */
+void UIRenderVictory(
+    SDL_Renderer *renderer, const UIFonts *fonts, int width, int height) {
+    /* 金色半透明遮罩，象征日出 */
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+    SDL_SetRenderDrawColor(renderer, 60, 40, 10, 140);
+    SDL_Rect overlay = { 0, 0, width, height };
+    SDL_RenderFillRect(renderer, &overlay);
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
+
+    if (fonts->titleFont) {
+        SDL_Color gold = { 255, 215, 80, 255 };
+        DrawText(
+            renderer, fonts->titleFont, "SUNRISE", width / 2,
+            height / 2 - 30, gold, true);
+    }
+    if (fonts->hintFont) {
+        SDL_Color lightGold = { 240, 220, 160, 255 };
+        DrawText(
+            renderer, fonts->hintFont, "You survived till 06:00 daybreak",
+            width / 2, height / 2 + 6, lightGold, true);
+    }
+    if (fonts->hintFont) {
+        SDL_Color gray = { 210, 210, 210, 255 };
+        DrawText(
+            renderer, fonts->hintFont, "Press R to Restart", width / 2,
+            height / 2 + 28, gray, true);
+    }
+}
+
 int UIRenderMenu(
     SDL_Renderer *renderer, const UIFonts *fonts, int width, int height,
     int menuSelection, int mouseX, int mouseY, bool mouseClicked,

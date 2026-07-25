@@ -215,6 +215,30 @@ src/camera.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/camera.c.s
 .PHONY : src/camera.c.s
 
+src/clock.o: src/clock.c.o
+.PHONY : src/clock.o
+
+# target to build an object file
+src/clock.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/clock.c.o
+.PHONY : src/clock.c.o
+
+src/clock.i: src/clock.c.i
+.PHONY : src/clock.i
+
+# target to preprocess a source file
+src/clock.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/clock.c.i
+.PHONY : src/clock.c.i
+
+src/clock.s: src/clock.c.s
+.PHONY : src/clock.s
+
+# target to generate assembly for a file
+src/clock.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/clock.c.s
+.PHONY : src/clock.c.s
+
 src/collision.o: src/collision.c.o
 .PHONY : src/collision.o
 
@@ -575,6 +599,30 @@ src/utils.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/utils.c.s
 .PHONY : src/utils.c.s
 
+src/vampire.o: src/vampire.c.o
+.PHONY : src/vampire.o
+
+# target to build an object file
+src/vampire.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/vampire.c.o
+.PHONY : src/vampire.c.o
+
+src/vampire.i: src/vampire.c.i
+.PHONY : src/vampire.i
+
+# target to preprocess a source file
+src/vampire.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/vampire.c.i
+.PHONY : src/vampire.c.i
+
+src/vampire.s: src/vampire.c.s
+.PHONY : src/vampire.s
+
+# target to generate assembly for a file
+src/vampire.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CDUD.dir/build.make CMakeFiles/CDUD.dir/src/vampire.c.s
+.PHONY : src/vampire.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -594,6 +642,9 @@ help:
 	@echo "... src/camera.o"
 	@echo "... src/camera.i"
 	@echo "... src/camera.s"
+	@echo "... src/clock.o"
+	@echo "... src/clock.i"
+	@echo "... src/clock.s"
 	@echo "... src/collision.o"
 	@echo "... src/collision.i"
 	@echo "... src/collision.s"
@@ -639,6 +690,9 @@ help:
 	@echo "... src/utils.o"
 	@echo "... src/utils.i"
 	@echo "... src/utils.s"
+	@echo "... src/vampire.o"
+	@echo "... src/vampire.i"
+	@echo "... src/vampire.s"
 .PHONY : help
 
 

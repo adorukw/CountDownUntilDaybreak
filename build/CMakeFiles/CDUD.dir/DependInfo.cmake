@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/animation.c" "CMakeFiles/CDUD.dir/src/animation.c.o" "gcc" "CMakeFiles/CDUD.dir/src/animation.c.o.d"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/audio.c" "CMakeFiles/CDUD.dir/src/audio.c.o" "gcc" "CMakeFiles/CDUD.dir/src/audio.c.o.d"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/camera.c" "CMakeFiles/CDUD.dir/src/camera.c.o" "gcc" "CMakeFiles/CDUD.dir/src/camera.c.o.d"
+  "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/clock.c" "CMakeFiles/CDUD.dir/src/clock.c.o" "gcc" "CMakeFiles/CDUD.dir/src/clock.c.o.d"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/collision.c" "CMakeFiles/CDUD.dir/src/collision.c.o" "gcc" "CMakeFiles/CDUD.dir/src/collision.c.o.d"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/config.c" "CMakeFiles/CDUD.dir/src/config.c.o" "gcc" "CMakeFiles/CDUD.dir/src/config.c.o.d"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/cute_tiled.c" "CMakeFiles/CDUD.dir/src/cute_tiled.c.o" "gcc" "CMakeFiles/CDUD.dir/src/cute_tiled.c.o.d"
@@ -26,6 +27,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/texture_cache.c" "CMakeFiles/CDUD.dir/src/texture_cache.c.o" "gcc" "CMakeFiles/CDUD.dir/src/texture_cache.c.o.d"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/ui.c" "CMakeFiles/CDUD.dir/src/ui.c.o" "gcc" "CMakeFiles/CDUD.dir/src/ui.c.o.d"
   "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/utils.c" "CMakeFiles/CDUD.dir/src/utils.c.o" "gcc" "CMakeFiles/CDUD.dir/src/utils.c.o.d"
+  "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/src/vampire.c" "CMakeFiles/CDUD.dir/src/vampire.c.o" "gcc" "CMakeFiles/CDUD.dir/src/vampire.c.o.d"
   "" "CDUD" "gcc" "CMakeFiles/CDUD.dir/link.d"
   )
 

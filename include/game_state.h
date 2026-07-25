@@ -2,11 +2,13 @@
 #define GAME_STATE_H
 
 #include "camera.h"
+#include "clock.h"
 #include "enemy.h"
 #include "map.h"
 #include "player.h"
 #include "player_anim.h"
 #include "ui.h"
+#include "vampire.h"
 #include <SDL2/SDL.h>
 #include <stdbool.h>
 
@@ -16,6 +18,7 @@ typedef enum {
     GAME_STATE_PLAYING,    /* 游戏中（start.tmj） */
     GAME_STATE_PAUSED,     /* 暂停菜单（叠在 PLAYING 之上） */
     GAME_STATE_GAME_OVER,  /* 死亡等待重开 */
+    GAME_STATE_VICTORY,    /* 日出胜利等待重开 */
     GAME_STATE_FADE_OUT,   /* 过渡：淡出（变黑） */
     GAME_STATE_FADE_IN     /* 过渡：淡入（变亮） */
 } GameState;
@@ -55,6 +58,8 @@ typedef struct {
     Camera camera;
     Player player;
     EnemyManager enemyManager;
+    GameClock clock;      /* 游戏时钟（0:00 → 6:00） */
+    Vampire vampire;      /* 德古拉追逐者 */
     UIFonts fonts;
     SDL_Renderer *renderer;
 } GameContext;

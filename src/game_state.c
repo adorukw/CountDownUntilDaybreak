@@ -33,6 +33,9 @@ bool GameContextInit(GameContext *ctx, SDL_Renderer *renderer) {
 
     PlayerAnimLoadAll(renderer);
 
+    /* 加载吸血鬼贴图（仅一次，重开时复用） */
+    VampireInit(&ctx->vampire, renderer);
+
     /* 启动主菜单 BGM */
     AudioPlayBgm(AUDIO_BGM_MENU);
 
@@ -45,6 +48,7 @@ void GameContextDestroy(GameContext *ctx) {
         MapDestroy(&ctx->startMap);
         ctx->startLoaded = false;
     }
+    VampireFree(&ctx->vampire);
     UIFontsFree(&ctx->fonts);
 }
 
@@ -80,6 +84,10 @@ void GameEnterPlaying(GameContext *ctx) {
     CameraSetBounds(&ctx->camera, ctx->startMap.pixelWidth, ctx->startMap.pixelHeight);
     CameraSetPosition(&ctx->camera, (Vec2){ 0, 0 });
 
+    /* 重置时钟和吸血鬼 */
+    GameClockReset(&ctx->clock);
+    VampireReset(&ctx->vampire, &ctx->camera, &ctx->player);
+
     ctx->state = GAME_STATE_PLAYING;
     AudioPlayBgm(AUDIO_BGM_PLAYING);
 }
@@ -88,6 +96,11 @@ void GameRestart(GameContext *ctx) {
     PlayerReset(&ctx->player);
     EnemyManagerReset(&ctx->enemyManager, &ctx->startMap);
     CameraSetPosition(&ctx->camera, (Vec2){ 0, 0 });
+
+    /* 重置时钟和吸血鬼 */
+    GameClockReset(&ctx->clock);
+    VampireReset(&ctx->vampire, &ctx->camera, &ctx->player);
+
     ctx->state = GAME_STATE_PLAYING;
     AudioPlayBgm(AUDIO_BGM_PLAYING);
 }
@@ -135,9 +148,34 @@ void GameUpdate(GameContext *ctx, double dt, const Uint8 *keys) {
 
         CameraUpdate(&ctx->camera, dt);
 
+        /* ── 时钟推进 ── */
+        GameClockUpdate(&ctx->clock, dt);
+
+        /* ── 吸血鬼更新（接触秒杀） ── */
+        bool killed = VampireUpdate(&ctx->vampire, &ctx->camera, &ctx->player, dt);
+        if (killed && !ctx->player.dead) {
+            /* 秒杀：直接置死，无视无敌时间 */
+            ctx->player.dead = true;
+            ctx->player.hp = 0;
+            CameraShake(&ctx->camera, 15.0, 60);
+        }
+
+        /* ── 胜负判定 ── */
         if (ctx->player.dead) {
             ctx->state = GAME_STATE_GAME_OVER;
+        } else if (GameClockIsDaybreak(&ctx->clock)) {
+            /* 日出：启动吸血鬼渐隐 */
+            VampireStartDeath(&ctx->vampire);
+            /* 进入 VICTORY 状态：在该状态继续推进吸血鬼渐隐 */
+            ctx->state = GAME_STATE_VICTORY;
         }
+        break;
+    }
+
+    case GAME_STATE_VICTORY: {
+        /* 仅推进吸血鬼渐隐，不更新玩家/敌人/相机/时钟 */
+        VampireUpdate(&ctx->vampire, &ctx->camera, &ctx->player, dt);
+        /* VampireUpdate 在渐隐阶段返回 false，无需处理 */
         break;
     }
 
@@ -189,9 +227,18 @@ void GameRender(GameContext *ctx) {
     case GAME_STATE_PLAYING:
     case GAME_STATE_PAUSED:
     case GAME_STATE_GAME_OVER:
+    case GAME_STATE_VICTORY:
         MapRenderAll(&ctx->startMap, ctx->renderer, camPos.x, camPos.y, w, h);
         PlayerRender(&ctx->player, ctx->renderer, camPos);
         PlayerRenderHUD(&ctx->player, ctx->renderer);
+        /* 吸血鬼：PLAYING/VICTORY 时渲染（VICTORY 中渐隐） */
+        if (ctx->state == GAME_STATE_PLAYING || ctx->state == GAME_STATE_VICTORY) {
+            VampireRender(&ctx->vampire, ctx->renderer, camPos);
+        }
+        /* 时钟：PLAYING 时显示在右上角 */
+        if (ctx->state == GAME_STATE_PLAYING) {
+            GameClockRender(&ctx->clock, ctx->renderer, w, ctx->fonts.hintFont);
+        }
         break;
 
     case GAME_STATE_FADE_OUT:
@@ -201,6 +248,8 @@ void GameRender(GameContext *ctx) {
             MapRenderAll(&ctx->startMap, ctx->renderer, camPos.x, camPos.y, w, h);
             PlayerRender(&ctx->player, ctx->renderer, camPos);
             PlayerRenderHUD(&ctx->player, ctx->renderer);
+            VampireRender(&ctx->vampire, ctx->renderer, camPos);
+            GameClockRender(&ctx->clock, ctx->renderer, w, ctx->fonts.hintFont);
         } else {
             MapRenderAll(&ctx->menuMap, ctx->renderer, camPos.x, camPos.y, w, h);
         }
@@ -249,6 +298,10 @@ void GameRender(GameContext *ctx) {
 
     case GAME_STATE_GAME_OVER:
         UIRenderGameOver(ctx->renderer, &ctx->fonts, w, h);
+        break;
+
+    case GAME_STATE_VICTORY:
+        UIRenderVictory(ctx->renderer, &ctx->fonts, w, h);
         break;
 
     case GAME_STATE_FADE_OUT: {
@@ -350,6 +403,18 @@ bool GameHandleEvent(GameContext *ctx, const SDL_Event *event) {
 
     case GAME_STATE_GAME_OVER: {
         if (event->type == SDL_KEYDOWN) {
+            if (event->key.keysym.sym == SDLK_r) {
+                GameStartFadeOut(ctx, FADE_TARGET_RESTART, FADE_DURATION);
+            } else if (event->key.keysym.sym == SDLK_ESCAPE) {
+                GameStartFadeOut(ctx, FADE_TARGET_MENU, FADE_DURATION);
+            }
+        }
+        break;
+    }
+
+    case GAME_STATE_VICTORY: {
+        /* 吸血鬼渐隐完成后才接受输入 */
+        if (VampireIsDefeated(&ctx->vampire) && event->type == SDL_KEYDOWN) {
             if (event->key.keysym.sym == SDLK_r) {
                 GameStartFadeOut(ctx, FADE_TARGET_RESTART, FADE_DURATION);
             } else if (event->key.keysym.sym == SDLK_ESCAPE) {

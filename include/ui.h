@@ -25,6 +25,10 @@ void UIFontsFree(UIFonts *fonts);
 void UIRenderGameOver(
     SDL_Renderer *renderer, const UIFonts *fonts, int width, int height);
 
+/* ── 胜利遮罩（日出）── */
+void UIRenderVictory(
+    SDL_Renderer *renderer, const UIFonts *fonts, int width, int height);
+
 /* ── 主菜单 ──
  * menuSelection: 当前选中项索引（0=开始游戏, 1=退出游戏）
  * 鼠标命中按钮会通过 outHovered 返回悬停项索引（无悬停=-1）。

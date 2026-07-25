@@ -5,6 +5,7 @@ CDUD: \
   CMakeFiles/CDUD.dir/src/animation.c.o \
   CMakeFiles/CDUD.dir/src/audio.c.o \
   CMakeFiles/CDUD.dir/src/camera.c.o \
+  CMakeFiles/CDUD.dir/src/clock.c.o \
   CMakeFiles/CDUD.dir/src/collision.c.o \
   CMakeFiles/CDUD.dir/src/config.c.o \
   CMakeFiles/CDUD.dir/src/cute_tiled.c.o \
@@ -20,6 +21,7 @@ CDUD: \
   CMakeFiles/CDUD.dir/src/texture_cache.c.o \
   CMakeFiles/CDUD.dir/src/ui.c.o \
   CMakeFiles/CDUD.dir/src/utils.c.o \
+  CMakeFiles/CDUD.dir/src/vampire.c.o \
   /usr/lib/x86_64-linux-gnu/libSDL2.so \
   /usr/lib/x86_64-linux-gnu/libSDL2_image.so \
   /usr/lib/x86_64-linux-gnu/libSDL2_mixer.so \
@@ -126,6 +128,8 @@ CMakeFiles/CDUD.dir/src/audio.c.o:
 
 CMakeFiles/CDUD.dir/src/camera.c.o:
 
+CMakeFiles/CDUD.dir/src/clock.c.o:
+
 CMakeFiles/CDUD.dir/src/collision.c.o:
 
 CMakeFiles/CDUD.dir/src/config.c.o:
@@ -155,6 +159,8 @@ CMakeFiles/CDUD.dir/src/texture_cache.c.o:
 CMakeFiles/CDUD.dir/src/ui.c.o:
 
 CMakeFiles/CDUD.dir/src/utils.c.o:
+
+CMakeFiles/CDUD.dir/src/vampire.c.o:
 
 /usr/lib/x86_64-linux-gnu/libSDL2.so:
 
