@@ -1,0 +1,8 @@
+Move       :  A / D
+Jump       :  W / Space
+Attack     :  J
+Pause      :  Esc
+Restart    :  R
+Fullscreen :  F11
+
+Mouse / Up Down to select, J or Click to confirm

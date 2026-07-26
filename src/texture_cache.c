@@ -2,6 +2,7 @@
 #include "map.h"
 #include <SDL2/SDL_image.h>
 #include <string.h>
+#include <stdio.h>
 
 static SDL_Texture *LoadTexture(
     SDL_Renderer *renderer, const char *path, int *outWidth, int *outHeight) {

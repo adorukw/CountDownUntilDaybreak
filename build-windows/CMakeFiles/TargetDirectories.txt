@@ -1,0 +1,4 @@
+/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build-windows/CMakeFiles/CDUD.dir
+/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build-windows/CMakeFiles/copy_compile_db.dir
+/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build-windows/CMakeFiles/edit_cache.dir
+/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build-windows/CMakeFiles/rebuild_cache.dir

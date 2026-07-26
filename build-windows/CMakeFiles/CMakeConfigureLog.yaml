@@ -1,0 +1,161 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineSystem.cmake:200 (message)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      The target system is: Windows -  - x86_64
+      The host system is: Linux - 6.12.95+deb13-amd64 - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /usr/bin/x86_64-w64-mingw32-gcc 
+      Build flags: -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include;-include;stdio.h
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
+      
+      The C compiler identification is GNU, found in:
+        /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build-windows/CMakeFiles/3.31.6/CompilerIdC/a.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "/usr/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build-windows/CMakeFiles/CMakeScratch/TryCompile-D9yVRk"
+      binary: "/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build-windows/CMakeFiles/CMakeScratch/TryCompile-D9yVRk"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include -include stdio.h"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-static-libgcc -static-libstdc++ -L/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/lib -Wl,--whole-archive -lSDL2main -Wl,--no-whole-archive"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build-windows/CMakeFiles/CMakeScratch/TryCompile-D9yVRk'
+        
+        Run Build Command(s): /usr/bin/ninja -v cmTC_7ee3f
+        [1/2] /usr/bin/x86_64-w64-mingw32-gcc   -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include -include stdio.h    -v -o CMakeFiles/cmTC_7ee3f.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/x86_64-w64-mingw32-gcc
+        Target: x86_64-w64-mingw32
+        Configured with: /build/reproducible-path/gcc-mingw-w64-27+b1/src/configure --prefix=/usr --enable-shared --enable-static --disable-multilib --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --libdir=/usr/lib --enable-libstdcxx-time=yes --with-tune=generic --with-headers --enable-version-specific-runtime-libs --enable-fully-dynamic-string --enable-libgomp --program-prefix=x86_64-w64-mingw32- --target=x86_64-w64-mingw32 --with-as=/usr/bin/x86_64-w64-mingw32-as --with-ld=/usr/bin/x86_64-w64-mingw32-ld --enable-libatomic --enable-libstdcxx-filesystem-ts=yes --enable-dependency-tracking SED=/bin/sed --enable-languages=c,c++,fortran,objc,obj-c++,ada --enable-lto --enable-threads=win32 --program-suffix=-win32
+        Thread model: win32
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 14-win32 (GCC) 
+        COLLECT_GCC_OPTIONS='-I' '/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include' '-include' 'stdio.h' '-v' '-o' 'CMakeFiles/cmTC_7ee3f.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7ee3f.dir/'
+         /usr/lib/gcc/x86_64-w64-mingw32/14-win32/cc1 -quiet -v -I /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include -include stdio.h /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_7ee3f.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/cc1VAGFi.s
+        GNU C17 (GCC) version 14-win32 (x86_64-w64-mingw32)
+        	compiled by GNU C version 14.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-w64-mingw32/14-win32/../../../../x86_64-w64-mingw32/sys-include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include
+         /usr/lib/gcc/x86_64-w64-mingw32/14-win32/include
+         /usr/lib/gcc/x86_64-w64-mingw32/14-win32/include-fixed
+         /usr/lib/gcc/x86_64-w64-mingw32/14-win32/../../../../x86_64-w64-mingw32/include
+        End of search list.
+        Compiler executable checksum: 660cf7b213b1bca75e475c682d14fbf2
+        COLLECT_GCC_OPTIONS='-I' '/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include' '-include' 'stdio.h' '-v' '-o' 'CMakeFiles/cmTC_7ee3f.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7ee3f.dir/'
+         /usr/bin/x86_64-w64-mingw32-as -v -I /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include -o CMakeFiles/cmTC_7ee3f.dir/CMakeCCompilerABI.c.obj /tmp/cc1VAGFi.s
+        GNU assembler version 2.44 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.44
+        COMPILER_PATH=/usr/lib/gcc/x86_64-w64-mingw32/14-win32/:/usr/lib/gcc/x86_64-w64-mingw32/14-win32/:/usr/lib/gcc/x86_64-w64-mingw32/:/usr/lib/gcc/x86_64-w64-mingw32/14-win32/:/usr/lib/gcc/x86_64-w64-mingw32/:/usr/lib/gcc/x86_64-w64-mingw32/14-win32/../../../../x86_64-w64-mingw32/bin/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-w64-mingw32/14-win32/:/usr/lib/gcc/x86_64-w64-mingw32/14-win32/../../../../x86_64-w64-mingw32/lib/
+        COLLECT_GCC_OPTIONS='-I' '/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include' '-include' 'stdio.h' '-v' '-o' 'CMakeFiles/cmTC_7ee3f.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7ee3f.dir/CMakeCCompilerABI.c.'
+        [2/2] : && /usr/bin/cmake -E rm -f libcmTC_7ee3f.a && /usr/bin/x86_64-w64-mingw32-ar qc libcmTC_7ee3f.a  CMakeFiles/cmTC_7ee3f.dir/CMakeCCompilerABI.c.obj && /usr/bin/x86_64-w64-mingw32-ranlib libcmTC_7ee3f.a && :
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:182 (message)"
+      - "/usr/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include]
+          add: [/usr/lib/gcc/x86_64-w64-mingw32/14-win32/include]
+          add: [/usr/lib/gcc/x86_64-w64-mingw32/14-win32/include-fixed]
+          add: [/usr/lib/gcc/x86_64-w64-mingw32/14-win32/../../../../x86_64-w64-mingw32/include]
+        end of search list found
+        collapse include dir [/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include] ==> [/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include]
+        collapse include dir [/usr/lib/gcc/x86_64-w64-mingw32/14-win32/include] ==> [/usr/lib/gcc/x86_64-w64-mingw32/14-win32/include]
+        collapse include dir [/usr/lib/gcc/x86_64-w64-mingw32/14-win32/include-fixed] ==> [/usr/lib/gcc/x86_64-w64-mingw32/14-win32/include-fixed]
+        collapse include dir [/usr/lib/gcc/x86_64-w64-mingw32/14-win32/../../../../x86_64-w64-mingw32/include] ==> [/usr/x86_64-w64-mingw32/include]
+        implicit include dirs: [/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include;/usr/lib/gcc/x86_64-w64-mingw32/14-win32/include;/usr/lib/gcc/x86_64-w64-mingw32/14-win32/include-fixed;/usr/x86_64-w64-mingw32/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "/usr/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: '/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/build-windows/CMakeFiles/CMakeScratch/TryCompile-D9yVRk']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/bin/ninja -v cmTC_7ee3f]
+        ignore line: [[1/2] /usr/bin/x86_64-w64-mingw32-gcc   -I/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include -include stdio.h    -v -o CMakeFiles/cmTC_7ee3f.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/x86_64-w64-mingw32-gcc]
+        ignore line: [Target: x86_64-w64-mingw32]
+        ignore line: [Configured with: /build/reproducible-path/gcc-mingw-w64-27+b1/src/configure --prefix=/usr --enable-shared --enable-static --disable-multilib --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --libdir=/usr/lib --enable-libstdcxx-time=yes --with-tune=generic --with-headers --enable-version-specific-runtime-libs --enable-fully-dynamic-string --enable-libgomp --program-prefix=x86_64-w64-mingw32- --target=x86_64-w64-mingw32 --with-as=/usr/bin/x86_64-w64-mingw32-as --with-ld=/usr/bin/x86_64-w64-mingw32-ld --enable-libatomic --enable-libstdcxx-filesystem-ts=yes --enable-dependency-tracking SED=/bin/sed --enable-languages=c,c++,fortran,objc,obj-c++,ada --enable-lto --enable-threads=win32 --program-suffix=-win32]
+        ignore line: [Thread model: win32]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 14-win32 (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-I' '/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include' '-include' 'stdio.h' '-v' '-o' 'CMakeFiles/cmTC_7ee3f.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7ee3f.dir/']
+        ignore line: [ /usr/lib/gcc/x86_64-w64-mingw32/14-win32/cc1 -quiet -v -I /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include -include stdio.h /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_7ee3f.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/cc1VAGFi.s]
+        ignore line: [GNU C17 (GCC) version 14-win32 (x86_64-w64-mingw32)]
+        ignore line: [	compiled by GNU C version 14.2.0  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-w64-mingw32/14-win32/../../../../x86_64-w64-mingw32/sys-include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include]
+        ignore line: [ /usr/lib/gcc/x86_64-w64-mingw32/14-win32/include]
+        ignore line: [ /usr/lib/gcc/x86_64-w64-mingw32/14-win32/include-fixed]
+        ignore line: [ /usr/lib/gcc/x86_64-w64-mingw32/14-win32/../../../../x86_64-w64-mingw32/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: 660cf7b213b1bca75e475c682d14fbf2]
+        ignore line: [COLLECT_GCC_OPTIONS='-I' '/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include' '-include' 'stdio.h' '-v' '-o' 'CMakeFiles/cmTC_7ee3f.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7ee3f.dir/']
+        ignore line: [ /usr/bin/x86_64-w64-mingw32-as -v -I /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include -o CMakeFiles/cmTC_7ee3f.dir/CMakeCCompilerABI.c.obj /tmp/cc1VAGFi.s]
+        ignore line: [GNU assembler version 2.44 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.44]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-w64-mingw32/14-win32/:/usr/lib/gcc/x86_64-w64-mingw32/14-win32/:/usr/lib/gcc/x86_64-w64-mingw32/:/usr/lib/gcc/x86_64-w64-mingw32/14-win32/:/usr/lib/gcc/x86_64-w64-mingw32/:/usr/lib/gcc/x86_64-w64-mingw32/14-win32/../../../../x86_64-w64-mingw32/bin/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-w64-mingw32/14-win32/:/usr/lib/gcc/x86_64-w64-mingw32/14-win32/../../../../x86_64-w64-mingw32/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-I' '/home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/x86_64-w64-mingw32/include' '-include' 'stdio.h' '-v' '-o' 'CMakeFiles/cmTC_7ee3f.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7ee3f.dir/CMakeCCompilerABI.c.']
+        ignore line: [[2/2] : && /usr/bin/cmake -E rm -f libcmTC_7ee3f.a && /usr/bin/x86_64-w64-mingw32-ar qc libcmTC_7ee3f.a  CMakeFiles/cmTC_7ee3f.dir/CMakeCCompilerABI.c.obj && /usr/bin/x86_64-w64-mingw32-ranlib libcmTC_7ee3f.a && :]
+        ignore line: []
+        ignore line: []
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+...
