@@ -42,22 +42,37 @@ jobs:
           echo "===== 目录结构 ====="
           find . -maxdepth 4 -type d | sort
 
-          # 找到所有 SDL2-* 的顶层目录，复制头文件和库
+          # 找到所有 SDL2-* 的顶层目录，复制头文件、库和 cmake 配置
           for dir in $(find . -maxdepth 3 -type d -name "SDL2-*" | sort); do
             echo "--- 处理: $dir ---"
             if [ -d "$dir/include" ]; then
               echo "复制头文件: $dir/include/"
               cp -r "$dir/include/"* /usr/x86_64-w64-mingw32/include/
             fi
-            # 64位静态库
             if [ -d "$dir/lib/x64" ]; then
               echo "复制 .a 库"
               cp "$dir/lib/x64/"*.a /usr/x86_64-w64-mingw32/lib/ 2>/dev/null || true
               echo "复制 DLL"
               cp "$dir/lib/x64/"*.dll /tmp/sdl-dlls/ 2>/dev/null || true
             fi
+            # cmake 配置文件（find_package 需要）
+            # CMake 的寻找路径是 <prefix>/lib/cmake/<PackageName>/
+            # 目录名必须是包名（如 SDL2、SDL2_image），不是带版本号的目录名
+            if [ -d "$dir/cmake" ]; then
+              pkgver=$(basename "$dir")          # 如 SDL2-2.30.9
+              pkgname=${pkgver%%-*}              # 截掉版本号，如 SDL2
+              # SDL2_image → 截不掉？试试去掉最后一个 - 之后的部分
+              # 实际上 SDL2_image 的 basename 是 SDL2_image-2.8.4
+              # 用 %% 去掉最后一组 -数字 即可
+              pkgname=$(echo "$pkgver" | sed 's/-[0-9].*//')
+              mkdir -p /usr/x86_64-w64-mingw32/lib/cmake/"$pkgname"
+              echo "复制 cmake 配置 → $pkgname/"
+              cp -r "$dir/cmake/"* /usr/x86_64-w64-mingw32/lib/cmake/"$pkgname"/
+            fi
           done
 
+          echo "===== 最终 cmake 配置 ====="
+          find /usr/x86_64-w64-mingw32/lib/cmake/ -name "*.cmake" | sort
           echo "===== 最终 DLL 清单 ====="
           ls -la /tmp/sdl-dlls/
           echo "===== 最终头文件清单 ====="
