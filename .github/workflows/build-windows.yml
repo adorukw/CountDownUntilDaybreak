@@ -1,130 +1,100 @@
 name: Build Windows
 
+# 触发条件：
+#   - push 到 main：编译 + 上传 artifact
+#   - push tag v*：编译 + 上传 artifact + 创建 Release 并附带 zip
+#   - workflow_dispatch：手动触发
 on:
   push:
-    branches: [ main, master ]
-    tags: [ 'v*' ]
+    branches: [main]
+    tags: ['v*']
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
+    runs-on: windows-latest
 
+    defaults:
+      run:
+        shell: msys2 {0}
+
+    steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install MinGW-w64
+      - name: Setup MSYS2 (UCRT64)
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: true
+          # pacboy 的 pkg:p 简写等价于 mingw-w64-ucrt-x86_64-<pkg>
+          pacboy: >-
+            gcc:p
+            cmake:p
+            SDL2:p
+            SDL2_image:p
+            SDL2_mixer:p
+            SDL2_ttf:p
+
+      - name: Cache pacman packages
+        uses: actions/cache@v4
+        with:
+          path: C:\msys64\var\cache\pacman\pkg
+          key: msys2-ucrt64-${{ hashFiles('.github/workflows/build-windows.yml') }}
+          restore-keys: |
+            msys2-ucrt64-
+
+      - name: CMake Configure
         run: |
-          sudo apt update -qq
-          sudo apt install -y -qq mingw-w64 cmake wget unzip
-
-      - name: Download SDL2 MinGW development libraries
-        run: |
-          # 下载 SDL2
-          wget -q https://github.com/libsdl-org/SDL/releases/download/release-2.30.9/SDL2-devel-2.30.9-mingw.zip
-          # 下载 SDL2_image
-          wget -q https://github.com/libsdl-org/SDL_image/releases/download/release-2.8.4/SDL2_image-devel-2.8.4-mingw.zip
-          # 下载 SDL2_mixer
-          wget -q https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.8.0/SDL2_mixer-devel-2.8.0-mingw.zip
-          # 下载 SDL2_ttf
-          wget -q https://github.com/libsdl-org/SDL_ttf/releases/download/release-2.24.0/SDL2_ttf-devel-2.24.0-mingw.zip
-
-      - name: Install SDL2 libraries to MinGW sysroot
-        run: |
-          set -x  # 打印每条命令
-          mkdir -p /tmp/sdl-dlls /usr/x86_64-w64-mingw32/{include,lib}
-
-          # 解压所有 SDL2 开发包
-          for f in *.zip; do echo "=== 解压: $f ==="; unzip -qo "$f"; done
-
-          # debug: 看解压出了什么东西
-          echo "===== 目录结构 ====="
-          find . -maxdepth 4 -type d | sort
-
-          # 找到所有 SDL2-* 的顶层目录，复制头文件、库和 cmake 配置
-          for dir in $(find . -maxdepth 3 -type d -name "SDL2-*" | sort); do
-            echo "--- 处理: $dir ---"
-            if [ -d "$dir/include" ]; then
-              echo "复制头文件: $dir/include/"
-              cp -r "$dir/include/"* /usr/x86_64-w64-mingw32/include/
-            fi
-            if [ -d "$dir/lib/x64" ]; then
-              echo "复制 .a 库"
-              cp "$dir/lib/x64/"*.a /usr/x86_64-w64-mingw32/lib/ 2>/dev/null || true
-              echo "复制 DLL"
-              cp "$dir/lib/x64/"*.dll /tmp/sdl-dlls/ 2>/dev/null || true
-            fi
-            # cmake 配置文件（find_package 需要）
-            # CMake 的寻找路径是 <prefix>/lib/cmake/<PackageName>/
-            # 目录名必须是包名（如 SDL2、SDL2_image），不是带版本号的目录名
-            if [ -d "$dir/cmake" ]; then
-              pkgver=$(basename "$dir")          # 如 SDL2-2.30.9
-              pkgname=${pkgver%%-*}              # 截掉版本号，如 SDL2
-              # SDL2_image → 截不掉？试试去掉最后一个 - 之后的部分
-              # 实际上 SDL2_image 的 basename 是 SDL2_image-2.8.4
-              # 用 %% 去掉最后一组 -数字 即可
-              pkgname=$(echo "$pkgver" | sed 's/-[0-9].*//')
-              mkdir -p /usr/x86_64-w64-mingw32/lib/cmake/"$pkgname"
-              echo "复制 cmake 配置 → $pkgname/"
-              cp -r "$dir/cmake/"* /usr/x86_64-w64-mingw32/lib/cmake/"$pkgname"/
-            fi
-          done
-
-          echo "===== 最终 cmake 配置 ====="
-          find /usr/x86_64-w64-mingw32/lib/cmake/ -name "*.cmake" | sort
-          echo "===== 最终 DLL 清单 ====="
-          ls -la /tmp/sdl-dlls/
-          echo "===== 最终头文件清单 ====="
-          find /usr/x86_64-w64-mingw32/include/ -name "*.h" | sort
-
-      - name: Create MinGW toolchain file
-        run: |
-          mkdir -p cmake
-          cat > cmake/toolchain-mingw-w64.cmake << 'EOF'
-          set(CMAKE_SYSTEM_NAME Windows)
-          set(CMAKE_C_COMPILER x86_64-w64-mingw32-gcc)
-          set(CMAKE_CXX_COMPILER x86_64-w64-mingw32-g++)
-          set(CMAKE_FIND_ROOT_PATH /usr/x86_64-w64-mingw32)
-          set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
-          set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
-          set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
-          EOF
-
-      - name: Configure (cross-compile)
-        run: |
-          cmake -B build-windows \
-            -DCMAKE_TOOLCHAIN_FILE=cmake/toolchain-mingw-w64.cmake \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_INSTALL_PREFIX=./package
+          cmake -B build -G "MinGW Makefiles" \
+                -DCMAKE_BUILD_TYPE=Release
 
       - name: Build
-        run: make -C build-windows -j$(nproc)
+        run: cmake --build build -j
 
-      # 复制 assets 时跳过 Tiled 编辑源文件（.tmx/.tsx/.tiled-project 等只在编辑器用）
-      - name: Package
+      - name: Stage artifacts (exe + assets + DLLs)
+        shell: msys2 {0}
         run: |
-          mkdir -p package
-          cp build-windows/CDUD.exe package/
-          cp -r assets package/
-          # 删除运行时不需要的 Tiled 编辑文件
-          rm -rf package/assets/Tiled
-          # 拷贝 SDL2 DLL
-          cp /tmp/sdl-dlls/SDL2.dll package/
-          cp /tmp/sdl-dlls/SDL2_image.dll package/
-          cp /tmp/sdl-dlls/SDL2_mixer.dll package/
-          cp /tmp/sdl-dlls/SDL2_ttf.dll package/
-          # 拷贝依赖 DLL（SDL2_image 需要 libpng, zlib；SDL2_ttf 需要 freetype）
-          cp /tmp/sdl-dlls/libpng16-16.dll package/ 2>/dev/null || true
-          cp /tmp/sdl-dlls/zlib1.dll package/ 2>/dev/null || true
-          cp /tmp/sdl-dlls/libfreetype-6.dll package/ 2>/dev/null || true
-          # 删除 exe 调试符号
-          x86_64-w64-mingw32-strip package/CDUD.exe
-          # 打成 zip
-          cd package && zip -r ../CDUD-windows.zip . && cd ..
+          set -e
+          mkdir -p build/stage
+
+          # 1. 复制可执行文件
+          cp build/CDUD.exe build/stage/
+
+          # 2. 复制 assets（POST_BUILD 已复制到 build/assets，这里再搬到 stage）
+          cp -r build/assets build/stage/assets
+
+          # 3. 用 ldd 自动解析 CDUD.exe 的运行时依赖，
+          #    仅保留位于 ucrt64/bin 下的 DLL（即 SDL2 系列及其传递依赖）
+          ldd build/CDUD.exe \
+            | grep -i 'ucrt64' \
+            | awk '{print $3}' \
+            | while read dll; do
+                [ -f "$dll" ] && cp -n "$dll" build/stage/
+              done
+
+          echo "=== Staged files ==="
+          ls -la build/stage/
+
+      - name: Package zip
+        shell: pwsh
+        run: |
+          $zip = "CDUD-windows-x64.zip"
+          Compress-Archive -Path build/stage/* -DestinationPath $zip -Force
+          Write-Host "Created $zip"
+          Get-Item $zip | Format-List Name, Length, FullName
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: CDUD-windows
-          path: CDUD-windows.zip
+          name: CDUD-windows-x64
+          path: CDUD-windows-x64.zip
+          retention-days: 14
+          if-no-files-found: error
+
+      - name: Release on tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: CDUD-windows-x64.zip
+          generate_release_notes: true
