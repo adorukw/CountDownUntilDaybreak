@@ -1,0 +1,98 @@
+name: Build Windows
+
+on:
+  push:
+    branches: [ main, master ]
+    tags: [ 'v*' ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install MinGW-w64
+        run: |
+          sudo apt update -qq
+          sudo apt install -y -qq mingw-w64 cmake wget unzip
+
+      - name: Download SDL2 MinGW development libraries
+        run: |
+          # 下载 SDL2
+          wget -q https://github.com/libsdl-org/SDL/releases/download/release-2.30.9/SDL2-devel-2.30.9-mingw.zip
+          # 下载 SDL2_image
+          wget -q https://github.com/libsdl-org/SDL_image/releases/download/release-2.8.4/SDL2_image-devel-2.8.4-mingw.zip
+          # 下载 SDL2_mixer
+          wget -q https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.8.0/SDL2_mixer-devel-2.8.0-mingw.zip
+          # 下载 SDL2_ttf
+          wget -q https://github.com/libsdl-org/SDL_ttf/releases/download/release-2.24.0/SDL2_ttf-devel-2.24.0-mingw.zip
+
+      - name: Install SDL2 libraries to MinGW sysroot
+        run: |
+          # 解压所有 SDL2 库到 MinGW 系统根目录
+          for f in SDL2-devel-*-mingw.zip SDL2_image-devel-*-mingw.zip \
+                    SDL2_mixer-devel-*-mingw.zip SDL2_ttf-devel-*-mingw.zip; do
+            dirname="${f%-devel-*}"
+            unzip -qo "$f"
+            # 拷贝头文件和库到 MinGW 系统目录
+            cp -r "${dirname}-devel-*-mingw/${dirname}/include/"  /usr/x86_64-w64-mingw32/include/ 2>/dev/null || \
+            cp -r "${dirname}-devel-*/${dirname}/include/"  /usr/x86_64-w64-mingw32/include/
+            find "${dirname}-devel-*" -name "*.a" -exec cp {} /usr/x86_64-w64-mingw32/lib/ \;
+          done
+          # 准备 DLL 目录（后续打包用）
+          mkdir -p /tmp/sdl-dlls/
+          find . -name "*.dll" -exec cp {} /tmp/sdl-dlls/ \;
+
+      - name: Create MinGW toolchain file
+        run: |
+          mkdir -p cmake
+          cat > cmake/toolchain-mingw-w64.cmake << 'EOF'
+          set(CMAKE_SYSTEM_NAME Windows)
+          set(CMAKE_C_COMPILER x86_64-w64-mingw32-gcc)
+          set(CMAKE_CXX_COMPILER x86_64-w64-mingw32-g++)
+          set(CMAKE_FIND_ROOT_PATH /usr/x86_64-w64-mingw32)
+          set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+          set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+          set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+          EOF
+
+      - name: Configure (cross-compile)
+        run: |
+          cmake -B build-windows \
+            -DCMAKE_TOOLCHAIN_FILE=cmake/toolchain-mingw-w64.cmake \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_INSTALL_PREFIX=./package
+
+      - name: Build
+        run: make -C build-windows -j$(nproc)
+
+      # 复制 assets 时跳过 Tiled 编辑源文件（.tmx/.tsx/.tiled-project 等只在编辑器用）
+      - name: Package
+        run: |
+          mkdir -p package
+          cp build-windows/CDUD.exe package/
+          cp -r assets package/
+          # 删除运行时不需要的 Tiled 编辑文件
+          rm -rf package/assets/Tiled
+          # 拷贝 SDL2 DLL
+          cp /tmp/sdl-dlls/SDL2.dll package/
+          cp /tmp/sdl-dlls/SDL2_image.dll package/
+          cp /tmp/sdl-dlls/SDL2_mixer.dll package/
+          cp /tmp/sdl-dlls/SDL2_ttf.dll package/
+          # 拷贝依赖 DLL（SDL2_image 需要 libpng, zlib；SDL2_ttf 需要 freetype）
+          cp /tmp/sdl-dlls/libpng16-16.dll package/ 2>/dev/null || true
+          cp /tmp/sdl-dlls/zlib1.dll package/ 2>/dev/null || true
+          cp /tmp/sdl-dlls/libfreetype-6.dll package/ 2>/dev/null || true
+          # 删除 exe 调试符号
+          x86_64-w64-mingw32-strip package/CDUD.exe
+          # 打成 zip
+          cd package && zip -r ../CDUD-windows.zip . && cd ..
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CDUD-windows
+          path: CDUD-windows.zip
