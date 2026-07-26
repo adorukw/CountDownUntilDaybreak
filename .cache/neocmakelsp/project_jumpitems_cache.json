@@ -1,5 +1,5 @@
 {
-  "date": "2026-07-26T11:40:21.621228905+08:00",
+  "date": "2026-07-26T12:51:03.289507964+08:00",
   "data": {
     "CMAKE_C_STANDARD_REQUIRED": {
       "location": {
@@ -12,23 +12,6 @@
           "end": {
             "line": 7,
             "character": 29
-          }
-        }
-      },
-      "document_info": "defined variable\nfrom: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/CMakeLists.txt",
-      "is_function": false
-    },
-    "CMAKE_EXPORT_COMPILE_COMMANDS": {
-      "location": {
-        "uri": "file:///home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/CMakeLists.txt",
-        "range": {
-          "start": {
-            "line": 4,
-            "character": 4
-          },
-          "end": {
-            "line": 4,
-            "character": 33
           }
         }
       },
@@ -63,6 +46,23 @@
           "end": {
             "line": 8,
             "character": 22
+          }
+        }
+      },
+      "document_info": "defined variable\nfrom: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/CMakeLists.txt",
+      "is_function": false
+    },
+    "CMAKE_EXPORT_COMPILE_COMMANDS": {
+      "location": {
+        "uri": "file:///home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/CMakeLists.txt",
+        "range": {
+          "start": {
+            "line": 4,
+            "character": 4
+          },
+          "end": {
+            "line": 4,
+            "character": 33
           }
         }
       },
