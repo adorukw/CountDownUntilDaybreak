@@ -68,7 +68,6 @@ int main(int argc, char *argv[]) {
     /* ── 主循环 ── */
     bool running = true;
     SDL_Event event;
-    const Uint8 *keys = SDL_GetKeyboardState(NULL);
 
     Uint32 prevTicks = SDL_GetTicks();
     double accumulator = 0.0;
@@ -102,6 +101,9 @@ int main(int argc, char *argv[]) {
             }
         }
         if (!running) break;
+
+        /* ── 刷新键盘状态指针（Windows 全屏桌面模式下必须每帧刷新） ── */
+        const Uint8 *keys = SDL_GetKeyboardState(NULL);
 
         /* ── 固定步长更新 ──
          * MENU/PAUSED/GAME_OVER/FADE_* 这些状态用每帧实际 frameTime 更新；
