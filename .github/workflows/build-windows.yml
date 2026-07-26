@@ -32,42 +32,36 @@ jobs:
 
       - name: Install SDL2 libraries to MinGW sysroot
         run: |
-          mkdir -p /tmp/sdl-dlls
+          set -x  # 打印每条命令
+          mkdir -p /tmp/sdl-dlls /usr/x86_64-w64-mingw32/{include,lib}
 
-          # ---------- SDL2 ----------
-          unzip -qo SDL2-devel-2.30.9-mingw.zip
-          SDL2_DIR=$(ls -d SDL2-devel-*/SDL2-* 2>/dev/null | head -1)
-          [ -n "$SDL2_DIR" ] || SDL2_DIR=$(ls -d SDL2-*/ 2>/dev/null | head -1)
-          cp -r "$SDL2_DIR"/include/*  /usr/x86_64-w64-mingw32/include/
-          cp "$SDL2_DIR"/lib/x64/*.a  /usr/x86_64-w64-mingw32/lib/
-          cp "$SDL2_DIR"/lib/x64/*.dll  /tmp/sdl-dlls/
+          # 解压所有 SDL2 开发包
+          for f in *.zip; do echo "=== 解压: $f ==="; unzip -qo "$f"; done
 
-          # ---------- SDL2_image ----------
-          unzip -qo SDL2_image-devel-2.8.4-mingw.zip
-          IMG_DIR=$(ls -d SDL2_image-devel-*/SDL2_image-* 2>/dev/null | head -1)
-          [ -n "$IMG_DIR" ] || IMG_DIR=$(ls -d SDL2_image-*/ 2>/dev/null | head -1)
-          cp -r "$IMG_DIR"/include/*  /usr/x86_64-w64-mingw32/include/
-          cp "$IMG_DIR"/lib/x64/*.a  /usr/x86_64-w64-mingw32/lib/
-          cp "$IMG_DIR"/lib/x64/*.dll  /tmp/sdl-dlls/
+          # debug: 看解压出了什么东西
+          echo "===== 目录结构 ====="
+          find . -maxdepth 4 -type d | sort
 
-          # ---------- SDL2_mixer ----------
-          unzip -qo SDL2_mixer-devel-2.8.0-mingw.zip
-          MIX_DIR=$(ls -d SDL2_mixer-devel-*/SDL2_mixer-* 2>/dev/null | head -1)
-          [ -n "$MIX_DIR" ] || MIX_DIR=$(ls -d SDL2_mixer-*/ 2>/dev/null | head -1)
-          cp -r "$MIX_DIR"/include/*  /usr/x86_64-w64-mingw32/include/
-          cp "$MIX_DIR"/lib/x64/*.a  /usr/x86_64-w64-mingw32/lib/
-          cp "$MIX_DIR"/lib/x64/*.dll  /tmp/sdl-dlls/
+          # 找到所有 SDL2-* 的顶层目录，复制头文件和库
+          for dir in $(find . -maxdepth 3 -type d -name "SDL2-*" | sort); do
+            echo "--- 处理: $dir ---"
+            if [ -d "$dir/include" ]; then
+              echo "复制头文件: $dir/include/"
+              cp -r "$dir/include/"* /usr/x86_64-w64-mingw32/include/
+            fi
+            # 64位静态库
+            if [ -d "$dir/lib/x64" ]; then
+              echo "复制 .a 库"
+              cp "$dir/lib/x64/"*.a /usr/x86_64-w64-mingw32/lib/ 2>/dev/null || true
+              echo "复制 DLL"
+              cp "$dir/lib/x64/"*.dll /tmp/sdl-dlls/ 2>/dev/null || true
+            fi
+          done
 
-          # ---------- SDL2_ttf ----------
-          unzip -qo SDL2_ttf-devel-2.24.0-mingw.zip
-          TTF_DIR=$(ls -d SDL2_ttf-devel-*/SDL2_ttf-* 2>/dev/null | head -1)
-          [ -n "$TTF_DIR" ] || TTF_DIR=$(ls -d SDL2_ttf-*/ 2>/dev/null | head -1)
-          cp -r "$TTF_DIR"/include/*  /usr/x86_64-w64-mingw32/include/
-          cp "$TTF_DIR"/lib/x64/*.a  /usr/x86_64-w64-mingw32/lib/
-          cp "$TTF_DIR"/lib/x64/*.dll  /tmp/sdl-dlls/
-
-          # 确认一下 DLL 都有哪些
+          echo "===== 最终 DLL 清单 ====="
           ls -la /tmp/sdl-dlls/
+          echo "===== 最终头文件清单 ====="
+          find /usr/x86_64-w64-mingw32/include/ -name "*.h" | sort
 
       - name: Create MinGW toolchain file
         run: |
