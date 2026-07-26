@@ -36,3 +36,9 @@ add_custom_target(copy_compile_db ALL
     ${PROJECT_SOURCE_DIR}/compile_commands.json
     COMMENT "复制 compile_commands.json 到项目根目录"
 )
+
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E create_symlink
+        "${PROJECT_SOURCE_DIR}/assets" "${CMAKE_BINARY_DIR}/assets"
+    COMMENT "创建 assets 软链接"
+)

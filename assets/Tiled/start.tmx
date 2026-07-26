@@ -48,7 +48,6 @@
   <object id="51" gid="2147483668" x="336" y="144" width="32" height="32"/>
   <object id="62" gid="27" x="176" y="176" width="16" height="16"/>
   <object id="64" gid="1073741851" x="144" y="80" width="16" height="16"/>
-  <object id="65" gid="1073741851" x="160" y="80" width="16" height="16"/>
   <object id="66" gid="27" x="336" y="176" width="16" height="16" rotation="-90"/>
   <object id="67" gid="2147483668" x="1072" y="144" width="32" height="32"/>
   <object id="68" gid="7" x="1104" y="288" width="64" height="112"/>
@@ -61,8 +60,6 @@
   <object id="77" gid="8" x="1360" y="176" width="44" height="11"/>
   <object id="79" gid="2147483668" x="1392" y="128" width="32" height="32"/>
   <object id="80" gid="27" x="1536" y="176" width="16" height="16"/>
-  <object id="83" gid="27" x="1568" y="176" width="16" height="16"/>
-  <object id="86" gid="1073741851" x="1584" y="80" width="16" height="16"/>
   <object id="87" gid="1073741851" x="1552" y="80" width="16" height="16"/>
   <object id="88" gid="2147483668" x="1616" y="128" width="32" height="32"/>
   <object id="89" gid="2147483668" x="1488" y="112" width="32" height="32"/>

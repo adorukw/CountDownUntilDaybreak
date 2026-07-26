@@ -1,0 +1,73 @@
+{
+  "date": "2026-07-26T11:40:21.621228905+08:00",
+  "data": {
+    "CMAKE_C_STANDARD_REQUIRED": {
+      "location": {
+        "uri": "file:///home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/CMakeLists.txt",
+        "range": {
+          "start": {
+            "line": 7,
+            "character": 4
+          },
+          "end": {
+            "line": 7,
+            "character": 29
+          }
+        }
+      },
+      "document_info": "defined variable\nfrom: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/CMakeLists.txt",
+      "is_function": false
+    },
+    "CMAKE_EXPORT_COMPILE_COMMANDS": {
+      "location": {
+        "uri": "file:///home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/CMakeLists.txt",
+        "range": {
+          "start": {
+            "line": 4,
+            "character": 4
+          },
+          "end": {
+            "line": 4,
+            "character": 33
+          }
+        }
+      },
+      "document_info": "defined variable\nfrom: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/CMakeLists.txt",
+      "is_function": false
+    },
+    "CMAKE_C_STANDARD": {
+      "location": {
+        "uri": "file:///home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/CMakeLists.txt",
+        "range": {
+          "start": {
+            "line": 6,
+            "character": 4
+          },
+          "end": {
+            "line": 6,
+            "character": 20
+          }
+        }
+      },
+      "document_info": "defined variable\nfrom: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/CMakeLists.txt",
+      "is_function": false
+    },
+    "CMAKE_C_EXTENSIONS": {
+      "location": {
+        "uri": "file:///home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/CMakeLists.txt",
+        "range": {
+          "start": {
+            "line": 8,
+            "character": 4
+          },
+          "end": {
+            "line": 8,
+            "character": 22
+          }
+        }
+      },
+      "document_info": "defined variable\nfrom: /home/adorukw/AAAPAN/Project/CountDownUntilDaybreak/CMakeLists.txt",
+      "is_function": false
+    }
+  }
+}
