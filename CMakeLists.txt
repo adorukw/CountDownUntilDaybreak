@@ -38,7 +38,8 @@ add_custom_target(copy_compile_db ALL
 )
 
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E create_symlink
+    COMMAND ${CMAKE_COMMAND} -E remove_directory "${CMAKE_BINARY_DIR}/assets"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
         "${PROJECT_SOURCE_DIR}/assets" "${CMAKE_BINARY_DIR}/assets"
-    COMMENT "创建 assets 软链接"
+    COMMENT "清除旧 assets 并重新复制"
 )

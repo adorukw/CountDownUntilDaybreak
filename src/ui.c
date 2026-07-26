@@ -68,7 +68,7 @@ static bool PointInRect(int x, int y, const SDL_Rect *r) {
 }
 
 bool UIFontsLoad(UIFonts *fonts) {
-    const char *path = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf";
+    const char *path = "assets/fonts/DejaVuSans-Bold.ttf";
     fonts->titleFont = TTF_OpenFont(path, 28);
     fonts->menuFontSel = TTF_OpenFont(path, 22);
     fonts->menuFontDim = TTF_OpenFont(path, 18);
