@@ -47,7 +47,7 @@
             "scale": 3,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 423,
+                "x": 145.5,
                 "y": 138
             }
         },
@@ -64,8 +64,8 @@
             "scale": 3,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 126.66666666666669,
-                "y": 151
+                "x": 145.5,
+                "y": 138
             }
         },
         "chunk_2.tmx#props": {
@@ -81,8 +81,8 @@
             "scale": 3,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 145,
-                "y": 129.66666666666666
+                "x": 145.5,
+                "y": 138
             }
         },
         "chunk_3.tmx#props": {
@@ -98,8 +98,8 @@
             "scale": 3,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 177.33333333333334,
-                "y": 167
+                "x": 145.5,
+                "y": 138
             }
         },
         "chunk_4.tmx#props": {
@@ -112,8 +112,8 @@
             "scale": 3,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 158.33333333333334,
-                "y": 144.33333333333331
+                "x": 145.5,
+                "y": 138
             }
         },
         "menu.tmx": {
@@ -141,8 +141,8 @@
             "scale": 5.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 2170.727272727273,
-                "y": 136.72727272727275
+                "x": 1200.7272727272727,
+                "y": 190.72727272727275
             }
         },
         "tiles.tsx": {
